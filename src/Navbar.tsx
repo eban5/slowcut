@@ -1,9 +1,10 @@
 import React from "react";
 import { Navbar, Button, Form, FormControl, Nav, NavDropdown } from "react-bootstrap";
+import "./Navbar.css"
 
 export const CustomNavbar = () => {
 	return (
-		<Navbar bg="dark" variant="dark" expand="lg">
+		<Navbar className="nav" variant="dark" expand="lg">
 			<Navbar.Brand href="#home">
 				<img
 					alt=""

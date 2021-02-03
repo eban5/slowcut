@@ -1,0 +1,23 @@
+.showcase {
+	width: 100%;
+	padding: 0 7%;
+	display: table;
+	margin: 0;
+	max-width: none;
+	background-color: #14181C;
+	width: 100vw;
+	height: 75vh;
+	background-image: url("https://a.ltrbxd.com/resized/sm/upload/rc/nh/4l/3b/soul-2020-1920-1920-1080-1080-crop-000000.jpg?k=ed53a8e157");
+	color: #fff;
+	align-items: flex-end;
+}
+
+div {
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		#14181C 10%,
+		#14181C 90%,
+		transparent 100%
+	);
+}

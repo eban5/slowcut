@@ -1,5 +1,6 @@
 import React from "react";
 import { CustomNavbar as Navbar } from "./Navbar";
+import { Showcase } from "./Showcase";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,14 +9,12 @@ function App() {
 		<div className="App">
 			{/* Navbar */}
 			<Navbar />
-			<header className="App-header">
-				{/* Showcase / Hero */}
 
-				<h1>Slowcut</h1>
-				<p>A letterboxd clone.</p>
-			</header>
+			{/* Showcase / Hero */}
+			<Showcase />
+
 			{/* Carousel - Featured Movies */}
-
+    
 			{/* Popular */}
 
 			{/* About - Features / Links */}
