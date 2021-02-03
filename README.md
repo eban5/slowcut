@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# slowcut
+
+A letterboxd clone. For practice.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

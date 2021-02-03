@@ -2,6 +2,11 @@
   "name": "slowcut",
   "version": "0.1.0",
   "private": true,
+  "description": "A letterboxd clone. Made with Typescript.",
+  "main": "index.js",
+  "repository": "https://github.com/eban5/slowcut",
+  "author": "Esteban Amas",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
