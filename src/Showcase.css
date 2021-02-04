@@ -1,14 +1,35 @@
 .showcase_container {
-	background-color: #17114b;
-	position: relative;
-	width: 100vw;
-	height: 75vh;
 	/* background-image: url("https://a.ltrbxd.com/resized/sm/upload/rc/nh/4l/3b/soul-2020-1920-1920-1080-1080-crop-000000.jpg?k=ed53a8e157"); */
 }
 
 .showcase_content {
+	text-align: center;
 	color: #fff;
 }
+
+.showcase_subtitle {
+	line-height: 1.5;
+}
+.showcase_subtitle > span {
+	text-indent: 110%;
+	background-position: 0 0;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 26px;
+	height: 26px;
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	opacity: 0.8;
+}
+
+.showcase_brand_icon--apple {
+	background-image: url("./images/apple.png");
+}
+.showcase_brand_icon--android {
+	background-image: url("./images/android.png");
+}
+
 /* 
 div {
 	-webkit-mask-image: linear-gradient(
