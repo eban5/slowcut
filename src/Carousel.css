@@ -1,0 +1,13 @@
+.carousel_content {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-left: -10px;
+}
+
+.poster {
+	width: 150px;
+	height: 225px;
+  background-color: blue;
+  cursor: pointer;
+}
