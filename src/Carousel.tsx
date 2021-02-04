@@ -13,17 +13,22 @@ export const CustomCarousel = () => {
 		axios
 			.get(testURL)
 			.then((response) => {
-        setPosters(response.data.Search);
+				setPosters(response.data.Search.slice(0, 6));
 			})
 			.catch((error) => console.error(error));
-	}, []);
+	}, [OMDB_API_KEY]);
 
 	return (
 		<ul className="carousel_content">
 			{posters.map((item: any, index: number) => {
-				return (<li key={index}>
-					<img className="poster" src={item.Poster}></img>
-				</li>);
+				return (
+					<li key={index}>
+						<img
+							className="poster"
+							alt={`${item.Title} (${item.Year})`}
+							src={item.Poster}></img>
+					</li>
+				);
 			})}
 		</ul>
 	);
