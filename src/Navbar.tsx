@@ -1,17 +1,17 @@
 import React from "react";
 import { Navbar, Button, Form, FormControl, Nav, NavDropdown } from "react-bootstrap";
 import "./Navbar.css";
-import StackIcon from "./images/StackIcon";
+import slowcut from "./images/slowcut.png";
 
 export const CustomNavbar = () => {
 	return (
 		<Navbar className="nav" variant="dark" expand="lg">
 			<Navbar.Brand href="#home">
-				<span className="nav_icon background-white">
-					<StackIcon />
+				<span className="nav_icon">
+					<img src={slowcut} alt="slowcut icon" />
 				</span>
 				<span className="nav_brand">Slowcut</span>
-				</Navbar.Brand>
+			</Navbar.Brand>
 
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">

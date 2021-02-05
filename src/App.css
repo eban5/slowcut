@@ -2,6 +2,12 @@ h1, h2, h3, h4, h5 {
 	color: #fff
 }
 
+.section_header {
+	border-bottom: 1px gray solid;
+	padding-bottom: 5px;
+	margin-bottom: 15px;
+}
+
 .background_container {
 	position: absolute;
 	z-index: 0;
