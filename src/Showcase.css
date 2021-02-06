@@ -1,14 +1,22 @@
-.showcase_container {
-	/* background-image: url("https://a.ltrbxd.com/resized/sm/upload/rc/nh/4l/3b/soul-2020-1920-1920-1080-1080-crop-000000.jpg?k=ed53a8e157"); */
-}
-
 .showcase_content {
 	text-align: center;
 	color: #fff;
 }
 
+.showcase_title,
+.showcase_button,
 .showcase_subtitle {
-	line-height: 1.5;
+	margin-bottom: 25px;
+}
+
+.showcase_button > button {
+	text-transform: uppercase;
+	padding: 5px 25px;
+}
+
+.showcase_subtitle {
+	display: inline-flex;
+	color: #789;
 }
 .showcase_subtitle > span {
 	text-indent: 110%;
@@ -25,18 +33,9 @@
 
 .showcase_brand_icon--apple {
 	background-image: url("./images/apple.png");
+	margin-left: 5px;
 }
 .showcase_brand_icon--android {
 	background-image: url("./images/android.png");
+	margin-left: 5px;
 }
-
-/* 
-div {
-	-webkit-mask-image: linear-gradient(
-		to right,
-		transparent 0%,
-		#14181C 10%,
-		#14181C 90%,
-		transparent 100%
-	);
-} */
