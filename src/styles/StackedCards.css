@@ -1,3 +1,6 @@
+.white {
+	color: #fff;
+}
 .parent {
 	display: grid;
 	grid-template-columns: 250px 1fr;
