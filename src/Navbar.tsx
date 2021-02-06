@@ -16,9 +16,9 @@ export const CustomNavbar = () => {
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
-					<Nav.Link href="#home">Films</Nav.Link>
-					<Nav.Link href="#link">Lists</Nav.Link>
-					<NavDropdown title="Members" id="basic-nav-dropdown">
+					<Nav.Link className="nav_link" href="#home">Films</Nav.Link>
+					<Nav.Link className="nav_link" href="#link">Lists</Nav.Link>
+					<NavDropdown title="Members"  className="nav_link" id="basic-nav-dropdown">
 						<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
 						<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
 						<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>

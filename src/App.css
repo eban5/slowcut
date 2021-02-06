@@ -1,5 +1,12 @@
-h1, h2, h3, h4, h5 {
-	color: #fff
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Noticia+Text:wght@700&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: "Noticia Text", serif;
+	color: #fff;
 }
 
 .section_header {
@@ -9,8 +16,6 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Genres */
-
-
 
 .background_container {
 	position: absolute;
@@ -125,7 +130,6 @@ section {
 	background-image: none;
 	position: relative;
 }
-
 
 .vertical-center {
 	margin: 0;

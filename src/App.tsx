@@ -11,12 +11,12 @@ function App() {
 	return (
 		<>
 			{/* Background image */}
-			<div className="background_container">
+			{/* <div className="background_container">
 				<div className="background-wrapper">
 					<div className="background-image"></div>
 					<div className="background-mask"></div>
 				</div>
-			</div>
+			</div> */}
 
 			{/* Navbar */}
 			<div className="container_navbar">
@@ -27,7 +27,7 @@ function App() {
 			<div className="App">
 				{/* Showcase / Hero */}
 				<Container>
-					<Row>
+					<Row className="justify-content-md-center">
 						<Col>
 							{" "}
 							<div id="showcase">
