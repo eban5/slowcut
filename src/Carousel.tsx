@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Carousel.css";
 import axios from "axios";
-import { OverlayTrigger, Popover } from "react-bootstrap";
+import { OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
+import { render } from "@testing-library/react";
 
 // TODO: change OverlayTrigger to be StrictMode compliant. See: https://react-bootstrap.netlify.app/components/overlays/
 
@@ -12,6 +13,12 @@ interface PosterProps {
 	Director?: string;
 	Writer?: string;
 	imdbID?: string;
+}
+
+interface CarouselTooltipProps {
+	idx?: string;
+	Title: string;
+	Year: string;
 }
 
 interface OMDBResult {
@@ -37,6 +44,14 @@ const popover = (props: PosterProps) => {
 				<p>{props.Plot}</p>
 			</Popover.Content>
 		</Popover>
+	);
+};
+
+const renderTooltip = (props: CarouselTooltipProps) => {
+	return (
+		<Tooltip className="carousel_tooltip" key={props.idx} id={`button-tooltip-${props.idx}`} {...props}>
+			{props.Title} ({props.Year})
+		</Tooltip>
 	);
 };
 
@@ -94,19 +109,27 @@ export const CustomCarousel = () => {
 		<ul className="carousel_content">
 			{movies.map((item: any, index: number) => {
 				return (
-					<OverlayTrigger
-						trigger={["focus", "hover"]}
-						key={index}
-						placement="auto"
-						overlay={popover(item)}>
-						<li key={index}>
+					// link to the movie details page for onClick
+					<li key={index}>
+						<OverlayTrigger
+							placement="top"
+							delay={{ show: 100, hide: 400 }}
+							overlay={renderTooltip(item)}>
 							<img
 								className="poster"
 								alt={`${item.Title} (${item.Year})`}
 								src={item.Poster}
 							/>
-						</li>
-					</OverlayTrigger>
+						</OverlayTrigger>
+					</li>
+
+					// <OverlayTrigger
+					// trigger={["focus", "hover"]}
+					// key={index}
+					// placement="auto"
+					// overlay={popover(item)}>
+
+					// </OverlayTrigger>
 				);
 			})}
 		</ul>

@@ -8,6 +8,20 @@
 .poster {
 	width: 150px;
 	height: 225px;
-  background-color: blue;
-  cursor: pointer;
+	background-color: blue;
+	cursor: pointer;
+}
+
+.tooltip > div.tooltip-inner {
+	background-color: #789 !important;
+	color: @whitecolor !important;
+}
+
+.tooltip.show {
+	opacity: 1 !important;
+}
+
+.tooltip > div.arrow::before {
+	border-bottom-color: #789 !important;
+	color: @whitecolor !important;
 }
