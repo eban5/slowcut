@@ -6,6 +6,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import About from "./About";
 import { Badge, Col, Container, Row } from "react-bootstrap";
+import StackedCards from "./StackedCards";
 
 function App() {
 	return (
@@ -42,7 +43,7 @@ function App() {
 					<Row>
 						<Col>
 							<div id="carousel">
-								<h4 className="section_header">Popular This Week</h4>
+								{/* <h4 className="section_header">Popular This Week</h4> */}
 								<Carousel />
 							</div>
 						</Col>
@@ -67,22 +68,16 @@ function App() {
 							{/* Popular Reviews This Week */}
 							<div id="popular-reviews">
 								<h4 className="section_header">Popular Reviews</h4>
-							</div>
-						</Col>
-						<Col sm={4}>
-							{/* Popular Lists */}
-							<div id="popular-lists">
-								<h4 className="section_header">Popular Lists</h4>
-							</div>
-						</Col>
-					</Row>
-				</Container>
-				<Container>
-					<Row>
-						<Col sm={8}>
-							{/* Recent News */}
-							<div id="recent-news">
-								<h4 className="section_header">Recent News</h4>
+								<h5>User Personface</h5>
+								<p>
+									Arcu purus augue euismod sociosqu justo nec vulputate, aliquet
+									duis quisque felis luctus morbi ut cras, viverra leo blandit in
+									rutrum aenean. Cum odio habitasse dictumst consequat vitae
+									tristique varius nam ullamcorper rhoncus ultrices, integer
+									conubia curae ipsum sociis sem cras vehicula erat tempus, tempor
+									nibh hendrerit dignissim nunc primis neque commodo tortor
+									facilisi.
+								</p>
 							</div>
 						</Col>
 						<Col sm={4}>
@@ -108,6 +103,43 @@ function App() {
 								</div>
 							</div>
 						</Col>
+					</Row>
+				</Container>
+				<Container>
+					<Row>
+						<Col sm={8}>
+							{/* Popular Lists */}
+							<div id="popular-lists">
+								<h4 className="section_header">Popular Lists</h4>
+								<StackedCards />
+							</div>
+						</Col>
+						<Col sm={4}>
+						 {/* Popular Reviewers */}
+						 <div className="popular_reviewers">
+						 <h4 className="section_header">Popular Reviewers</h4>
+							 <ul>
+								 <li>
+									 User Personface
+								 </li>
+								 <li>
+									 User Personface
+								 </li>
+								 <li>
+									 User Personface
+								 </li>
+								 <li>
+									 User Personface
+								 </li>
+							 </ul>
+						 </div>
+						</Col>
+					</Row>
+				</Container>
+				<Container>
+					<Row>
+						<Col sm={8}></Col>
+						<Col sm={4}></Col>
 					</Row>
 				</Container>
 			</div>

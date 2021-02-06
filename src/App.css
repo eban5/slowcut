@@ -9,6 +9,11 @@ h5 {
 	color: #fff;
 }
 
+p {
+	font-family: "Lato", sans-serif;
+	color: #789;
+}
+
 .section_header {
 	border-bottom: 1px gray solid;
 	padding-bottom: 5px;

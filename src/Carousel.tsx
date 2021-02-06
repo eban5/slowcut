@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Carousel.css";
 import axios from "axios";
 import { OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
-import { render } from "@testing-library/react";
+
+import { getMovieIds } from "./utils/omdb";
 
 // TODO: change OverlayTrigger to be StrictMode compliant. See: https://react-bootstrap.netlify.app/components/overlays/
 
@@ -19,14 +20,6 @@ interface CarouselTooltipProps {
 	idx?: string;
 	Title: string;
 	Year: string;
-}
-
-interface OMDBResult {
-	Poster: string;
-	Title: string;
-	Type: "movie" | "series" | "episode";
-	Year: string;
-	imdbID: string;
 }
 
 const popover = (props: PosterProps) => {
@@ -49,15 +42,18 @@ const popover = (props: PosterProps) => {
 
 const renderTooltip = (props: CarouselTooltipProps) => {
 	return (
-		<Tooltip className="carousel_tooltip" key={props.idx} id={`button-tooltip-${props.idx}`} {...props}>
+		<Tooltip
+			className="carousel_tooltip"
+			key={props.idx}
+			id={`button-tooltip-${props.idx}`}
+			{...props}>
 			{props.Title} ({props.Year})
 		</Tooltip>
 	);
 };
 
 export const CustomCarousel = () => {
-	const OMDB_API_KEY: string = process.env.REACT_APP_OMDB_API_KEY || "";
-	const testURL: any = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=batman`;
+	const searchURL = process.env.REACT_APP_OMDB_API_URL || "";
 
 	// TODO: create a proper fallback list item and remove this dummy item
 	const dummyMovie = {
@@ -69,14 +65,11 @@ export const CustomCarousel = () => {
 	const [posters, setPosters] = useState<any>([]);
 	const [movies, setMovies] = useState<any>([]);
 
-	const getMovieIds = (results: OMDBResult[]): string[] => {
-		return results.map((i) => i.imdbID);
-	};
-
+	// TODO make into custom HOOK
 	useEffect(() => {
 		/* The OMDB API offers searches by either title or ID. The title results are very limited but at least provide an imdbID for each title in the results. To get around this, we need to make two API requests: 1. get titles that match our title search query and then create a list of those imdbIDs 2. then, call the endpoint that accepts imdbIDs as input and request one by one. */
 		axios
-			.get(testURL)
+			.get(`${searchURL}&s=batman`)
 			.then((response) => {
 				if (response.data.Search) {
 					return getMovieIds(response.data.Search.slice(0, 6));
@@ -95,7 +88,7 @@ export const CustomCarousel = () => {
 				response &&
 					response.forEach((element: string) => {
 						axios
-							.get(`http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${element}`)
+							.get(`${process.env.REACT_APP_OMDB_API_URL}&i=${element}`)
 							.then((item: any) => {
 								setMovies((oldMovies: any[]) => [...oldMovies, item.data]);
 							})
@@ -122,14 +115,6 @@ export const CustomCarousel = () => {
 							/>
 						</OverlayTrigger>
 					</li>
-
-					// <OverlayTrigger
-					// trigger={["focus", "hover"]}
-					// key={index}
-					// placement="auto"
-					// overlay={popover(item)}>
-
-					// </OverlayTrigger>
 				);
 			})}
 		</ul>
