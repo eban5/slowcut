@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Media, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useFetchMovies } from "../hooks/useFetch";
+import { CustomCarousel } from "./Carousel";
+import "../styles/MovieDetail.css";
 
 const MovieDetail = ({ match }: any) => {
 	const {
@@ -23,7 +25,15 @@ const MovieDetail = ({ match }: any) => {
 
 	return (
 		<div className="white">
-			<Link to="/">Return to Main</Link>
+			<Container>
+				<Row>
+					<Col sm={12}>
+						<Link to="/">
+							<span className="breadcrumb">Return to Main</span>
+						</Link>
+					</Col>
+				</Row>
+			</Container>
 			{data !== null ? (
 				<div>
 					<Container>
@@ -72,6 +82,17 @@ const MovieDetail = ({ match }: any) => {
 			) : (
 				<div>No Movie</div>
 			)}
+
+			<div>
+				<Container>
+					<Row>
+						<Col sm={12}>
+							<h4 className="section_header">Related Movies</h4>
+							<CustomCarousel />
+						</Col>
+					</Row>
+				</Container>
+			</div>
 		</div>
 	);
 };
