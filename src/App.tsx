@@ -1,12 +1,33 @@
 import React from "react";
-import { CustomNavbar as Navbar } from "./Navbar";
-import { Showcase } from "./Showcase";
-import { CustomCarousel as Carousel } from "./Carousel";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+// import { CustomNavbar as Navbar } from "./Navbar";
+import { Showcase } from "./components/Showcase";
+import { CustomCarousel as Carousel } from "./components/Carousel";
+import StackedCards from "./components/StackedCards";
+import About from "./components/About";
+
+import "./styles/App.css";
+import slowcut from "./images/slowcut.png";
+import "./styles/Navbar.css";
+
+// react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import About from "./About";
-import { Badge, Col, Container, Row } from "react-bootstrap";
-import StackedCards from "./StackedCards";
+import {
+	Navbar,
+	Button,
+	Form,
+	FormControl,
+	Nav,
+	NavDropdown,
+	Badge,
+	Col,
+	Container,
+	Row,
+} from "react-bootstrap";
+
+
+
 
 function App() {
 	return (
@@ -21,8 +42,64 @@ function App() {
 
 			{/* Navbar */}
 			<div className="container_navbar">
-				<Navbar />
+				{/* <Navbar /> */}
+				<Router>
+					<Navbar className="nav" variant="dark" expand="lg">
+						<Navbar.Brand href="#home">
+							<span className="nav_icon">
+								<img src={slowcut} alt="slowcut icon" />
+							</span>
+							<span className="nav_brand">Slowcut</span>
+						</Navbar.Brand>
+
+						<Navbar.Toggle aria-controls="basic-navbar-nav" />
+						<Navbar.Collapse id="basic-navbar-nav">
+							<Nav className="mr-auto">
+								<Link to="/">
+									<Nav.Link className="nav_link" href="#home">
+										Films
+									</Nav.Link>
+								</Link>
+								<Link to="/">
+									<Nav.Link className="nav_link" href="#link">
+										Lists
+									</Nav.Link>
+								</Link>
+								<NavDropdown
+									title="Members"
+									className="nav_link"
+									id="basic-nav-dropdown">
+									<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+									<NavDropdown.Item href="#action/3.2">
+										Another action
+									</NavDropdown.Item>
+									<NavDropdown.Item href="#action/3.3">
+										Something
+									</NavDropdown.Item>
+									<NavDropdown.Divider />
+									<NavDropdown.Item href="#action/3.4">
+										Separated link
+									</NavDropdown.Item>
+								</NavDropdown>
+							</Nav>
+							<Form inline>
+								<FormControl type="text" placeholder="Search" className="mr-sm-2" />
+								<Button variant="outline-success">Search</Button>
+							</Form>
+						</Navbar.Collapse>
+					</Navbar>
+
+					<Switch>
+						<Route path="/about">
+							<About />
+						</Route>
+						<Route path="/users">{/* <Users /> */}</Route>
+						<Route path="/">{/* <Home /> */}</Route>
+					</Switch>
+				</Router>
 			</div>
+
+			{/* </div> */}
 
 			{/* Content */}
 			<div className="App">
@@ -115,24 +192,16 @@ function App() {
 							</div>
 						</Col>
 						<Col sm={4}>
-						 {/* Popular Reviewers */}
-						 <div className="popular_reviewers">
-						 <h4 className="section_header">Popular Reviewers</h4>
-							 <ul>
-								 <li>
-									 User Personface
-								 </li>
-								 <li>
-									 User Personface
-								 </li>
-								 <li>
-									 User Personface
-								 </li>
-								 <li>
-									 User Personface
-								 </li>
-							 </ul>
-						 </div>
+							{/* Popular Reviewers */}
+							<div className="popular_reviewers">
+								<h4 className="section_header">Popular Reviewers</h4>
+								<ul>
+									<li>User Personface</li>
+									<li>User Personface</li>
+									<li>User Personface</li>
+									<li>User Personface</li>
+								</ul>
+							</div>
 						</Col>
 					</Row>
 				</Container>

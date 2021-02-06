@@ -1,5 +1,5 @@
-import "./Showcase.css";
-import "./App.css";
+import "../styles/Showcase.css";
+import "../styles/App.css";
 import { Button } from "react-bootstrap";
 
 export const Showcase = () => {

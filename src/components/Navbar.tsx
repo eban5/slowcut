@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Button, Form, FormControl, Nav, NavDropdown } from "react-bootstrap";
-import "./Navbar.css";
-import slowcut from "./images/slowcut.png";
+import "../styles/Navbar.css";
+import slowcut from "../images/slowcut.png";
 
 export const CustomNavbar = () => {
 	return (

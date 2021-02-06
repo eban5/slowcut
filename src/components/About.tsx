@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardGroup, Media } from "react-bootstrap";
-import slowcutIcon from "./images/slowcut.png";
-import "./About.css"
+import slowcutIcon from "../images/slowcut.png";
+import "../styles/About.css"
 const About = () => {
 	return (
 		<>

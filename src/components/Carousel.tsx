@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./Carousel.css";
+import "../styles/Carousel.css";
 import axios from "axios";
 import { OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
 
-import { getMovieIds } from "./utils/omdb";
+import { getMovieIds } from "../utils/omdb";
 
 // TODO: change OverlayTrigger to be StrictMode compliant. See: https://react-bootstrap.netlify.app/components/overlays/
 
