@@ -8,6 +8,10 @@ h1, h2, h3, h4, h5 {
 	margin-bottom: 15px;
 }
 
+/* Genres */
+
+
+
 .background_container {
 	position: absolute;
 	z-index: 0;
@@ -121,10 +125,7 @@ section {
 	background-image: none;
 	position: relative;
 }
-.content-wrap {
-	width: 950px;
-	margin: 0 auto;
-}
+
 
 .vertical-center {
 	margin: 0;
