@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const MovieDetail = (props: any) => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const MovieDetail = ({ match }: any) => {
+	const {
+		params: { imdbID },
+	} = match;
 
-export default MovieDetail
+	return (
+		<div>
+			Movie details page: <strong>{imdbID}</strong>
+		</div>
+	);
+};
+
+export default MovieDetail;

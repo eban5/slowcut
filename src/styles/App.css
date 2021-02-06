@@ -14,6 +14,13 @@ p {
 	color: #789;
 }
 
+ul,
+li {
+	list-style: none;
+	margin-left: 0;
+}
+
+
 .section_header {
 	border-bottom: 1px gray solid;
 	padding-bottom: 5px;
