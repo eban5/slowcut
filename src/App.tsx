@@ -10,6 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Button, Form, FormControl, Nav, NavDropdown } from "react-bootstrap";
 import MovieDetail from "./components/MovieDetail";
 import LandingPage from "./components/LandingPage";
+import { SearchLanding } from "./components/SearchLanding";
+import { getRandomItem } from "./utils/array";
+import { randomSearchTerms } from "./data/lists";
 
 const NoMatchRoute = () => <div>404 Page</div>;
 
@@ -58,14 +61,23 @@ function App() {
 							</NavDropdown>
 						</Nav>
 						<Form inline>
-							<FormControl type="text" placeholder="Search" className="mr-sm-2" />
-							<Button variant="outline-success">Search</Button>
+							<FormControl type="text" className="mr-sm-2 nav_search" />
+							<Link to="/search">
+								<Button variant="outline-success">Search</Button>
+							</Link>
 						</Form>
 					</Navbar.Collapse>
 				</Navbar>
 
 				<Switch>
 					<Route exact path="/" component={LandingPage} />
+					<Route
+						exact
+						path="/search"
+						component={() => (
+							<SearchLanding keyword={getRandomItem(randomSearchTerms)} />
+						)}
+					/>
 					<Route path="/movie/:imdbID" component={MovieDetail} />
 				</Switch>
 			</div>

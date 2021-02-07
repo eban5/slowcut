@@ -20,6 +20,10 @@ li {
 	margin-left: 0;
 }
 
+.nav_search {
+	border-radius: 15px !important;
+}
+
 
 .section_header {
 	border-bottom: 1px gray solid;
