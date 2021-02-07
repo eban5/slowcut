@@ -18,7 +18,7 @@ export const useFetchMovies = (query: string) => {
 			setStatus("fetching");
 
 			axios
-				.get(`${searchURL}&s=${query}`)
+				.get(`${searchURL}&s=${query}&type=movie`)
 				.then((response) => {
 					if (response.data.Search) {
 						return getMovieIds(response.data.Search.slice(0, 6));

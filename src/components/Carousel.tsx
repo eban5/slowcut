@@ -1,68 +1,39 @@
 import React from "react";
 import "../styles/Carousel.css";
-import { OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useFetchMovies } from "../hooks/useFetch";
 import { Link } from "react-router-dom";
+import Poster from "./Poster";
 
 // TODO: change OverlayTrigger to be StrictMode compliant. See: https://react-bootstrap.netlify.app/components/overlays/
 
-interface PosterProps {
-	Title?: string;
-	Year?: string;
-	Plot?: string;
-	Director?: string;
-	Writer?: string;
-	imdbID?: string;
+interface CarouselProps {
+	keyword: string;
 }
 
-interface CarouselTooltipProps {
-	idx?: string;
-	Title: string;
-	Year: string;
-}
-
-const renderTooltip = (props: CarouselTooltipProps) => {
-	return (
-		<Tooltip
-			className="carousel_tooltip"
-			key={props.idx}
-			id={`button-tooltip-${props.idx}`}
-			{...props}>
-			{props.Title} ({props.Year})
-		</Tooltip>
-	);
-};
-
-export const CustomCarousel = () => {
-	const { status, data } = useFetchMovies("star wars");
+export const CustomCarousel = (props: CarouselProps) => {
+	const { keyword } = props;
+	const { status, data } = useFetchMovies(keyword);
+	// TODO move this reverse sort to the utils dir
+	// Sort reverse chronological
+	const sortedMovies = data.sort((a: any, b: any) => (a.Year < b.Year ? 1 : -1));
 
 	return (
 		<>
 			{status === "fetching" ? (
-				<div>Loading...</div>
+				<div className="white">Loading...</div>
 			) : (
 				<ul className="carousel_content">
-					{data.map((item: any, index: number) => {
+					{sortedMovies.map((item: any, index: number) => {
 						return (
 							// link to the movie details page for onClick
-							<li key={index}>
-								<OverlayTrigger
-									placement="top"
-									delay={{ show: 100, hide: 400 }}
-									overlay={renderTooltip(item)}>
-									<Link to={`/movie/${item.imdbID}`}>
-										<img
-											className="poster"
-											alt={`${item.Title} (${item.Year})`}
-											src={item.Poster}
-										/>
-									</Link>
-								</OverlayTrigger>
+							<li className="poster" key={index}>
+								<Poster key={index} item={item} />
 							</li>
 						);
 					})}
 				</ul>
 			)}
-		</>									
+		</>
 	);
 };

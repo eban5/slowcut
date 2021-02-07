@@ -8,8 +8,10 @@
 .poster {
 	width: 150px;
 	height: 225px;
-	background-color: blue;
+	background-color: gray;
+	color: black;
 	cursor: pointer;
+	text-align: center;
 }
 
 .tooltip > div.tooltip-inner {

@@ -2,12 +2,14 @@ import React from "react";
 import { Showcase } from "./Showcase";
 import { CustomCarousel as Carousel } from "./Carousel";
 
-import StackedCards from "./StackedCards";
+import PopularLists from "./PopularLists";
 import About from "./About";
 
 import slowcut from "../images/slowcut.png";
 
 import { Badge, Col, Container, Row, Media } from "react-bootstrap";
+import { getRandomItem } from "../utils/array";
+import { randomSearchTerms } from "../data/lists";
 
 const LandingPage = () => {
 	return (
@@ -30,8 +32,7 @@ const LandingPage = () => {
 					<Col>
 						<div id="carousel">
 							{/* <h4 className="section_header">Popular This Week</h4> */}
-
-							<Carousel />
+							<Carousel keyword={getRandomItem(randomSearchTerms)} />
 						</div>
 					</Col>
 				</Row>
@@ -97,7 +98,7 @@ const LandingPage = () => {
 						{/* Popular Lists */}
 						<div id="popular-lists">
 							<h4 className="section_header">Popular Lists</h4>
-							<StackedCards />
+							<PopularLists />
 						</div>
 					</Col>
 					<Col sm={4}>
