@@ -2,6 +2,11 @@
 
 A letterboxd clone. For practice.
 
+> Slow cutting is a film editing technique which uses shots of long duration. 
+> ~ [Wikipedia](https://en.wikipedia.org/wiki/Slow_cutting?wprov=sfti1)
+
+----
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
