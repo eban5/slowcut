@@ -24,7 +24,6 @@ li {
 	border-radius: 15px !important;
 }
 
-
 .section_header {
 	border-bottom: 1px gray solid;
 	padding-bottom: 5px;
@@ -154,4 +153,18 @@ section {
 	/* left: 50%; */
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
+}
+
+.not_found {
+	text-align: center;
+	font-family: "Noticia Text", serif;
+	color: #fff;
+}
+
+.not_found_404 {
+	font-size: 8rem;
+	font-weight: bolder;
+}
+.not_found_subtitle {
+	font-size: 3rem;
 }

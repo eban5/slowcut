@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Switch, Route, Link } from "react-router-dom";
 
 import "./styles/App.css";
 import "./styles/Navbar.css";
@@ -11,12 +11,23 @@ import { Navbar, Button, Form, FormControl, Nav, NavDropdown } from "react-boots
 import MovieDetail from "./components/MovieDetail";
 import LandingPage from "./components/LandingPage";
 import { SearchLanding } from "./components/SearchLanding";
-import { getRandomItem } from "./utils/array";
-import { randomSearchTerms } from "./data/lists";
 
-const NoMatchRoute = () => <div>404 Page</div>;
+const NoMatchRoute = () => (
+	<div className="not_found">
+		<div className="not_found_404">404</div>
+		<div className="not_found_subtitle">Page could not be found</div>
+	</div>
+);
 
 function App() {
+	const [searchTerm, setSearchTerm] = useState<string>("");
+	const handleChangeTerm = (event: any): void => {
+		event.target.value !== null && setSearchTerm(event.target.value);
+	};
+	const handleSubmit = (event: any): void => {
+		event.preventDefault();
+	};
+
 	return (
 		<>
 			{/* Navbar */}
@@ -60,9 +71,14 @@ function App() {
 								</NavDropdown.Item>
 							</NavDropdown>
 						</Nav>
-						<Form inline>
-							<FormControl type="text" className="mr-sm-2 nav_search" />
-							<Link to="/search">
+						<Form inline onSubmit={handleSubmit}>
+							<FormControl
+								type="text"
+								className="mr-sm-2 nav_search"
+								value={searchTerm}
+								onChange={handleChangeTerm}
+							/>
+							<Link to={`/search/${searchTerm}`}>
 								<Button variant="outline-success">Search</Button>
 							</Link>
 						</Form>
@@ -73,12 +89,12 @@ function App() {
 					<Route exact path="/" component={LandingPage} />
 					<Route
 						exact
-						path="/search"
-						component={() => (
-							<SearchLanding keyword={getRandomItem(randomSearchTerms)} />
-						)}
+						path="/search/:searchTerm"
+						component={() => <SearchLanding keyword={searchTerm} />}
 					/>
 					<Route path="/movie/:imdbID" component={MovieDetail} />
+					{/* <Route render={() => <Redirect to="/" />} /> */}
+					<Route render={() => <NoMatchRoute />} />
 				</Switch>
 			</div>
 		</>
