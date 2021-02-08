@@ -1,30 +1,20 @@
 import React from "react";
 import "../styles/Carousel.css";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { useFetchMovies } from "../hooks/useFetch";
-import { Link } from "react-router-dom";
+import { Movie } from "../types/types";
 import Poster from "./Poster";
 
-// TODO: change OverlayTrigger to be StrictMode compliant. See: https://react-bootstrap.netlify.app/components/overlays/
-
 interface CarouselProps {
-	keyword: string;
+	movies: Movie[];
 }
 
 export const CustomCarousel = (props: CarouselProps) => {
-	const { keyword } = props;
-	const { status, data } = useFetchMovies(keyword);
-	// TODO move this reverse sort to the utils dir
-	// Sort reverse chronological
-	const sortedMovies = data.sort((a: any, b: any) => (a.Year < b.Year ? 1 : -1));
+	const movies: Movie[] = props.movies;
 
 	return (
 		<>
-			{status === "fetching" ? (
-				<div className="white">Loading...</div>
-			) : (
-				<ul className="carousel_content">
-					{sortedMovies.map((item: any, index: number) => {
+			<ul className="carousel_content">
+				{movies &&
+					movies.map((item: any, index: number) => {
 						return (
 							// link to the movie details page for onClick
 							<li className="poster" key={index}>
@@ -32,8 +22,7 @@ export const CustomCarousel = (props: CarouselProps) => {
 							</li>
 						);
 					})}
-				</ul>
-			)}
+			</ul>
 		</>
 	);
 };

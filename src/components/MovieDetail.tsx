@@ -87,7 +87,7 @@ const MovieDetail = ({ match }: any) => {
 							<Row>
 								<Col sm={12}>
 									<h4 className="section_header">Related Movies</h4>
-									<CustomCarousel keyword={relatedKeyword} />
+									<CustomCarousel movies={[]} />
 								</Col>
 							</Row>
 						</Container>

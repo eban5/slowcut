@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 
 interface MoviePoster {
 	idx?: string;
-	Title?: string;
-	Year?: string;
-	Plot?: string;
-	Director?: string;
-	Writer?: string;
-  Poster?: string;
+	id?: string;
+	title?: string;
+	release_date?: string;
+	poster_path?: string;
 	imdbID?: string;
 }
 interface PosterProps {
@@ -23,7 +21,8 @@ const renderTooltip = (props: MoviePoster) => {
 			key={props.idx}
 			id={`button-tooltip-${props.idx}`}
 			{...props}>
-			{props.Title} ({props.Year})
+			{props && props.title} ({props && props.release_date && props.release_date.substr(0, 4)}
+			)
 		</Tooltip>
 	);
 };
@@ -36,11 +35,11 @@ const Poster = (props: PosterProps) => {
 				placement="top"
 				delay={{ show: 100, hide: 400 }}
 				overlay={renderTooltip(item)}>
-				<Link to={`/movie/${item.imdbID}`}>
+				<Link to={`/movie/${item.id}`}>
 					<img
 						className="poster"
-						alt={`${item.Title} (${item.Year})`}
-						src={item.Poster}
+						alt={`${item.title} (${item.release_date?.substr(0, 4)})`}
+						src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
 					/>
 				</Link>
 			</OverlayTrigger>

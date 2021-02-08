@@ -6,3 +6,14 @@ export interface OMDBResult {
 	imdbID: string;
 }
 
+export interface Genre {
+	id: number;
+	name: string;
+}
+
+export interface Movie {
+	imdbID: string;
+	title: string;
+	year: string;
+	poster: string;
+}

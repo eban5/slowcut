@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Showcase } from "./Showcase";
 import { CustomCarousel as Carousel } from "./Carousel";
 
@@ -10,8 +10,32 @@ import slowcut from "../images/slowcut.png";
 import { Badge, Col, Container, Row, Media } from "react-bootstrap";
 import { getRandomItem } from "../utils/array";
 import { randomSearchTerms } from "../data/lists";
+import axios from "axios";
+import { Movie, Genre } from "../types/types";
 
 const LandingPage = () => {
+	// TMDB Genres List
+	const [genres, setGenres] = useState<Genre[]>([]);
+	const [trending, setTrending] = useState<Movie[]>([]);
+
+	useEffect(() => {
+		//get genre list
+		axios
+			.get(
+				`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+			)
+			.then((result) => result.data && result.data.genres && setGenres(result.data.genres));
+	}, []);
+
+	useEffect(() => {
+		//get genre list
+		axios
+			.get(
+				`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+			)
+			.then((result) => result.data.results && setTrending(result.data.results.slice(0, 6)));
+	}, [trending]);
+
 	return (
 		<div className="App">
 			{/* Showcase / Hero */}
@@ -32,7 +56,7 @@ const LandingPage = () => {
 					<Col>
 						<div id="carousel">
 							{/* <h4 className="section_header">Popular This Week</h4> */}
-							<Carousel keyword={getRandomItem(randomSearchTerms)} />
+							<Carousel movies={trending} />
 						</div>
 					</Col>
 				</Row>
@@ -72,7 +96,15 @@ const LandingPage = () => {
 						<div id="discover-genre">
 							<h4 className="section_header">Discover by Genre</h4>
 							<div>
-								<Badge pill variant="primary">
+								{genres &&
+									genres.map((item) => {
+										return (
+											<Badge pill variant="secondary" key={item.id}>
+												{item.name}
+											</Badge>
+										);
+									})}
+								{/* <Badge pill variant="primary">
 									Action/Adventure
 								</Badge>
 								<Badge pill variant="secondary">
@@ -86,7 +118,7 @@ const LandingPage = () => {
 								</Badge>
 								<Badge pill variant="warning">
 									Documentary
-								</Badge>
+								</Badge> */}
 							</div>
 						</div>
 					</Col>
