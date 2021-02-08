@@ -1,6 +1,5 @@
 import React from "react";
-import { List, lists, randomSearchTerms } from "../data/lists";
-import { getRandomItem } from "../utils/array";
+import { List, lists } from "../data/lists";
 import StackedCards from "./StackedCards";
 
 const PopularLists = () => {
@@ -8,10 +7,10 @@ const PopularLists = () => {
 	return (
 		<div>
 			{popularLists.map((list: List) => {
-				const searchTerm: string = getRandomItem(randomSearchTerms);
+				console.log(list.title)
 				return (
 					<>
-						<StackedCards keyword={searchTerm} />
+						<StackedCards />
 						<h5>{list.title}</h5>
 						<span className="popular_list_user">{list.username}</span>
 					</>

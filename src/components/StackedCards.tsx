@@ -1,14 +1,14 @@
 import React from "react";
 import "../styles/StackedCards.css";
-import { useFetchMovies } from "../hooks/useFetch";
+import { useFetchPopularMovies } from "../hooks/useFetch";
+import { buildPosterPath } from "../utils/api";
 
-interface StackedCardsProps {
-	keyword: string;
-}
+// interface StackedCardsProps {
+// 	keyword?: string;
+// }
 
-const StackedCards = (props: StackedCardsProps) => {
-	const { keyword } = props;
-	const { status, data } = useFetchMovies(keyword);
+const StackedCards = () => {
+	const { status, data } = useFetchPopularMovies();
 
 	return (
 		<>
@@ -17,14 +17,14 @@ const StackedCards = (props: StackedCardsProps) => {
 			) : (
 				<>
 					<div className="parent">
-						{data.map((item: any, idx: any) => {
-							// TODO convert to Poster component
+						{data.slice(0, 6).map((item: any, idx: any) => {
+							// TODO convert to Poster component with Link
 							return (
 								<div key={idx} className={`child child${idx}`}>
 									<img
 										className=""
-										alt={`${item.Title} (${item.Year})`}
-										src={item.Poster}
+										alt={`${item.title} (${item.release_date.substr(0, 4)})`}
+										src={buildPosterPath(item.poster_path)}
 									/>
 								</div>
 							);

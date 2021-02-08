@@ -28,13 +28,13 @@ const LandingPage = () => {
 	}, []);
 
 	useEffect(() => {
-		//get genre list
+		//get trending movies for showcase
 		axios
 			.get(
 				`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
 			)
 			.then((result) => result.data.results && setTrending(result.data.results.slice(0, 6)));
-	}, [trending]);
+	}, []);
 
 	return (
 		<div className="App">

@@ -17,3 +17,9 @@ export interface Movie {
 	year: string;
 	poster: string;
 }
+
+export interface WatchProviders {
+	buy?: any[];
+	rent?: any[];
+	flatrate?: any[];
+}

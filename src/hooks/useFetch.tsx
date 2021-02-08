@@ -1,12 +1,43 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { getMovieIds } from "../utils/omdb";
-
-const searchURL: string = process.env.REACT_APP_OMDB_API_URL || "";
-
-/* The OMDB API offers searches by either title or ID. The title results are very limited but at least provide an imdbID for each title in the results. To get around this, we need to make two API requests: 1. get titles that match our title search query and then create a list of those imdbIDs 2. then, call the endpoint that accepts imdbIDs as input and request one by one. */
 
 // Custom hook to fetch data from the movie data API
+export const useFetchPopularMovies = () => {
+	const [status, setStatus] = useState("idle");
+	const [data, setData] = useState<any>([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			setStatus("fetching");
+
+			axios
+				.get(
+					`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+				)
+				.then((response) => {
+					if (response.data) {
+						let subset: any[] = [];
+						for (let x = 0; x < 6; x++) {
+							subset.push(
+								response.data.results[
+									Math.floor(Math.random() * response.data.results.length)
+								]
+							);
+						}
+						setData(subset);
+					}
+				})
+				.catch((error) => console.error(error));
+
+			setStatus("fetched");
+		};
+
+		fetchData();
+	}, []);
+
+	return { status, data };
+};
+
 export const useFetchMovies = (query: string) => {
 	const [status, setStatus] = useState("idle");
 	const [data, setData] = useState<any>([]);
@@ -18,24 +49,14 @@ export const useFetchMovies = (query: string) => {
 			setStatus("fetching");
 
 			axios
-				.get(`${searchURL}&s=${query}&type=movie`)
+				.get(
+					`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
+				)
 				.then((response) => {
-					if (response.data.Search) {
-						return getMovieIds(response.data.Search.slice(0, 6));
-					}
+					response.data && setData(response.data.results);
 				})
-				.then((response) => {
-					response &&
-						response.forEach((element: string) => {
-							axios
-								.get(`${searchURL}&i=${element}`)
-								.then((item: any) => {
-									item.data &&
-										setData((oldCards: string[]) => [...oldCards, item.data]);
-								})
-								.catch((err) => console.error(err));
-						});
-				});
+				.catch((error) => console.error(error));
+
 			setStatus("fetched");
 		};
 

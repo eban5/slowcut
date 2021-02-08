@@ -1,4 +1,10 @@
 .breadcrumb {
-  font-size: 1.2rem;
-  background-color: unset;
+	font-size: 1.2rem;
+	background-color: unset;
+}
+
+.meta {
+	color: #789;
+	font-size: 0.9rem;
+  text-align: right;
 }

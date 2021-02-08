@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Container, Media, Row } from "react-bootstrap";
 import { useFetchMovies } from "../hooks/useFetch";
+import { buildPosterPath, extractYear } from "../utils/api";
 
 export const SearchLanding = (props: any) => {
 	const { keyword } = props;
@@ -32,26 +33,25 @@ export const SearchLanding = (props: any) => {
 											className="white"
 											key={idx}>
 											<Media>
+												{/* //TODO: convert to Poster with Link - reuse everywhere */}
 												<img
 													width={82}
 													height={125}
 													className="mr-3"
-													src={item.Poster}
-													alt="Movie Poster"
+													src={buildPosterPath(item.poster_path)}
+													alt="Poster not available"
 												/>
 												<Media.Body>
 													<h5>
-														{item.Title}{" "}
+														{item.title}{" "}
 														<span style={{ color: "gray" }}>
-															{item.Year}
+															{extractYear(item.release_date)}
 														</span>
 													</h5>
 
 													<p style={{ fontSize: "0.8rem" }}>
-														{item.Plot}
+														{item.overview}
 													</p>
-
-													<p>{data.Plot}</p>
 												</Media.Body>
 											</Media>
 										</li>
