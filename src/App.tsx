@@ -11,6 +11,7 @@ import { Navbar, Button, Form, FormControl, Nav, NavDropdown } from "react-boots
 import MovieDetail from "./components/MovieDetail";
 import LandingPage from "./components/LandingPage";
 import { SearchLanding } from "./components/SearchLanding";
+import Grid from "./components/Grid";
 
 const NoMatchRoute = () => (
 	<div className="not_found">
