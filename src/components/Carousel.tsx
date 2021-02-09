@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/Carousel.css";
 import { Movie } from "../types/types";
 import Poster from "./Poster";
@@ -9,7 +10,6 @@ interface CarouselProps {
 
 export const CustomCarousel = (props: CarouselProps) => {
 	const movies: Movie[] = props.movies;
-
 	return (
 		<>
 			<ul className="carousel_content">

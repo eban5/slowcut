@@ -31,7 +31,7 @@ const renderTooltip = (props: MoviePoster) => {
 const Poster = (props: PosterProps) => {
 	const item: MoviePoster = props.item;
 	return (
-		<div>
+		<>
 			<OverlayTrigger
 				placement="auto"
 				delay={{ show: 100, hide: 100 }}
@@ -44,7 +44,7 @@ const Poster = (props: PosterProps) => {
 					/>
 				</Link>
 			</OverlayTrigger>
-		</div>
+		</>
 	);
 };
 

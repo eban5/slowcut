@@ -11,5 +11,9 @@ export const buildPosterPath = (poster_path: string): string => {
 // TODO write test
 // release_date in TMDB API is YYYY-MM-DD
 export const extractYear = (release_date: string): string => {
-	return release_date.substr(0, 4);
+	if (!release_date) {
+		return "0000";
+	} else {
+		return release_date.substr(0, 4);
+	}
 };

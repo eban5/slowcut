@@ -46,11 +46,11 @@ function App() {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="mr-auto">
-							{/* <Link to="/"> */}
-							<Nav.Link className="nav_link" href="#home">
-								Films
-							</Nav.Link>
-							{/* </Link> */}
+							<Link to="/grid">
+								<Nav.Link className="nav_link" href="#home">
+									Films
+								</Nav.Link>
+							</Link>
 							{/* <Link to="/"> */}
 							<Nav.Link className="nav_link" href="#link">
 								Lists
@@ -92,8 +92,9 @@ function App() {
 						path="/search/:searchTerm"
 						component={() => <SearchLanding keyword={searchTerm} />}
 					/>
-					<Route path="/movie/:imdbID" component={MovieDetail} />
+					<Route exact path="/movie/:imdbID" component={MovieDetail} />
 					{/* <Route render={() => <Redirect to="/" />} /> */}
+					<Route path="/grid" render={() => <Grid movies={[]} />} />
 					<Route render={() => <NoMatchRoute />} />
 				</Switch>
 			</div>

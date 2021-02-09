@@ -32,6 +32,8 @@ li {
 
 /* Genres */
 
+
+
 .background_container {
 	position: absolute;
 	z-index: 0;
@@ -51,7 +53,7 @@ li {
 	width: 1200px;
 	height: 675px;
 }
-.background-image {
+.background_image {
 	background-position: center center;
 	background-image: url("../images/header-background.jpg");
 	position: absolute;
@@ -61,11 +63,11 @@ li {
 	background-size: 100% 100%;
 }
 
-.background-wrapper > .background-mask {
+.background_wrapper > .background_mask {
 	padding-top: 500px;
 	position: relative;
 }
-.background-wrapper > .background-mask::before {
+.background_wrapper > .background_mask::before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -133,6 +135,7 @@ li {
 .container_navbar {
 	height: 72px;
 	position: relative;
+	
 }
 
 section {

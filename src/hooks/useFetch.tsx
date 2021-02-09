@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Custom hook to fetch data from the movie data API
-export const useFetchPopularMovies = () => {
+export const useFetchPopularMovies = (props: any) => {
 	const [status, setStatus] = useState("idle");
 	const [data, setData] = useState<any>([]);
+
+	const { num } = props;
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -16,15 +18,21 @@ export const useFetchPopularMovies = () => {
 				)
 				.then((response) => {
 					if (response.data) {
-						let subset: any[] = [];
-						for (let x = 0; x < 6; x++) {
-							subset.push(
-								response.data.results[
-									Math.floor(Math.random() * response.data.results.length)
-								]
-							);
+						if (num > 0) {
+							// TODO temp random movies for lists until we have a DB
+							let subset: any[] = [];
+							for (let x = 0; x < num; x++) {
+								subset.push(
+									response.data.results[
+										Math.floor(Math.random() * response.data.results.length)
+									]
+								);
+							}
+							setData(subset);
+						} else {
+							// no number of results specified, just return all of them
+							setData(response.data.results);
 						}
-						setData(subset);
 					}
 				})
 				.catch((error) => console.error(error));

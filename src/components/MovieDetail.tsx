@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import {withRouter} from 'react-router';
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CustomCarousel as Carousel } from "./Carousel";
@@ -79,7 +80,7 @@ const MovieDetail = ({ match }: any) => {
 									<h5>
 										{data.title} ({data.release_date.substr(0, 4)})
 									</h5>
-									<strong>{genres.map((genre: Genre) => genre.name)}</strong>
+									<strong>{genres.map((genre: Genre) => genre.name).join(", ")}</strong>
 									<div>
 										IMDB Rating: {data.vote_average} / 10 (
 										{numberWithCommas(data.vote_count)} votes)
@@ -92,8 +93,8 @@ const MovieDetail = ({ match }: any) => {
 									<div>
 										<strong>Produced by: </strong>
 										{data.production_companies.map(
-											(company: any) => company.name + ",  "
-										)}
+											(company: any) => company.name
+										).join(", ")}
 									</div>
 									{/* <div>
 										<strong>Director: </strong>
@@ -109,7 +110,7 @@ const MovieDetail = ({ match }: any) => {
 									</div> */}
 									<p>{data.overview}</p>
 									<div className="just_watch">
-										Rent:
+										{watchProviders && watchProviders.rent ? "Rent" : ""}
 										<ul>
 											{watchProviders &&
 												watchProviders.rent &&
@@ -118,7 +119,7 @@ const MovieDetail = ({ match }: any) => {
 													return <li>{provider.provider_name}</li>;
 												})}
 										</ul>
-										Buy:
+										{watchProviders && watchProviders.buy ? "Buy" : ""}
 										<ul>
 											{watchProviders &&
 												watchProviders.buy &&
@@ -126,7 +127,7 @@ const MovieDetail = ({ match }: any) => {
 													return <li>{provider.provider_name}</li>;
 												})}
 										</ul>
-										PPV:
+										{watchProviders && watchProviders.flatrate ? "PPV" : ""}
 										<ul>
 											{watchProviders &&
 												watchProviders.flatrate &&
@@ -158,4 +159,4 @@ const MovieDetail = ({ match }: any) => {
 	);
 };
 
-export default MovieDetail;
+export default withRouter(MovieDetail);

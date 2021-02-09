@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Movie, Genre } from "../types/types";
+
 import { Showcase } from "./Showcase";
 import { CustomCarousel as Carousel } from "./Carousel";
-
 import PopularLists from "./PopularLists";
 import About from "./About";
 
 import slowcut from "../images/slowcut.png";
-
 import { Badge, Col, Container, Row, Media } from "react-bootstrap";
-import { getRandomItem } from "../utils/array";
-import { randomSearchTerms } from "../data/lists";
-import axios from "axios";
-import { Movie, Genre } from "../types/types";
 
 const LandingPage = () => {
 	// TMDB Genres List
@@ -99,6 +96,7 @@ const LandingPage = () => {
 								{genres &&
 									genres.map((item) => {
 										return (
+											// TODO badge link to grid for the genre
 											<Badge pill variant="secondary" key={item.id}>
 												{item.name}
 											</Badge>
