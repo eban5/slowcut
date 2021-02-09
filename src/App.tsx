@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Button, Form, FormControl, Nav, NavDropdown } from "react-bootstrap";
 import MovieDetail from "./components/MovieDetail";
 import LandingPage from "./components/LandingPage";
+import Grid from "./components/Grid";
 import { SearchLanding } from "./components/SearchLanding";
 
 const NoMatchRoute = () => (
