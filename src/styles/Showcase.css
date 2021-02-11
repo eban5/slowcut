@@ -1,45 +1,45 @@
 .showcase_content {
-	text-align: center;
-	color: #fff;
+  text-align: center;
+  color: #fff;
 }
 
 .showcase_title {
-	font-size: 3rem;
+  font-size: 3rem;
 }
 
 .showcase_title,
 .showcase_button,
 .showcase_subtitle {
-	margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .showcase_button > button {
-	text-transform: uppercase;
-	padding: 5px 25px;
+  text-transform: uppercase;
+  padding: 5px 25px;
 }
 
 .showcase_subtitle {
-	display: inline-flex;
-	color: #789;
+  display: inline-flex;
+  color: #789;
 }
 .showcase_subtitle > span {
-	text-indent: 110%;
-	background-position: 0 0;
-	display: inline-block;
-	white-space: nowrap;
-	overflow: hidden;
-	width: 26px;
-	height: 26px;
-	background-size: 26px 26px;
-	background-repeat: no-repeat;
-	opacity: 0.8;
+  text-indent: 110%;
+  background-position: 0 0;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 26px;
+  height: 26px;
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  opacity: 0.8;
 }
 
 .showcase_brand_icon--apple {
-	background-image: url("../images/apple.png");
-	margin-left: 5px;
+  background-image: url("../images/apple.png");
+  margin-left: 5px;
 }
 .showcase_brand_icon--android {
-	background-image: url("../images/android.png");
-	margin-left: 5px;
+  background-image: url("../images/android.png");
+  margin-left: 5px;
 }

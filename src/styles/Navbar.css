@@ -1,39 +1,39 @@
 .nav {
-	background-color: rgba(20, 24, 28, 0) !important;
+  background-color: rgba(20, 24, 28, 0) !important;
 }
 
 .nav::hover {
-	background-color: rgba(20, 24, 28, 0.8) !important;
+  background-color: rgba(20, 24, 28, 0.8) !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-	color: #fff !important;
+  color: #fff !important;
 }
 
 .white {
-	color: #fff;
+  color: #fff;
 }
 
 .background-white {
-	background-color: white;
+  background-color: white;
 }
 
 .nav_icon > img {
-	display: inline-block;
-	width: 30px;
-	height: 35px;
-	margin-right: 15px;
+  display: inline-block;
+  width: 30px;
+  height: 35px;
+  margin-right: 15px;
 }
 
 .nav_brand {
-	font-family: "Noticia Text", serif;
-	font-size: 1.4rem;
-	margin-right: 25px;
+  font-family: "Noticia Text", serif;
+  font-size: 1.4rem;
+  margin-right: 25px;
 }
 
 .nav_link {
-	font-family: "Lato", sans-serif;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: #fff;
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
 }
