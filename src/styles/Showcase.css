@@ -3,6 +3,10 @@
 	color: #fff;
 }
 
+.showcase_title {
+	font-size: 3rem;
+}
+
 .showcase_title,
 .showcase_button,
 .showcase_subtitle {
