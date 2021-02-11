@@ -12,6 +12,12 @@
 	color: black;
 	cursor: pointer;
 	text-align: center;
+	border-radius: 4px;
+}
+
+.poster:focus,
+.poster:hover {
+	box-shadow: 0 0 0 2pt#007bff;
 }
 
 .tooltip > div.tooltip-inner {

@@ -1,5 +1,13 @@
 .nav {
-	background-color: #14181c !important;
+	background-color: rgba(20, 24, 28, 0) !important;
+}
+
+.nav::hover {
+	background-color: rgba(20, 24, 28, 0.8) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+	color: #fff !important;
 }
 
 .white {
@@ -19,13 +27,13 @@
 
 .nav_brand {
 	font-family: "Noticia Text", serif;
-  font-size: 1.4rem;
-  margin-right: 25px;
+	font-size: 1.4rem;
+	margin-right: 25px;
 }
 
 .nav_link {
-  font-family: 'Lato', sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #fff
+	font-family: "Lato", sans-serif;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #fff;
 }

@@ -1,7 +1,6 @@
 /* TODO integrate SASS */
 
 .about_text {
-	/* color: #789; */
 	font-weight: bold;
 }
 
@@ -10,7 +9,7 @@
 
 .card:hover {
 	cursor: pointer;
-	background-color: darkcyan !important;
+	background-color: #007bff !important;
 }
 .card > span:hover {
 	color: white !important;
@@ -26,36 +25,36 @@
 .card_image-keep {
 	background-image: url("../images/eye-gray.png");
 }
-.about_card.card_image-keep:hover{
+.about_card.card_image-keep:hover {
 	background-image: url("../images/eye-white.png");
 }
 .card_image-show {
 	background-image: url("../images/heart-gray.png");
 }
-.about_card.card_image-show:hover{
+.about_card.card_image-show:hover {
 	background-image: url("../images/heart-white.png");
 }
 .card_image-write {
 	background-image: url("../images/review-gray.png");
 }
-.about_card.card_image-write:hover{
+.about_card.card_image-write:hover {
 	background-image: url("../images/review-white.png");
 }
 .card_image-rate {
 	background-image: url("../images/star-gray.png");
 }
-.about_card.card_image-rate:hover{
+.about_card.card_image-rate:hover {
 	background-image: url("../images/star-white.png");
 }
 .card_image-diary {
 	background-image: url("../images/book-gray.png");
 }
-.about_card.card_image-diary:hover{
+.about_card.card_image-diary:hover {
 	background-image: url("../images/book-white.png");
 }
 .card_image-lists {
 	background-image: url("../images/pen-gray.png");
 }
-.about_card.card_image-lists:hover{
+.about_card.card_image-lists:hover {
 	background-image: url("../images/pen-white.png");
 }
