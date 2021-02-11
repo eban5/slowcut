@@ -39,9 +39,12 @@ li {
   display: block;
   position: absolute;
   top: 0;
-  left: 5%;
+
+  /* left: 5%; */
   background-size: 1100px 675px;
+  background-position: center;
   background-image: url("../images/header-background.jpg");
+  z-index: -1;
 }
 
 .background_container::before {

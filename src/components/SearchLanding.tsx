@@ -14,7 +14,6 @@ export const SearchLanding = (props: any) => {
   // TODO - swap fetch hooks
   //@ts-ignore
   useEffect(async () => {
-    // const search = async (val: string) => {
     setLoading(true);
 
     if (!keyword) {
@@ -24,8 +23,8 @@ export const SearchLanding = (props: any) => {
       const res = await search(
         `https://api.themoviedb.org/3/search/movie?query=${keyword}&api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       );
-      console.log(res);
-      const movies = res.data;
+
+      const movies = res;
       setSearchResults(movies);
       setLoading(false);
     }
@@ -66,7 +65,7 @@ export const SearchLanding = (props: any) => {
                         {/* //TODO: convert to Poster with Link - reuse everywhere */}
                         <Poster item={item} />
 
-                        <Media.Body>
+                        <Media.Body style={{ marginLeft: "8px" }}>
                           <h5>
                             {item.title}{" "}
                             <span style={{ color: "gray" }}>
@@ -94,7 +93,7 @@ export const SearchLanding = (props: any) => {
                 {searchResults.length} matches for <em>{keyword}</em>
               </div>
             ) : (
-              <></>
+              <div></div>
             )}
             <div className="white">
               Filter by

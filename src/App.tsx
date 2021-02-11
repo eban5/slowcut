@@ -32,7 +32,6 @@ function App() {
 
   return (
     <>
-      <div className="background_container"></div>
       {/* Navbar */}
       <div className="container_navbar">
         {/* <Navbar /> */}
