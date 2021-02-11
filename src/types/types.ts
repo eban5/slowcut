@@ -23,3 +23,24 @@ export interface WatchProviders {
 	rent?: any[];
 	flatrate?: any[];
 }
+
+interface JustWatchMethod {
+	display_priority: number;
+	logo_path: string;
+	provider_id: number;
+	provider_name: string;
+}
+
+export interface JustWatchResults {
+	link?: string;
+	rent?: JustWatchMethod[];
+	buy?: JustWatchMethod[];
+	flatrate?: JustWatchMethod[];
+}
+
+export interface ContentProviders {
+	apple_itunes?: string[];
+	google_play?: string[];
+	amazon_video?: string[];
+	youtube?: string[];
+}
