@@ -13,13 +13,13 @@ export const Showcase = () => {
 		<div className="showcase_container">
 			<div className="showcase_content">
 				<div className="showcase_title">
-					<h2>
+					<h1>
 						Track films you’ve watched.
 						<br />
 						Save those you want to see.
 						<br />
 						Tell your friends what’s good.
-					</h2>
+					</h1>
 				</div>
 				<div className="showcase_button">
 					<Button variant="primary" onClick={handleShow}>

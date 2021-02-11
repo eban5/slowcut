@@ -1,7 +1,8 @@
 import React from "react";
-import { Col, Container, Media, Row } from "react-bootstrap";
+import { Badge, Col, Container, Form, Media, Row } from "react-bootstrap";
 import { useFetchMovies } from "../hooks/useFetch";
 import { buildPosterPath, extractYear } from "../utils/api";
+import Poster from "./Poster";
 
 export const SearchLanding = (props: any) => {
 	const { keyword } = props;
@@ -12,12 +13,14 @@ export const SearchLanding = (props: any) => {
 			<Container>
 				<Row>
 					<Col sm={12}>
-						<span
-							style={{ textTransform: "uppercase", borderBottom: "1px solid gray" }}>
-							Found at least {data.length} matches for "{keyword}"
-						</span>
+						{/* <Form>
+							<Form.Row>
+								<Form.Control placeholder="Search movies, actors, or anything."></Form.Control>
+							</Form.Row>
+						</Form> */}
 					</Col>
 				</Row>
+
 				<Row>
 					<Col sm={8}>
 						<ul className="list-unstyled" style={{ paddingTop: "15px" }}>
@@ -34,13 +37,14 @@ export const SearchLanding = (props: any) => {
 											key={idx}>
 											<Media>
 												{/* //TODO: convert to Poster with Link - reuse everywhere */}
-												<img
+												<Poster item={item} />
+												{/* <img
 													width={82}
 													height={125}
 													className="mr-3"
 													src={buildPosterPath(item.poster_path)}
 													alt="Poster not available"
-												/>
+												/> */}
 												<Media.Body>
 													<h5>
 														{item.title}{" "}
@@ -58,12 +62,30 @@ export const SearchLanding = (props: any) => {
 									);
 								})
 							) : (
-								<div>Nothing to show...</div>
+								<></>
 							)}
 						</ul>
 					</Col>
 					<Col sm={4}>
-						<div className="section_header">Other</div>
+						{data.length > 0 ? (
+							<div className="white">
+								{data.length} matches for <em>{keyword}</em>
+							</div>
+						) : (
+							<></>
+						)}
+						<div className="white">
+							Filter by
+							<Badge pill variant="secondary">
+								Actor
+							</Badge>
+							<Badge pill variant="secondary">
+								Director
+							</Badge>
+							<Badge pill variant="secondary">
+								Movie
+							</Badge>
+						</div>
 					</Col>
 				</Row>
 			</Container>

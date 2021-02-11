@@ -1,6 +1,7 @@
 import React from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
 import { buildPosterPath } from "../utils/api";
 
 interface MoviePoster {
@@ -32,18 +33,18 @@ const Poster = (props: PosterProps) => {
 	const item: MoviePoster = props.item;
 	return (
 		<>
-			<OverlayTrigger
-				placement="auto"
-				delay={{ show: 100, hide: 100 }}
-				overlay={renderTooltip(item)}>
-				<Link to={`/movie/${item.id}`}>
+			<Link to={`/movie/${item.id}`}>
+				<OverlayTrigger
+					placement="auto"
+					delay={{ show: 100, hide: 100 }}
+					overlay={renderTooltip(item)}>
 					<img
 						className="poster"
 						alt={`${item.title} (${item.release_date?.substr(0, 4)})`}
 						src={buildPosterPath(`${item.poster_path}`)}
 					/>
-				</Link>
-			</OverlayTrigger>
+				</OverlayTrigger>
+			</Link>
 		</>
 	);
 };
