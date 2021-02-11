@@ -1,22 +1,24 @@
 import React from "react";
 import { Card, CardGroup, Media } from "react-bootstrap";
 import slowcutIcon from "../images/slowcut.png";
-import "../styles/About.css"
+import heartWhite from "../images/heart-white.png";
+import heartGray from "../images/heart-gray.png";
+
+import "../styles/About.css";
 const About = () => {
 	return (
 		<>
 			{/* // TODO: On Hover  */}
 			<CardGroup>
-				<Card bg="secondary" text="white">
-					{/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-					<Card.Body>
+				<Card bg="dark" text="white">
+					<Card.Body className="about_card">
 						<Media>
-							<img
-								width={40}
-								height={40}
-								className="mr-3"
-								src={slowcutIcon}
-								alt="Generic placeholder"
+							<div
+								// width={40}
+								// height={40}
+								className="mr-3 card_image card_image-keep"
+								// src={slowcutIcon}
+								// alt="About text"
 							/>
 							<Media.Body>
 								<span className="about_text">
@@ -28,17 +30,10 @@ const About = () => {
 					</Card.Body>
 				</Card>
 
-				<Card bg="secondary" text="white">
-					{/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-					<Card.Body>
+				<Card bg="dark" text="white">
+					<Card.Body className="about_card">
 						<Media>
-							<img
-								width={40}
-								height={40}
-								className="mr-3"
-								src={slowcutIcon}
-								alt="Generic placeholder"
-							/>
+							<div className="mr-3 card_image card_image-show" />
 							<Media.Body>
 								<span className="about_text">
 									Show some love for your favorite films, lists and reviews with a
@@ -49,17 +44,10 @@ const About = () => {
 					</Card.Body>
 				</Card>
 
-				<Card bg="secondary" text="white">
-					{/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-					<Card.Body>
+				<Card bg="dark" text="white">
+					<Card.Body className="about_card">
 						<Media>
-							<img
-								width={40}
-								height={40}
-								className="mr-3"
-								src={slowcutIcon}
-								alt="Generic placeholder"
-							/>
+							<div className="mr-3 card_image card_image-write" />
 							<Media.Body>
 								<span className="about_text">
 									Write and share reviews, and follow friends and other members to
@@ -72,17 +60,10 @@ const About = () => {
 			</CardGroup>
 
 			<CardGroup>
-				<Card bg="secondary" text="white">
-					{/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-					<Card.Body>
+				<Card bg="dark" text="white">
+					<Card.Body className="about_card">
 						<Media>
-							<img
-								width={40}
-								height={40}
-								className="mr-3"
-								src={slowcutIcon}
-								alt="Generic placeholder"
-							/>
+							<div className="mr-3 card_image card_image-rate" />
 							<Media.Body>
 								<span className="about_text">
 									Rate each film on a five-star scale (with halves) to record and
@@ -93,17 +74,10 @@ const About = () => {
 					</Card.Body>
 				</Card>
 
-				<Card bg="secondary" text="white">
-					{/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-					<Card.Body>
+				<Card bg="dark" text="white">
+					<Card.Body className="about_card">
 						<Media>
-							<img
-								width={40}
-								height={40}
-								className="mr-3"
-								src={slowcutIcon}
-								alt="Generic placeholder"
-							/>
+							<div className="mr-3 card_image card_image-diary" />
 							<Media.Body>
 								<span className="about_text">
 									Keep a diary of your film watching (and upgrade to{" "}
@@ -114,17 +88,10 @@ const About = () => {
 					</Card.Body>
 				</Card>
 
-				<Card bg="secondary" text="white">
-					{/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-					<Card.Body>
+				<Card bg="dark" text="white">
+					<Card.Body className="about_card">
 						<Media>
-							<img
-								width={40}
-								height={40}
-								className="mr-3"
-								src={slowcutIcon}
-								alt="Generic placeholder"
-							/>
+							<div className="mr-3 card_image card_image-lists" />
 							<Media.Body>
 								<span className="about_text">
 									Compile and share lists of films on any topic and keep a
