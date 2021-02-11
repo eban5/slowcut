@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {withRouter} from 'react-router';
-import { Col, Container, Row } from "react-bootstrap";
+import { withRouter } from "react-router";
+import { Badge, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CustomCarousel as Carousel } from "./Carousel";
 import "../styles/MovieDetail.css";
@@ -16,11 +16,11 @@ const MovieDetail = ({ match }: any) => {
 
 	const [data, setData] = useState<any>(null);
 	const [genres, setGenres] = useState<Genre[]>([]);
-	const [similarMovies, setSimilarMovies] = useState<any[]>([]);
+	const [recommendedMovies, setRecommendedMovies] = useState<any[]>([]);
 	const [watchProviders, setWatchProviders] = useState<WatchProviders>({});
 
 	const movieDetailURL: string = `https://api.themoviedb.org/3/movie/${imdbID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
-	const similarMoviesURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+	const recommendedMoviesURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
 	const watchProvidersURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
 
 	useEffect(() => {
@@ -34,10 +34,10 @@ const MovieDetail = ({ match }: any) => {
 			})
 			.catch((err) => console.error(err));
 		axios
-			.get(similarMoviesURL)
+			.get(recommendedMoviesURL)
 			.then((movies: any) => {
 				if (movies.data) {
-					setSimilarMovies(movies.data.results);
+					setRecommendedMovies(movies.data.results);
 				}
 			})
 			.catch((err) => console.error(err));
@@ -53,103 +53,102 @@ const MovieDetail = ({ match }: any) => {
 
 	return (
 		<div className="white">
-			<Container>
-				<Row>
-					<Col sm={12}>
-						<Link to="/">
-							<span className="breadcrumb">Return to Main</span>
-						</Link>
-					</Col>
-				</Row>
-			</Container>
 			{data !== null ? (
 				<>
-					<div>
-						<Container>
-							<Row>
-								<Col sm={3}>
-									<img
-										// width={64}
-										// height={64}
-										className="mr-3 poster"
-										src={buildPosterPath(data.poster_path)}
-										alt="Movie Poster"
-									/>
-								</Col>
-								<Col sm={9}>
-									<h5>
-										{data.title} ({data.release_date.substr(0, 4)})
-									</h5>
-									<strong>{genres.map((genre: Genre) => genre.name).join(", ")}</strong>
-									<div>
-										IMDB Rating: {data.vote_average} / 10 (
-										{numberWithCommas(data.vote_count)} votes)
-									</div>
+					{/* <div className="movie_detail_backdrop_wrapper">
+						<img style={{ width: "100%" }} src={buildPosterPath(data.backdrop_path)} />
+					</div> */}
 
-									<div>
-										<strong>Release Date: </strong>
-										{data.release_date}
-									</div>
-									<div>
-										<strong>Produced by: </strong>
-										{data.production_companies.map(
-											(company: any) => company.name
-										).join(", ")}
-									</div>
-									{/* <div>
-										<strong>Director: </strong>
-										{data.Director}
-									</div>
-									<div>
-										<strong>Writer(s): </strong>
-										{data.Writer}
-									</div> */}
-									{/* <div>
-										<strong>Actors: </strong>
-										{data.Actors}
-									</div> */}
-									<p>{data.overview}</p>
-									<div className="just_watch">
-										{watchProviders && watchProviders.rent ? "Rent" : ""}
-										<ul>
-											{watchProviders &&
-												watchProviders.rent &&
-												watchProviders.rent.map((provider: any) => {
-													console.log(provider);
-													return <li>{provider.provider_name}</li>;
-												})}
-										</ul>
-										{watchProviders && watchProviders.buy ? "Buy" : ""}
-										<ul>
-											{watchProviders &&
-												watchProviders.buy &&
-												watchProviders.buy.map((provider: any) => {
-													return <li>{provider.provider_name}</li>;
-												})}
-										</ul>
-										{watchProviders && watchProviders.flatrate ? "PPV" : ""}
-										<ul>
-											{watchProviders &&
-												watchProviders.flatrate &&
-												watchProviders.flatrate.map((provider: any) => {
-													return <li>{provider.provider_name}</li>;
-												})}
-										</ul>
-									</div>
-								</Col>
-							</Row>
-						</Container>
-					</div>
-					<div>
-						<Container>
-							<Row>
-								<Col sm={12}>
-									<h4 className="section_header">Related Movies</h4>
-									<Carousel movies={similarMovies} />
-								</Col>
-							</Row>
-						</Container>
-					</div>
+					<Container style={{ paddingTop: "400px" }}>
+						<Row>
+							<Col sm={3}>
+								<img
+									// width={64}
+									// height={64}
+									className="mr-3 movie_detail_poster"
+									src={buildPosterPath(data.poster_path)}
+									alt="Movie Poster"
+								/>
+								<div className="movie_detail_genres">
+									{genres.map((genre: Genre) => {
+										return (
+											<Badge pill variant="secondary">
+												{genre.name}
+											</Badge>
+										);
+									})}
+								</div>
+							</Col>
+							<Col sm={9}>
+								<h5 className="movie_detail_title">
+									{data.title} ({data.release_date.substr(0, 4)})
+								</h5>
+
+								<div>
+									<strong>Release Date: </strong>
+									{data.release_date}
+								</div>
+								<div>
+									<strong>Produced by: </strong>
+									{data.production_companies
+										.map((company: any) => company.name)
+										.join(", ")}
+								</div>
+								<div>
+									IMDB Rating: {data.vote_average} / 10 (
+									{numberWithCommas(data.vote_count)} votes)
+								</div>
+
+								<p style={{ paddingTop: "25px" }}>{data.overview}</p>
+
+								<div className="just_watch">
+									<Row>
+										<Col>
+										
+											{watchProviders && watchProviders.rent ? (<h6>Rent</h6>) : ""}
+											<ul>
+												{watchProviders &&
+													watchProviders.rent &&
+													watchProviders.rent.map((provider: any) => {
+														console.log(provider);
+														return <li>{provider.provider_name}</li>;
+													})}
+											</ul>
+										</Col>
+										<Col>
+											{watchProviders && watchProviders.buy ? "Buy" : ""}
+											<ul>
+												{watchProviders &&
+													watchProviders.buy &&
+													watchProviders.buy.map((provider: any) => {
+														return <li>{provider.provider_name}</li>;
+													})}
+											</ul>
+										</Col>
+										<Col>
+											{watchProviders && watchProviders.flatrate ? "PPV" : ""}
+											<ul>
+												{watchProviders &&
+													watchProviders.flatrate &&
+													watchProviders.flatrate.map((provider: any) => {
+														return <li>{provider.provider_name}</li>;
+													})}
+											</ul>
+										</Col>
+									</Row>
+								</div>
+							</Col>
+						</Row>
+					</Container>
+
+					<Container>
+						<Row>
+							<Col sm={12}>
+								<h4 className="section_header">Recommended Movies</h4>
+								<Carousel movies={recommendedMovies} />
+							</Col>
+						</Row>
+					</Container>
 				</>
 			) : (
 				<div>No Movie</div>
