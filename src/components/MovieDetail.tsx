@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router";
-import { Badge, Col, Container, Row } from "react-bootstrap";
+import { Badge, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CustomCarousel as Carousel } from "./Carousel";
 import "../styles/MovieDetail.css";
@@ -73,76 +73,115 @@ const MovieDetail = ({ match }: any) => {
 									src={buildPosterPath(data.poster_path)}
 									alt="Movie Poster"
 								/>
-								<div className="movie_detail_genres">
-									{genres.map((genre: Genre) => {
-										return (
-											<Badge pill variant="secondary">
-												{genre.name}
-											</Badge>
-										);
-									})}
-								</div>
 							</Col>
 							<Col sm={9}>
 								<h5 className="movie_detail_title">
 									{data.title} ({data.release_date.substr(0, 4)})
 								</h5>
 
-								<div>
-									<strong>Release Date: </strong>
-									{data.release_date}
-								</div>
-								<div>
-									<strong>Produced by: </strong>
-									{data.production_companies
-										.map((company: any) => company.name)
-										.join(", ")}
-								</div>
-								<div>
-									IMDB Rating: {data.vote_average} / 10 (
-									{numberWithCommas(data.vote_count)} votes)
-								</div>
-
 								<p style={{ paddingTop: "25px" }}>{data.overview}</p>
 
-								<div className="just_watch">
-									<Row>
-										<Col>
-											{watchProviders && watchProviders.rent ? (
-												<h6>Rent</h6>
-											) : (
-												""
-											)}
-											<ul>
-												{watchProviders &&
-													watchProviders.rent &&
-													watchProviders.rent.map((provider: any) => {
-														console.log(provider);
-														return <li>{provider.provider_name}</li>;
-													})}
-											</ul>
-										</Col>
-										<Col>
-											{watchProviders && watchProviders.buy ? "Buy" : ""}
-											<ul>
-												{watchProviders &&
-													watchProviders.buy &&
-													watchProviders.buy.map((provider: any) => {
-														return <li>{provider.provider_name}</li>;
-													})}
-											</ul>
-										</Col>
-										<Col>
-											{watchProviders && watchProviders.flatrate ? "PPV" : ""}
-											<ul>
-												{watchProviders &&
-													watchProviders.flatrate &&
-													watchProviders.flatrate.map((provider: any) => {
-														return <li>{provider.provider_name}</li>;
-													})}
-											</ul>
-										</Col>
-									</Row>
+								<div className="tabs">
+									<Tabs defaultActiveKey="cast" id="uncontrolled-tab-example">
+										<Tab eventKey="watch" title="Watch">
+											<div className="just_watch">
+												<Row>
+													<Col>
+														{watchProviders && watchProviders.rent ? (
+															<h6>Rent</h6>
+														) : (
+															""
+														)}
+														<ul>
+															{watchProviders &&
+																watchProviders.rent &&
+																watchProviders.rent.map(
+																	(provider: any) => {
+																		console.log(provider);
+																		return (
+																			<li>
+																				{
+																					provider.provider_name
+																				}
+																			</li>
+																		);
+																	}
+																)}
+														</ul>
+													</Col>
+													<Col>
+														{watchProviders && watchProviders.buy
+															? "Buy"
+															: ""}
+														<ul>
+															{watchProviders &&
+																watchProviders.buy &&
+																watchProviders.buy.map(
+																	(provider: any) => {
+																		return (
+																			<li>
+																				{
+																					provider.provider_name
+																				}
+																			</li>
+																		);
+																	}
+																)}
+														</ul>
+													</Col>
+													<Col>
+														{watchProviders && watchProviders.flatrate
+															? "PPV"
+															: ""}
+														<ul>
+															{watchProviders &&
+																watchProviders.flatrate &&
+																watchProviders.flatrate.map(
+																	(provider: any) => {
+																		return (
+																			<li>
+																				{
+																					provider.provider_name
+																				}
+																			</li>
+																		);
+																	}
+																)}
+														</ul>
+													</Col>
+												</Row>
+											</div>
+										</Tab>
+										<Tab eventKey="cast" title="Cast"></Tab>
+										<Tab eventKey="crew" title="Crew"></Tab>
+										<Tab eventKey="details" title="Details">
+											<div>
+												<strong>Release Date: </strong>
+												{data.release_date}
+											</div>
+											<div>
+												<strong>Produced by: </strong>
+												{data.production_companies
+													.map((company: any) => company.name)
+													.join(", ")}
+											</div>
+											<div>
+												IMDB Rating: {data.vote_average} / 10 (
+												{numberWithCommas(data.vote_count)} votes)
+											</div>
+										</Tab>
+										<Tab eventKey="genres" title="Genres">
+											<div className="movie_detail_genres">
+												{genres.map((genre: Genre) => {
+													return (
+														<Badge pill variant="secondary">
+															{genre.name}
+														</Badge>
+													);
+												})}
+											</div>
+										</Tab>
+									</Tabs>
 								</div>
 							</Col>
 						</Row>
