@@ -26,13 +26,13 @@
 }
 
 .nav_brand {
-  font-family: "Noticia Text", serif;
+  font-family: 'Noticia Text', serif;
   font-size: 1.4rem;
   margin-right: 25px;
 }
 
 .nav_link {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   color: #fff;

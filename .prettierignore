@@ -1,0 +1,4 @@
+shim/
+node_modules/
+static/
+*.min.js

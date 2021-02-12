@@ -1,10 +1,10 @@
-import React from "react";
-import { Card, CardGroup, Media } from "react-bootstrap";
-import slowcutIcon from "../images/slowcut.png";
-import heartWhite from "../images/heart-white.png";
-import heartGray from "../images/heart-gray.png";
+import React from 'react';
+import { Card, CardGroup, Media } from 'react-bootstrap';
+import slowcutIcon from '../images/slowcut.png';
+import heartWhite from '../images/heart-white.png';
+import heartGray from '../images/heart-gray.png';
 
-import "../styles/About.css";
+import '../styles/About.css';
 const About = () => {
   return (
     <>
@@ -80,7 +80,7 @@ const About = () => {
               <div className="mr-3 card_image card_image-diary" />
               <Media.Body>
                 <span className="about_text">
-                  Keep a diary of your film watching (and upgrade to{" "}
+                  Keep a diary of your film watching (and upgrade to{' '}
                   <strong>Pro</strong> for comprehensive stats)
                 </span>
               </Media.Body>

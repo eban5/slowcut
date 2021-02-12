@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "../styles/Showcase.css";
-import "../styles/App.css";
-import { Button, Modal } from "react-bootstrap";
-import LoginForm from "./LoginForm";
+import React, { useState } from 'react';
+import '../styles/Showcase.css';
+import '../styles/App.css';
+import { Button, Modal } from 'react-bootstrap';
+import LoginForm from './LoginForm';
 
 export const Showcase = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -35,7 +35,7 @@ export const Showcase = () => {
           </Modal>
         </div>
         <div className="showcase_subtitle">
-          {" "}
+          {' '}
           The social network for film lovers. Also available on
           <span className="showcase_brand_icon--apple"></span>
           <span className="showcase_brand_icon--android"></span>

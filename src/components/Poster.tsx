@@ -1,8 +1,8 @@
-import React from "react";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-import { buildPosterPath } from "../utils/api";
+import { buildPosterPath } from '../utils/api';
 
 interface MoviePoster {
   idx?: string;

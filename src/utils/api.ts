@@ -1,5 +1,5 @@
-import { OMDBResult } from "../types/types";
-import axios from "axios";
+import { OMDBResult } from '../types/types';
+import axios from 'axios';
 
 export const getMovieIds = (results: OMDBResult[]): string[] => {
   return results.map((i) => i.imdbID);
@@ -14,7 +14,7 @@ export const buildPosterPath = (poster_path: string): string => {
 // release_date in TMDB API is YYYY-MM-DD
 export const extractYear = (release_date: string): string => {
   if (!release_date) {
-    return "0000";
+    return '0000';
   } else {
     return release_date.substr(0, 4);
   }
@@ -49,10 +49,10 @@ const makeRequestCreator = () => {
     } catch (error) {
       if (axios.isCancel(error)) {
         //handle if request was cancelled
-        console.log("Request cancelled", error.message);
+        console.log('Request cancelled', error.message);
       } else {
         // handle typical errors
-        console.log("Something went wrong: ", error.message);
+        console.log('Something went wrong: ', error.message);
       }
     }
   };

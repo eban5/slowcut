@@ -1,4 +1,4 @@
-import { ContentProviders, JustWatchResults } from "../types/types";
+import { ContentProviders, JustWatchResults } from '../types/types';
 
 // return a random string from the array of strings
 export const getRandomItem = (arr: string[]): any => {
@@ -7,7 +7,7 @@ export const getRandomItem = (arr: string[]): any => {
 
 // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 export const numberWithCommas = (x: string) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
 // TODO finish parsing content providers
@@ -21,10 +21,10 @@ export const parseContentProviders = (
   }
 
   const contentProviders: string[] = [
-    "Apple iTunes",
-    "Google Play Movies",
-    "Amazon Video",
-    "YouTube",
+    'Apple iTunes',
+    'Google Play Movies',
+    'Amazon Video',
+    'YouTube',
   ];
 
   let result: ContentProviders = {

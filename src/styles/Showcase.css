@@ -36,10 +36,10 @@
 }
 
 .showcase_brand_icon--apple {
-  background-image: url("../images/apple.png");
+  background-image: url('../images/apple.png');
   margin-left: 5px;
 }
 .showcase_brand_icon--android {
-  background-image: url("../images/android.png");
+  background-image: url('../images/android.png');
   margin-left: 5px;
 }

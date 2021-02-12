@@ -1,6 +1,6 @@
-import React from "react";
-import { List, lists } from "../data/lists";
-import StackedCards from "./StackedCards";
+import React from 'react';
+import { List, lists } from '../data/lists';
+import StackedCards from './StackedCards';
 
 const PopularLists = () => {
   const popularLists: List[] = lists();

@@ -1,7 +1,7 @@
-import React from "react";
-import "../styles/StackedCards.css";
-import { useFetchPopularMovies } from "../hooks/useFetch";
-import { buildPosterPath } from "../utils/api";
+import React from 'react';
+import '../styles/StackedCards.css';
+import { useFetchPopularMovies } from '../hooks/useFetch';
+import { buildPosterPath } from '../utils/api';
 
 // interface StackedCardsProps {
 // 	keyword?: string;
@@ -12,7 +12,7 @@ const StackedCards = () => {
 
   return (
     <>
-      {status === "fetching" ? (
+      {status === 'fetching' ? (
         <div className="white">Loading...</div>
       ) : (
         <>

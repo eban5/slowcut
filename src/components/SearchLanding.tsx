@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Badge, Col, Container, Form, Media, Row } from "react-bootstrap";
-import { useFetchMovies } from "../hooks/useFetch";
-import { buildPosterPath, extractYear } from "../utils/api";
-import Poster from "./Poster";
-import { search } from "../utils/api";
+import React, { useEffect, useState } from 'react';
+import { Badge, Col, Container, Form, Media, Row } from 'react-bootstrap';
+import { useFetchMovies } from '../hooks/useFetch';
+import { buildPosterPath, extractYear } from '../utils/api';
+import Poster from './Poster';
+import { search } from '../utils/api';
 
 export const SearchLanding = (props: any) => {
   const { keyword } = props;
@@ -32,7 +32,7 @@ export const SearchLanding = (props: any) => {
 
   if (!keyword) {
     return (
-      <div className="white" style={{ marginTop: "25px" }}>
+      <div className="white" style={{ marginTop: '25px' }}>
         <Container>
           <Row>
             <Col sm={8}>Please enter a search term above.</Col>
@@ -42,11 +42,11 @@ export const SearchLanding = (props: any) => {
     );
   }
   return (
-    <div className="white" style={{ marginTop: "25px" }}>
+    <div className="white" style={{ marginTop: '25px' }}>
       <Container>
         <Row>
           <Col sm={8}>
-            <ul className="list-unstyled" style={{ paddingTop: "15px" }}>
+            <ul className="list-unstyled" style={{ paddingTop: '15px' }}>
               {loading === false &&
               searchResults &&
               searchResults.length > 0 ? (
@@ -54,9 +54,9 @@ export const SearchLanding = (props: any) => {
                   return (
                     <li
                       style={{
-                        borderBottom: "1px solid gray",
-                        padding: "15px",
-                        marginBottom: "15px",
+                        borderBottom: '1px solid gray',
+                        padding: '15px',
+                        marginBottom: '15px',
                       }}
                       className="white"
                       key={idx}
@@ -65,15 +65,15 @@ export const SearchLanding = (props: any) => {
                         {/* //TODO: convert to Poster with Link - reuse everywhere */}
                         <Poster item={item} />
 
-                        <Media.Body style={{ marginLeft: "8px" }}>
+                        <Media.Body style={{ marginLeft: '8px' }}>
                           <h5>
-                            {item.title}{" "}
-                            <span style={{ color: "gray" }}>
+                            {item.title}{' '}
+                            <span style={{ color: 'gray' }}>
                               {extractYear(item.release_date)}
                             </span>
                           </h5>
 
-                          <p style={{ fontSize: "0.8rem" }}>{item.overview}</p>
+                          <p style={{ fontSize: '0.8rem' }}>{item.overview}</p>
                         </Media.Body>
                       </Media>
                     </li>
@@ -81,7 +81,7 @@ export const SearchLanding = (props: any) => {
                 })
               ) : (
                 <div className="not_found">
-                  Nothing was found when searching for{" "}
+                  Nothing was found when searching for{' '}
                   <strong>{keyword}</strong>.
                 </div>
               )}
