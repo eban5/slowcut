@@ -5,6 +5,10 @@ import { buildPosterPath, extractYear } from '../utils/api';
 import Poster from './Poster';
 import { search } from '../utils/api';
 
+{
+  /* // TODO add crew types to results, only movies atm */
+}
+
 export const SearchLanding = (props: any) => {
   const { keyword } = props;
   // const { status, data } = useFetchMovies(keyword);
@@ -62,7 +66,6 @@ export const SearchLanding = (props: any) => {
                       key={idx}
                     >
                       <Media>
-                        {/* //TODO: convert to Poster with Link - reuse everywhere */}
                         <Poster item={item} />
 
                         <Media.Body style={{ marginLeft: '8px' }}>
@@ -95,6 +98,8 @@ export const SearchLanding = (props: any) => {
             ) : (
               <div></div>
             )}
+            {/* // TODO wrap badges in links  */}
+
             <div className="white">
               Filter by
               <Badge pill variant="secondary">

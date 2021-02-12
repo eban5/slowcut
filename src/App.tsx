@@ -4,6 +4,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import './styles/App.css';
 import './styles/Navbar.css';
 import slowcut from './images/slowcut.png';
+import searchIcon from './images/search.png';
 
 // react-bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,7 +37,7 @@ function App() {
       <div className="container_navbar">
         {/* <Navbar /> */}
 
-        <Navbar className="nav" variant="dark" expand="lg">
+        <Navbar className="nav" variant="dark" expand="sm">
           <Link to="/">
             <Navbar.Brand href="#home">
               <span className="nav_icon">
@@ -62,7 +63,7 @@ function App() {
                 onChange={handleChangeTerm}
               />
               <Link to={`/search/${searchTerm}`}>
-                <Button variant="outline-success">Search</Button>
+                <img src={searchIcon} width={35} height={35}></img>
               </Link>
             </Form>
           </Navbar.Collapse>
