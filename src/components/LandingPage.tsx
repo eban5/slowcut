@@ -60,7 +60,7 @@ const LandingPage = () => {
           <Row>
             <Col>
               <div id="carousel">
-              <h4 className="section_header">Trending This Week</h4>
+                <h4 className="section_header">Trending This Week</h4>
                 <Carousel movies={trending} />
               </div>
             </Col>

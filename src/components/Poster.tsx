@@ -41,7 +41,7 @@ const Poster = (props: PosterProps) => {
           overlay={renderTooltip(item)}
         >
           <img
-            className="poster"
+            className=""
             alt={`${item.title} (${item.release_date?.substr(0, 4)})`}
             src={buildPosterPath(`${item.poster_path}`)}
           />

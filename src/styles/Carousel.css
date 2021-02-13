@@ -5,9 +5,17 @@
   margin-left: -40px;
 }
 
+.poster > a > img {
+  width: 100%;
+  height: 100%;
+}
+
 .poster {
-  width: 150px;
-  height: 225px;
+  width: 33%;
+  max-width: 150px;
+  max-height: 225px;
+  flex-basis: 15%;
+  list-style: none;
   background-color: gray;
   color: black;
   cursor: pointer;
