@@ -7,10 +7,10 @@ const Grid = (props: any) => {
   const { genreID } = props.match.params;
 
   // if params is empty, then just show a grid of popular
-  const { status, data } =
-    Object.keys(props.match.params).length === 0
-      ? useFetchPopularMovies(0)
-      : useFetchGenre(genreID);
+  const { status, data } = useFetchGenre(genreID);
+  // Object.keys(props.match.params).length === 0
+  // ? useFetchPopularMovies(0)
+  // : useFetchGenre(genreID);
 
   return (
     <>

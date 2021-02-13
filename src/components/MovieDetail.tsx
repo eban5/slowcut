@@ -18,10 +18,13 @@ const MovieDetail = ({ match }: any) => {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [recommendedMovies, setRecommendedMovies] = useState<any[]>([]);
   const [watchProviders, setWatchProviders] = useState<WatchProviders>({});
+  const [crew, setCrew] = useState<any>([]);
+  const [cast, setCast] = useState<any>([]);
 
   const movieDetailURL: string = `https://api.themoviedb.org/3/movie/${imdbID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
   const recommendedMoviesURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
   const watchProvidersURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+  const movieCredits: string = `https://api.themoviedb.org/3/movie/${imdbID}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
 
   useEffect(() => {
     axios
@@ -54,6 +57,17 @@ const MovieDetail = ({ match }: any) => {
       })
       .catch((err) => console.error(err));
   }, [match]);
+  useEffect(() => {
+    axios
+      .get(movieCredits)
+      .then((results) => {
+        if (results.data) {
+          setCrew(results.data.crew);
+          setCast(results.data.cast);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, [match]);
 
   return (
     <div className="white">
@@ -67,8 +81,6 @@ const MovieDetail = ({ match }: any) => {
             <Row>
               <Col sm={3}>
                 <img
-                  // width={64}
-                  // height={64}
                   className="mr-3 movie_detail_poster"
                   src={buildPosterPath(data.poster_path)}
                   alt="Movie Poster"
@@ -96,7 +108,6 @@ const MovieDetail = ({ match }: any) => {
                               {watchProviders &&
                                 watchProviders.rent &&
                                 watchProviders.rent.map((provider: any) => {
-                                  console.log(provider);
                                   return <li>{provider.provider_name}</li>;
                                 })}
                             </ul>
@@ -126,8 +137,27 @@ const MovieDetail = ({ match }: any) => {
                         </Row>
                       </div>
                     </Tab>
-                    <Tab eventKey="cast" title="Cast"></Tab>
-                    <Tab eventKey="crew" title="Crew"></Tab>
+                    <Tab eventKey="cast" title="Cast">
+                      {cast &&
+                        cast.slice(0, 10).map((item: any) => {
+                          return (
+                            <Badge pill variant="secondary">
+                              {item.original_name}
+                            </Badge>
+                          );
+                        })}
+                    </Tab>
+
+                    <Tab eventKey="crew" title="Crew">
+                      {crew &&
+                        crew.slice(0, 10).map((item: any) => {
+                          return (
+                            <div>
+                              {item.job}: {item.original_name}
+                            </div>
+                          );
+                        })}
+                    </Tab>
                     <Tab eventKey="details" title="Details">
                       <div>
                         <strong>Release Date: </strong>

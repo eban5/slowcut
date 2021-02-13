@@ -8,7 +8,7 @@ import searchIcon from './images/search.png';
 
 // react-bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Button, Form, FormControl, Nav } from 'react-bootstrap';
+import { Navbar, Form, FormControl, Nav } from 'react-bootstrap';
 import MovieDetail from './components/MovieDetail';
 import LandingPage from './components/LandingPage';
 import { SearchLanding } from './components/SearchLanding';
@@ -82,7 +82,6 @@ function App() {
             component={() => <SearchLanding keyword={searchTerm} />}
           />
           <Route exact path="/movie/:imdbID" component={MovieDetail} />
-          {/* <Route render={() => <Redirect to="/" />} /> */}
           <Route path="/grid" component={Grid} />
           <Route exact path="/genre/:genreID" component={Grid} />
           <Route render={() => <NoMatchRoute />} />
