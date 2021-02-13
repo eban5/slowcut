@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Badge, Col, Container, Form, Media, Row } from 'react-bootstrap';
-import { useFetchMovies } from '../hooks/useFetch';
-import { buildPosterPath, extractYear } from '../utils/api';
+import { Badge, Col, Container, Media, Row } from 'react-bootstrap';
+import { extractYear } from '../utils/api';
 import Poster from './Poster';
 import { search } from '../utils/api';
 
-{
-  /* // TODO add crew types to results, only movies atm */
-}
-
 export const SearchLanding = (props: any) => {
   const { keyword } = props;
-  // const { status, data } = useFetchMovies(keyword);
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
+  // TODO - include more result types
   // TODO - swap fetch hooks
   //@ts-ignore
   useEffect(async () => {
     setLoading(true);
 
+    // Someone came to the search landing without entering a keyword
     if (!keyword) {
       setSearchResults([]);
       return;
     } else {
+      // Search for their keyword entered
       const res = await search(
         `https://api.themoviedb.org/3/search/movie?query=${keyword}&api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       );

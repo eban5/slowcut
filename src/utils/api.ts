@@ -1,9 +1,4 @@
-import { OMDBResult } from '../types/types';
 import axios from 'axios';
-
-export const getMovieIds = (results: OMDBResult[]): string[] => {
-  return results.map((i) => i.imdbID);
-};
 
 // TODO add params for resolution, lower res for stackedCards
 export const buildPosterPath = (poster_path: string): string => {

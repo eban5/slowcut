@@ -3,19 +3,14 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useFetchGenre, useFetchPopularMovies } from '../hooks/useFetch';
 import Poster from './Poster';
 
-//TODO figure out best type here
-// interface GridProps {
-//   movies: any[];
-// }
-
 const Grid = (props: any) => {
   const { genreID } = props.match.params;
 
-  // TODO - call helper with "genre" or "popular" that decides
-  // switch case to take, then build URL, then call right endpoint
-
-  // const { status, data } = useFetchPopularMovies(0);
-  const { status, data } = useFetchGenre(genreID);
+  // if params is empty, then just show a grid of popular
+  const { status, data } =
+    Object.keys(props.match.params).length === 0
+      ? useFetchPopularMovies(0)
+      : useFetchGenre(genreID);
 
   return (
     <>
