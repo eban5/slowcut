@@ -32,32 +32,26 @@ li {
 }
 
 .background_container {
-  max-width: 1100px;
-  height: 675px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  width: 1280px;
+  height: 800px;
+  margin-left: -600px;
   position: absolute;
   top: 0;
-
-  /* left: 5%; */
-  background-size: 1100px 675px;
+  left: 50%;
   background-position: center;
-  background-image: url('../images/header-background.jpg');
+  background-repeat: no-repeat;
+  background-image: url('../images/header-background-dunkirk.jpg');
   z-index: -1;
 }
 
 .background_container::before {
   content: '';
   display: block;
-  /* position: absolute; */
-  z-index: 0;
   pointer-events: none;
-  width: 1100px;
-  top: 0;
-  left: 50%;
-  transform: translateX(0%);
-  height: 675px;
+  width: 875px;
+
+  transform: translateX(23%);
+  height: 830px;
   background-repeat: no-repeat;
   background-image: linear-gradient(
       90deg,
