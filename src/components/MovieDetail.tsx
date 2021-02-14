@@ -115,9 +115,9 @@ const MovieDetail = ({ match }: any) => {
     <div className="white">
       {data !== null ? (
         <>
-          {/* <div className="movie_detail_backdrop_wrapper">
+          <div className="movie_detail_backdrop_wrapper">
 						<img style={{ width: "100%" }} src={buildPosterPath(data.backdrop_path)} />
-					</div> */}
+					</div>
 
           <Container style={{ paddingTop: '400px' }}>
             <Row>

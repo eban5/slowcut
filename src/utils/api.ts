@@ -4,7 +4,7 @@ import { WatchProviders, JustWatchMethod } from '../types/types';
 
 // TODO add params for resolution, lower res for stackedCards
 export const buildPosterPath = (poster_path: string): string => {
-  return `https://image.tmdb.org/t/p/w500/${poster_path}`;
+  return `https://image.tmdb.org/t/p/original/${poster_path}`;
 };
 
 // TODO write test
