@@ -36,6 +36,8 @@ const LandingPage = () => {
         `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       )
       .then((result) => {
+        // Set the backdrop of the landing page to the backdrop image
+        // of the highest rated movie in "Trending This Week" collection
         const votingAverages = result.data.results.map(
           (item: any) => item.vote_average
         );
@@ -56,7 +58,6 @@ const LandingPage = () => {
 
   return (
     <>
-      {/* <div className="background_container"> */}
       <div className="background_wrapper">
         <img style={{ width: '100%' }} src={backdropPoster} />
       </div>
@@ -136,18 +137,15 @@ const LandingPage = () => {
           </Row>
         </Container>
 
-        <footer
-          style={{
-            backgroundColor: 'black',
-            color: 'white',
-            height: '200px',
-            width: '100vw',
-            textAlign: 'center',
-            marginTop: '50px',
-            paddingTop: '25px',
-          }}
-        >
-          Slowcut is just a letterboxd clone.
+        <footer className="slowcut_footer">
+          Slowcut is just a{' '}
+          <a href="https://letterboxd.com/" target="_blank">
+            Letterboxd clone
+          </a>
+          .<br/> All data is provided by{' '}
+          <a href="https://developers.themoviedb.org/3/" target="_blank">
+            The Movie Database (TMDb) API
+          </a>.<br/> Watch Provider data provided by <a href="https://www.justwatch.com/us">Just Watch</a>.
         </footer>
       </div>
     </>
