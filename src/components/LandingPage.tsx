@@ -9,11 +9,13 @@ import About from './About';
 
 import { Badge, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { buildPosterPath } from '../utils/api';
 
 const LandingPage = () => {
   // TMDB Genres List
   const [genres, setGenres] = useState<Genre[]>([]);
   const [trending, setTrending] = useState<Movie[]>([]);
+  const [backdropPoster, setBackdropPoster] = useState<string>('');
 
   useEffect(() => {
     //get genre list
@@ -33,15 +35,31 @@ const LandingPage = () => {
       .get(
         `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       )
-      .then(
-        (result) =>
-          result.data.results && setTrending(result.data.results.slice(0, 6))
-      );
+      .then((result) => {
+        const votingAverages = result.data.results.map(
+          (item: any) => item.vote_average
+        );
+
+        const maxRatedIndex = votingAverages.indexOf(
+          Math.max(...votingAverages)
+        );
+
+        result.data.results && setTrending(result.data.results.slice(0, 6));
+
+        if (votingAverages.length > 0) {
+          setBackdropPoster(
+            buildPosterPath(result.data.results[maxRatedIndex].backdrop_path)
+          );
+        }
+      });
   }, []);
 
   return (
     <>
-      <div className="background_container"></div>
+      {/* <div className="background_container"> */}
+      <div className="background_wrapper">
+        <img style={{ width: '100%' }} src={backdropPoster} />
+      </div>
       <div className="App">
         {/* Showcase / Hero */}
         <Container>
