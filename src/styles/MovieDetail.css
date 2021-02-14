@@ -11,6 +11,10 @@
   text-align: right;
 }
 
+.movie_detail_cast_popover {
+  background-color: #789;
+}
+
 .movie_detail_poster {
   width: 100%;
   /* height: 225px; */

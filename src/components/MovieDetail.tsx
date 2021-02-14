@@ -1,14 +1,52 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
-import { Badge, Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {
+  Badge,
+  Col,
+  Container,
+  Media,
+  OverlayTrigger,
+  Popover,
+  Row,
+  Tab,
+  Tabs,
+} from 'react-bootstrap';
 import { CustomCarousel as Carousel } from './Carousel';
 import '../styles/MovieDetail.css';
 import { Genre, WatchProviders } from '../types/types';
 import { numberWithCommas } from '../utils/array';
 import { buildPosterPath, filterWatchProviders } from '../utils/api';
 
+interface CastPopupProps {
+  character?: string;
+  original_name?: string;
+  profile_path?: string;
+}
+
+const castPopover = (props: CastPopupProps) => {
+  const image = props.profile_path || '';
+  return (
+    <Popover id="popover-basic" className="movie_detail_cast_popover">
+      <Popover.Title className="movie_detail_cast_popover" as="h3">
+        {props.original_name}
+      </Popover.Title>
+      <Popover.Content>
+        <Media>
+          <img
+            width={64}
+            className="mr-3 cast_profile_photo"
+            src={buildPosterPath(image)}
+            alt=""
+          />
+          <Media.Body>
+            <p style={{ color: '#fff' }}>{props.character}</p>
+          </Media.Body>
+        </Media>
+      </Popover.Content>
+    </Popover>
+  );
+};
 const MovieDetail = ({ match }: any) => {
   const {
     params: { imdbID },
@@ -145,9 +183,19 @@ const MovieDetail = ({ match }: any) => {
                       {cast &&
                         cast.slice(0, 10).map((item: any) => {
                           return (
-                            <Badge pill variant="secondary">
-                              {item.original_name}
-                            </Badge>
+                            <OverlayTrigger
+                              trigger="hover"
+                              placement="auto"
+                              overlay={castPopover(item)}
+                            >
+                              <Badge
+                                pill
+                                variant="secondary"
+                                style={{ cursor: 'pointer' }}
+                              >
+                                {item.original_name}
+                              </Badge>
+                            </OverlayTrigger>
                           );
                         })}
                     </Tab>
