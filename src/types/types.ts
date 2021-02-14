@@ -11,12 +11,13 @@ export interface Movie {
 }
 
 export interface WatchProviders {
+  link?: string;
   buy?: any[];
   rent?: any[];
   flatrate?: any[];
 }
 
-interface JustWatchMethod {
+export interface JustWatchMethod {
   display_priority: number;
   logo_path: string;
   provider_id: number;

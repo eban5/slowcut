@@ -7,7 +7,7 @@ import { CustomCarousel as Carousel } from './Carousel';
 import '../styles/MovieDetail.css';
 import { Genre, WatchProviders } from '../types/types';
 import { numberWithCommas } from '../utils/array';
-import { buildPosterPath } from '../utils/api';
+import { buildPosterPath, filterWatchProviders } from '../utils/api';
 
 const MovieDetail = ({ match }: any) => {
   const {
@@ -52,7 +52,11 @@ const MovieDetail = ({ match }: any) => {
       .get(watchProvidersURL)
       .then((results) => {
         if (results.data.results) {
-          setWatchProviders(results.data.results.US);
+          // We are only returning Apple, Google/YT, and Amazon results
+          const filteredWatchProviders = filterWatchProviders(
+            results.data.results.US
+          );
+          setWatchProviders(filteredWatchProviders);
         }
       })
       .catch((err) => console.error(err));

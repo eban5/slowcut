@@ -10,6 +10,13 @@ export const numberWithCommas = (x: string) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
+export const contentProviders: string[] = [
+  'Apple iTunes',
+  'Google Play Movies',
+  'Amazon Video',
+  'YouTube',
+];
+
 // TODO finish parsing content providers
 // For building a prototype, I only care about a handful of content providers to show in my results back from JustWatch API.
 // Assuming watch provider data we are using is from US only.
@@ -19,13 +26,6 @@ export const parseContentProviders = (
   if (!justWatchData) {
     return {};
   }
-
-  const contentProviders: string[] = [
-    'Apple iTunes',
-    'Google Play Movies',
-    'Amazon Video',
-    'YouTube',
-  ];
 
   let result: ContentProviders = {
     apple_itunes: [],

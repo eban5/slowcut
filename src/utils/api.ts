@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { contentProviders } from '../utils/array';
+import { WatchProviders, JustWatchMethod } from '../types/types';
 
 // TODO add params for resolution, lower res for stackedCards
 export const buildPosterPath = (poster_path: string): string => {
@@ -13,6 +15,41 @@ export const extractYear = (release_date: string): string => {
   } else {
     return release_date.substr(0, 4);
   }
+};
+
+export const filterWatchProviders = (
+  providers: WatchProviders
+): WatchProviders => {
+  let result: WatchProviders = {
+    link: undefined,
+    rent: undefined,
+    buy: undefined,
+    flatrate: undefined,
+  };
+
+  if (providers.rent) {
+    result.rent = providers.rent.filter((item: JustWatchMethod) => {
+      if (contentProviders.includes(item.provider_name)) {
+        return item;
+      }
+    });
+  }
+  if (providers.buy) {
+    result.buy = providers.buy.filter((item: JustWatchMethod) => {
+      if (contentProviders.includes(item.provider_name)) {
+        return item;
+      }
+    });
+  }
+  if (providers.flatrate) {
+    result.flatrate = providers.flatrate.filter((item: JustWatchMethod) => {
+      if (contentProviders.includes(item.provider_name)) {
+        return item;
+      }
+    });
+  }
+
+  return result;
 };
 
 const resources: any = {};
