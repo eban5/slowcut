@@ -7,11 +7,11 @@
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: #fff !important;
+  color: var(--color-text) !important;
 }
 
 .white {
-  color: #fff;
+  color: var(--color-text);
 }
 
 .background-white {
@@ -35,5 +35,5 @@
   font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
-  color: #fff;
+  color: var(--color-text);
 }

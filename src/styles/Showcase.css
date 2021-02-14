@@ -1,6 +1,6 @@
 .showcase_content {
   text-align: center;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .showcase_title {

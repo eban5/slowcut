@@ -1,5 +1,5 @@
 .white {
-  color: #fff;
+  color: var(--color-text);
 }
 .parent {
   display: grid;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchResult = () => {
+const SearchResult = (props: any) => {
   return (
     <li>
       {/* Poster */}

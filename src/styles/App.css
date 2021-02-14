@@ -6,12 +6,13 @@ h3,
 h4,
 h5 {
   font-family: 'Noticia Text', serif;
-  color: #fff;
+  color: var(--color-text);
 }
 
-p {
+p,
+a {
   font-family: 'Lato', sans-serif;
-  color: #789;
+  color: var(--color-secondary);
 }
 
 ul,
@@ -118,7 +119,7 @@ section {
 .not_found {
   text-align: center;
   font-family: 'Noticia Text', serif;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .not_found_404 {
@@ -132,4 +133,14 @@ section {
 
 .not_found_search {
   font-size: 2rem;
+}
+
+.slowcut_footer {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  height: 200px;
+  width: 100vw;
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 50px;
 }
