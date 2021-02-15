@@ -194,7 +194,6 @@ const MovieDetail = ({ match }: any) => {
                             >
                               <Link to={`/actor/${item.id}`}>
                                 <Badge
-                                  pill
                                   variant="secondary"
                                   style={{ cursor: 'pointer' }}
                                 >
@@ -236,9 +235,7 @@ const MovieDetail = ({ match }: any) => {
                       <div className="movie_detail_genres">
                         {genres.map((genre: Genre) => {
                           return (
-                            <Badge pill variant="secondary">
-                              {genre.name}
-                            </Badge>
+                            <Badge variant="secondary">{genre.name}</Badge>
                           );
                         })}
                       </div>

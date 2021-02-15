@@ -32,6 +32,16 @@ const renderTooltip = (props: MoviePoster) => {
 
 const Poster = (props: PosterProps) => {
   const item: MoviePoster = props.item;
+
+  // Fallback poster when path is null
+  if (!item.poster_path) {
+    return (
+      // <Link to={`/movie/${item.id}`}> </Link>
+      <div className="fallback_poster">
+        {item.title} ({item.release_date?.substr(0, 4)})
+      </div>
+    );
+  }
   return (
     <>
       <Link to={`/movie/${item.id}`}>

@@ -6,6 +6,8 @@ import { buildPosterPath } from '../utils/api';
 import { PersonGrid } from './Grid';
 import Poster from './Poster';
 
+import '../styles/App.css';
+
 const CastDetail = ({ match }: any) => {
   const {
     params: { personID },
@@ -20,7 +22,6 @@ const CastDetail = ({ match }: any) => {
     axios
       .get(personDetailURL)
       .then((item: any) => {
-        console.log(item);
         setPersonDetails(item.data);
       })
       .catch((err) => console.error(err));
@@ -29,8 +30,12 @@ const CastDetail = ({ match }: any) => {
     axios
       .get(castDetailURL)
       .then((item: any) => {
-        console.log(item.data);
-        setCastDetails(item.data);
+        // sort by release date
+        const movies = item.data.cast.sort((a: any, b: any) =>
+          a.release_date < b.release_date ? 1 : -1
+        );
+
+        setCastDetails(movies);
       })
       .catch((err) => console.error(err));
   }, [match]);
@@ -38,27 +43,36 @@ const CastDetail = ({ match }: any) => {
   return (
     <>
       <Container>
-        <Row>
-          <Col sm={8}>
-            <strong>Films Starring</strong>
-            <br />
-            <h5 className="section_header">
+        <Row style={{ marginTop: '16px' }}>
+          <Col sm={9}>
+            <h1 style={{ lineHeight: '1.2' }}>
+              <span className="cast_header_intro">Films Starring</span>
+              <br />
               {personDetails && personDetails.name}
-            </h5>
+            </h1>
+
             <Row>
               <Col>
-                <PersonGrid movies={castDetails.cast} />
+                <PersonGrid movies={castDetails} />
               </Col>
             </Row>
           </Col>
-          <Col sm={4}>
+          <Col sm={3}>
             <img
-              width={200}
-              className="poster"
+              style={{ width: '80%', display: 'block', margin: 'auto' }}
+              className="cast_profile_pic"
               alt={`${personDetails.name} profile picture`}
               src={buildPosterPath(`${personDetails.profile_path}`)}
             />
-            <p>{personDetails.biography}</p>
+
+            <p style={{ margin: '5px' }} className="white">
+              Born: {personDetails.birthday}
+              <br />
+              {personDetails.deathday ? `Died: ${personDetails.deathday}` : ''}
+            </p>
+            <p style={{ margin: '5px', textAlign: 'justify' }}>
+              {personDetails.biography}
+            </p>
           </Col>
         </Row>
       </Container>

@@ -94,15 +94,9 @@ export const SearchLanding = (props: any) => {
 
             <div className="white">
               Filter by
-              <Badge pill variant="secondary">
-                Actor
-              </Badge>
-              <Badge pill variant="secondary">
-                Director
-              </Badge>
-              <Badge pill variant="secondary">
-                Movie
-              </Badge>
+              <Badge variant="secondary">Actor</Badge>
+              <Badge variant="secondary">Director</Badge>
+              <Badge variant="secondary">Movie</Badge>
             </div>
           </Col>
         </Row>

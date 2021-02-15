@@ -9,12 +9,22 @@ h5 {
   color: var(--color-text);
 }
 
+h1 {
+  font-size: 2rem !important;
+  margin-bottom: 8px !important;
+}
+
 p,
 a {
   font-family: 'Lato', sans-serif;
   color: var(--color-secondary);
 }
 
+p {
+  line-height: 1.5;
+  font-size: 0.8rem;
+
+}
 ul,
 li {
   list-style: none;
@@ -143,4 +153,20 @@ section {
   text-align: center;
   font-size: 0.8rem;
   margin-top: 50px;
+}
+
+.cast_profile_pic {
+  border-radius: 4px;
+  box-shadow: 0 0 3pt 2pt var(--color-secondary);
+
+}
+
+.cast_header_intro {
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  color: var(--color-secondary);
+  letter-spacing: .075em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+
 }
