@@ -8,8 +8,9 @@ import PopularLists from './PopularLists';
 import About from './About';
 
 import { Badge, Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
 import { buildPosterPath } from '../utils/api';
+import GenreBadge from './Genre';
 
 const LandingPage = () => {
   // TMDB Genres List
@@ -113,24 +114,9 @@ const LandingPage = () => {
                 <h4 className="section_header">Discover by Genre</h4>
                 <div>
                   {genres &&
-                    genres.map((item) => {
-                      const genreGridParams = {
-                        pathname: `/genre/${item.id}`,
-                        genreID: item.id,
-                      };
-                      return (
-                        <Link to={genreGridParams}>
-                          <Badge
-                            pill
-                            variant="secondary"
-                            key={item.id}
-                            className="genre_badge"
-                          >
-                            {item.name}
-                          </Badge>
-                        </Link>
-                      );
-                    })}
+                    genres.map((item) => (
+                      <GenreBadge genreID={item.id} genreName={item.name} />
+                    ))}
                 </div>
               </div>
             </Col>
@@ -142,10 +128,12 @@ const LandingPage = () => {
           <a href="https://letterboxd.com/" target="_blank">
             Letterboxd clone
           </a>
-          .<br/> All data is provided by{' '}
+          .<br /> All data is provided by{' '}
           <a href="https://developers.themoviedb.org/3/" target="_blank">
             The Movie Database (TMDb) API
-          </a>.<br/> Watch Provider data provided by <a href="https://www.justwatch.com/us">Just Watch</a>.
+          </a>
+          .<br /> Watch Provider data provided by{' '}
+          <a href="https://www.justwatch.com/us">Just Watch</a>.
         </footer>
       </div>
     </>

@@ -5,27 +5,57 @@ import Poster from './Poster';
 
 const Grid = (props: any) => {
   const { genreID } = props.match.params;
-
-  // if params is empty, then just show a grid of popular
-  const { status, data } = useFetchGenre(genreID);
-  // Object.keys(props.match.params).length === 0
-  // ? useFetchPopularMovies(0)
-  // : useFetchGenre(genreID);
+  const { genreName } = props.location.state || '';
+  // if params is empty, show grid of popular
+  // else show genre-specific grid
 
   return (
     <>
       <Container>
         <Row>
           <Col sm={12}>
+            <h4 className="section_header">
+              {genreName ? `Browse: ${genreName}` : 'Popular Movies'}
+            </h4>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={12}>
             <div className="grid">
-              {status !== 'fetching' &&
-                data.map((item: any, idx: number) => {
-                  return <Poster key={idx} item={item} />;
-                })}
+              {!genreID ? (
+                <PopularGrid />
+              ) : (
+                <GenreGrid genreName={genreName} genreID={genreID} />
+              )}
             </div>
           </Col>
         </Row>
       </Container>
+    </>
+  );
+};
+
+const PopularGrid = () => {
+  const { status, data } = useFetchPopularMovies(0);
+  return (
+    <>
+      {status !== 'fetching' &&
+        data.map((item: any, idx: number) => {
+          return <Poster key={idx} item={item} />;
+        })}
+    </>
+  );
+};
+
+const GenreGrid = (props: any) => {
+  const { status, data } = useFetchGenre(props.genreID);
+
+  return (
+    <>
+      {status !== 'fetching' &&
+        data.map((item: any, idx: number) => {
+          return <Poster key={idx} item={item} />;
+        })}
     </>
   );
 };
