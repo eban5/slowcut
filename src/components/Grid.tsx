@@ -3,7 +3,25 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useFetchGenre, useFetchPopularMovies } from '../hooks/useFetch';
 import Poster from './Poster';
 
-const Grid = (props: any) => {
+export const PersonGrid = (props: { movies: any[] }) => {
+  const { movies } = props;
+  return (
+    <>
+      <Row>
+        <Col sm={12}>
+          <div className="grid">
+            {movies &&
+              movies.map((item: any, idx: number) => {
+                return <Poster key={idx} item={item} />;
+              })}
+          </div>
+        </Col>
+      </Row>
+    </>
+  );
+};
+
+export const Grid = (props: any) => {
   const { genreID } = props.match.params;
   const { genreName } = props.location.state || '';
   // if params is empty, show grid of popular
@@ -59,5 +77,3 @@ const GenreGrid = (props: any) => {
     </>
   );
 };
-
-export default Grid;

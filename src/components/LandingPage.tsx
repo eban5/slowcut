@@ -7,7 +7,7 @@ import { CustomCarousel as Carousel } from './Carousel';
 import PopularLists from './PopularLists';
 import About from './About';
 
-import { Badge, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
 import { buildPosterPath } from '../utils/api';
 import GenreBadge from './Genre';

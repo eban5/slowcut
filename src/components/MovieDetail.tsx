@@ -17,6 +17,7 @@ import '../styles/MovieDetail.css';
 import { Genre, WatchProviders } from '../types/types';
 import { numberWithCommas } from '../utils/array';
 import { buildPosterPath, filterWatchProviders } from '../utils/api';
+import { Link } from 'react-router-dom';
 
 interface CastPopupProps {
   character?: string;
@@ -116,8 +117,11 @@ const MovieDetail = ({ match }: any) => {
       {data !== null ? (
         <>
           <div className="movie_detail_backdrop_wrapper">
-						<img style={{ width: "100%" }} src={buildPosterPath(data.backdrop_path)} />
-					</div>
+            <img
+              style={{ width: '100%' }}
+              src={buildPosterPath(data.backdrop_path)}
+            />
+          </div>
 
           <Container style={{ paddingTop: '400px' }}>
             <Row>
@@ -188,13 +192,15 @@ const MovieDetail = ({ match }: any) => {
                               placement="auto"
                               overlay={castPopover(item)}
                             >
-                              <Badge
-                                pill
-                                variant="secondary"
-                                style={{ cursor: 'pointer' }}
-                              >
-                                {item.original_name}
-                              </Badge>
+                              <Link to={`/actor/${item.id}`}>
+                                <Badge
+                                  pill
+                                  variant="secondary"
+                                  style={{ cursor: 'pointer' }}
+                                >
+                                  {item.original_name}
+                                </Badge>
+                              </Link>
                             </OverlayTrigger>
                           );
                         })}

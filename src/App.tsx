@@ -10,9 +10,10 @@ import searchIcon from './images/search.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Form, FormControl, Nav } from 'react-bootstrap';
 import MovieDetail from './components/MovieDetail';
+import CastDetail from './components/CastDetail';
 import LandingPage from './components/LandingPage';
 import { SearchLanding } from './components/SearchLanding';
-import Grid from './components/Grid';
+import {Grid, PersonGrid} from './components/Grid';
 
 const NoMatchRoute = () => (
   <div className="not_found">
@@ -82,6 +83,7 @@ function App() {
             component={() => <SearchLanding keyword={searchTerm} />}
           />
           <Route exact path="/movie/:imdbID" component={MovieDetail} />
+          <Route exact path="/actor/:personID" component={CastDetail} />
           <Route path="/grid" component={Grid} />
           <Route exact path="/genre/:genreID" component={Grid} />
           <Route render={() => <NoMatchRoute />} />

@@ -103,6 +103,35 @@ export const useFetchGenre = (genreID: string) => {
   return { status, data };
 };
 
+export const useFetchCast = (personID: string) => {
+  const [status, setStatus] = useState('idle');
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    if (!personID) return;
+
+    const fetchData = async () => {
+      setStatus('fetching');
+
+      axios
+        .get(
+          `https://api.themoviedb.org/3/person/${personID}/movie_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+        )
+        .then((response) => {
+          console.log(response);
+          response.data && setData(response.data.results);
+        })
+        .catch((error) => console.error(error));
+
+      setStatus('fetched');
+    };
+
+    fetchData();
+  }, [personID]);
+
+  return { status, data };
+};
+
 export const useFetchSearch = () => {};
 const resources: any = {};
 const makeRequestCreator = () => {
