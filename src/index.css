@@ -1,7 +1,8 @@
 html {
   --color-text: #fff;
-  --color-background: #14181c;
-  --color-secondary: #789;
+  --color-dark-gray: #14181c;
+  --color-medium-gray: #283038;
+  --color-light-gray: #789;
 }
 
 body {
@@ -11,7 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-background) !important;
+  background-color: var(--color-dark-gray) !important;
 }
 
 code {

@@ -53,7 +53,7 @@ const Poster = (props: PosterProps) => {
           <img
             className="poster search_poster"
             alt={`${item.title} (${item.release_date?.substr(0, 4)})`}
-            src={buildPosterPath(`${item.poster_path}`)}
+            src={buildPosterPath(`${item.poster_path}`, `w185`)}
           />
         </OverlayTrigger>
       </Link>

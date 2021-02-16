@@ -1,56 +1,4 @@
-.breadcrumb {
-  font-size: 1.2rem;
-  background-color: unset;
-}
-.badge-secondary {
-  margin: 0.5em;
-}
-.meta {
-  color: #789;
-  font-size: 0.9rem;
-  text-align: right;
-}
-
-.movie_detail_cast_popover {
-  background-color: #789;
-}
-
-.movie_detail_poster {
-  width: 100%;
-  /* height: 225px; */
-  background-color: gray;
-  color: black;
-  cursor: pointer;
-  text-align: center;
-}
-
-.movie_detail_title {
-  font-size: 2.2rem;
-  box-shadow: #000 2px 0 5px;
-  font-weight: bold;
-}
-
-.movie_detail_tagline {
-  margin-top: 16px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-}
-
-.movie_detail_overview {
-  font-size: 1rem;
-  font-family: 'Noticia Text', serif;
-}
-
-.just_watch {
-  margin-top: 32px;
-}
-
-.movie_detail_watch_provider {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 900;
-}
+/* Background image */
 
 .movie_detail_backdrop_wrapper {
   width: 1280px;
@@ -82,4 +30,67 @@
   background: linear-gradient(to right, #14181c 0%, rgba(255, 255, 255, 0) 40%),
     linear-gradient(to left, #14181c 0%, rgba(255, 255, 255, 0) 40%),
     linear-gradient(to top, #14181c 30%, rgba(255, 255, 255, 0) 80%);
+}
+
+.badge-secondary {
+  margin: 0.5em;
+}
+
+.meta {
+  color: var(--color-light-gray);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.movie_detail_cast_popover {
+  background-color: var(--color-light-gray);
+}
+
+.movie_detail_poster {
+  width: 100%;
+  background-color: var(--color-medium-gray);
+  color: black;
+  cursor: pointer;
+  text-align: center;
+}
+
+.movie_detail_title {
+  font-size: 2.2rem;
+  box-shadow: #000 2px 0 5px;
+  font-weight: bold;
+}
+.movie_detail_cast, .movie_detail_genres {
+  margin-top: 16px;
+}
+
+.movie_detail_cast_badge, .movie_detail_genre_badge {
+  font-size: 1rem;
+  box-shadow: #000 2px 0 5px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: var(--color-medium-gray);
+  color: var(--color-light-gray);
+  padding: 8px 12px;
+}
+
+.movie_detail_tagline {
+  margin-top: 16px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.movie_detail_overview {
+  font-size: 1rem;
+  font-family: 'Noticia Text', serif;
+}
+
+.just_watch {
+  margin-top: 32px;
+}
+
+.movie_detail_watch_provider {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
 }

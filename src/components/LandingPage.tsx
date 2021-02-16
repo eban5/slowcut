@@ -59,7 +59,7 @@ const LandingPage = () => {
 
         if (votingAverages.length > 0) {
           setBackdropPoster(
-            buildPosterPath(result.data.results[maxRatedIndex].backdrop_path)
+            buildPosterPath(result.data.results[maxRatedIndex].backdrop_path, `original`)
           );
         }
       });

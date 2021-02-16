@@ -27,6 +27,21 @@ interface CastPopupProps {
   profile_path?: string;
 }
 
+const WatchProviderLogo = (props: any) => {
+  const { provider } = props;
+  return (
+    <li>
+      <img
+        width={40}
+        height={40}
+        style={{ margin: '4px 0' }}
+        src={buildPosterPath(provider.logo_path, `w185`)}
+        alt={`${provider.provider_name}`}
+      />
+    </li>
+  );
+};
+
 const castPopover = (props: CastPopupProps) => {
   const image = props.profile_path || '';
   return (
@@ -39,7 +54,7 @@ const castPopover = (props: CastPopupProps) => {
           <img
             width={64}
             className="mr-3 cast_profile_photo"
-            src={buildPosterPath(image)}
+            src={buildPosterPath(image, `w780`)}
             alt=""
           />
           <Media.Body>
@@ -139,7 +154,7 @@ const MovieDetail = ({ match }: any) => {
           <div className="movie_detail_backdrop_wrapper">
             <img
               style={{ width: '100%' }}
-              src={buildPosterPath(data.backdrop_path)}
+              src={buildPosterPath(data.backdrop_path, `original`)}
             />
           </div>
 
@@ -148,7 +163,7 @@ const MovieDetail = ({ match }: any) => {
               <Col sm={3}>
                 <img
                   className="mr-3 movie_detail_poster"
-                  src={buildPosterPath(data.poster_path)}
+                  src={buildPosterPath(data.poster_path, `w500`)}
                   alt="Movie Poster"
                 />
               </Col>
@@ -236,20 +251,9 @@ const MovieDetail = ({ match }: any) => {
                             <ul>
                               {watchProviders &&
                                 watchProviders.rent &&
-                                watchProviders.rent.map((provider: any) => {
-                                  return (
-                                    <li>
-                                      <img
-                                        width={40}
-                                        height={40}
-                                        src={buildPosterPath(
-                                          provider.logo_path
-                                        )}
-                                        alt={`${provider.provider_name}`}
-                                      />
-                                    </li>
-                                  );
-                                })}
+                                watchProviders.rent.map((provider: any) => (
+                                  <WatchProviderLogo provider={provider} />
+                                ))}
                             </ul>
                           </Col>
                           <Col>
@@ -257,9 +261,9 @@ const MovieDetail = ({ match }: any) => {
                             <ul>
                               {watchProviders &&
                                 watchProviders.buy &&
-                                watchProviders.buy.map((provider: any) => {
-                                  return <li>{provider.provider_name}</li>;
-                                })}
+                                watchProviders.buy.map((provider: any) => (
+                                  <WatchProviderLogo provider={provider} />
+                                ))}
                             </ul>
                           </Col>
                           <Col>
@@ -269,10 +273,9 @@ const MovieDetail = ({ match }: any) => {
                             <ul>
                               {watchProviders &&
                                 watchProviders.flatrate &&
-                                watchProviders.flatrate.map((provider: any) => {
-                                  console.log(provider);
-                                  return <li>{provider.provider_name}</li>;
-                                })}
+                                watchProviders.flatrate.map((provider: any) => (
+                                  <WatchProviderLogo provider={provider} />
+                                ))}
                             </ul>
                           </Col>
                         </Row>
@@ -283,25 +286,27 @@ const MovieDetail = ({ match }: any) => {
                       </div>
                     </Tab>
                     <Tab eventKey="cast" title="Cast">
-                      {cast &&
-                        cast.map((item: any) => {
-                          return (
-                            <OverlayTrigger
-                              trigger="hover"
-                              placement="auto"
-                              overlay={castPopover(item)}
-                            >
-                              <Link to={`/actor/${item.id}`}>
-                                <Badge
-                                  variant="secondary"
-                                  style={{ cursor: 'pointer' }}
-                                >
-                                  {item.original_name}
-                                </Badge>
-                              </Link>
-                            </OverlayTrigger>
-                          );
-                        })}
+                      <div className="movie_detail_cast">
+                        {cast &&
+                          cast.map((item: any) => {
+                            return (
+                              <OverlayTrigger
+                                trigger="hover"
+                                placement="auto"
+                                overlay={castPopover(item)}
+                              >
+                                <Link to={`/actor/${item.id}`}>
+                                  <Badge
+                                    variant="secondary"
+                                    className="movie_detail_cast_badge"
+                                  >
+                                    {item.original_name}
+                                  </Badge>
+                                </Link>
+                              </OverlayTrigger>
+                            );
+                          })}
+                      </div>
                     </Tab>
 
                     <Tab eventKey="crew" title="Crew">
@@ -334,7 +339,7 @@ const MovieDetail = ({ match }: any) => {
                       <div className="movie_detail_genres">
                         {genres.map((genre: Genre) => {
                           return (
-                            <Badge variant="secondary">{genre.name}</Badge>
+                            <Badge className="movie_detail_genre_badge" variant="secondary">{genre.name}</Badge>
                           );
                         })}
                       </div>

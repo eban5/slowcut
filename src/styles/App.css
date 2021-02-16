@@ -18,7 +18,7 @@ p,
 a,
 .mpa_learn_more {
   font-family: 'Lato', sans-serif;
-  color: var(--color-secondary);
+  color: var(--color-light-gray);
 }
 
 p {
@@ -39,6 +39,15 @@ li {
   font-family: 'Raleway', sans-serif;
   font-weight: 900;
   color: var(--color-text);
+  text-transform: uppercase;
+}
+
+.nav-tabs > a {
+  color: var(--color-text);
+}
+
+.nav-tabs > a:hover {
+  color: var(--color-light-gray);
 }
 
 .section_header {
@@ -152,7 +161,7 @@ section {
 }
 
 .slowcut_footer {
-  background-color: var(--color-background);
+  background-color: var(--color-dark-gray);
   color: var(--color-text);
   height: 200px;
   width: 100vw;
@@ -163,24 +172,24 @@ section {
 
 .cast_profile_pic {
   border-radius: 4px;
-  box-shadow: 0 0 3pt 2pt var(--color-secondary);
+  box-shadow: 0 0 3pt 2pt var(--color-light-gray);
 }
 
 .cast_header_intro {
   font-size: 1rem;
   font-family: 'Lato', sans-serif;
-  color: var(--color-secondary);
+  color: var(--color-light-gray);
   letter-spacing: 0.075em;
   text-transform: uppercase;
   margin-bottom: 4px;
 }
 
 .mpa_ratings_modal {
-  background-color: var(--color-background) !important;
+  background-color: var(--color-dark-gray) !important;
 }
 
 .modal-content {
-  background-color: var(--color-background) !important;
+  background-color: var(--color-dark-gray) !important;
   box-shadow: 0 0 3pt 2pt var(--color-text);
 }
 

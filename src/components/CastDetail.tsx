@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useFetchGenre } from '../hooks/useFetch';
 import { buildPosterPath } from '../utils/api';
 import { PersonGrid } from './Grid';
 import Poster from './Poster';
 
 import '../styles/App.css';
+import { TMDBImageResolution } from '../types/types';
 
 const CastDetail = ({ match }: any) => {
   const {
@@ -18,6 +18,7 @@ const CastDetail = ({ match }: any) => {
 
   const [personDetails, setPersonDetails] = useState<any>({});
   const [castDetails, setCastDetails] = useState<any>([]);
+
   useEffect(() => {
     axios
       .get(personDetailURL)
@@ -62,7 +63,7 @@ const CastDetail = ({ match }: any) => {
               style={{ width: '80%', display: 'block', margin: 'auto' }}
               className="cast_profile_pic"
               alt={`${personDetails.name} profile picture`}
-              src={buildPosterPath(`${personDetails.profile_path}`)}
+              src={buildPosterPath(`${personDetails.profile_path}`, `w500`)}
             />
 
             <p style={{ margin: '5px' }} className="white">

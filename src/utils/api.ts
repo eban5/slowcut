@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { contentProviders } from '../utils/array';
-import { WatchProviders, JustWatchMethod } from '../types/types';
+import { WatchProviders, JustWatchMethod, TMDBImageResolution } from '../types/types';
 
-// TODO add params for resolution, lower res for stackedCards
-export const buildPosterPath = (poster_path: string): string => {
-  return `https://image.tmdb.org/t/p/original/${poster_path}`;
+export const buildPosterPath = (
+  poster_path: string,
+  resolution: TMDBImageResolution
+): string => {
+  return `https://image.tmdb.org/t/p/${resolution}/${poster_path}`;
 };
 
 // TODO write test
