@@ -89,7 +89,6 @@ export const useFetchGenre = (genreID: string) => {
           `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&with_genres=${genreID}`
         )
         .then((response) => {
-          console.log(response);
           response.data && setData(response.data.results);
         })
         .catch((error) => console.error(error));
