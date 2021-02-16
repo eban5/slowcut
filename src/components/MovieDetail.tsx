@@ -321,6 +321,23 @@ const MovieDetail = ({ match }: any) => {
                     </Tab>
                     <Tab eventKey="details" title="Details">
                       <div>
+                        <strong>{data.runtime} mins</strong>. More details at{' '}
+                        <a
+                          href={`http://www.imdb.com/title/${data.imdb_id}/maindetails`}
+                        >
+                          <Badge className="movie_detail_cast_badge">
+                            IMDB
+                          </Badge>
+                        </a>{' '}
+                        <a
+                          href={`https://www.themoviedb.org/movie/${data.id}/`}
+                        >
+                          <Badge className="movie_detail_cast_badge">
+                            TMDB
+                          </Badge>
+                        </a>
+                      </div>
+                      <div>
                         <strong>Release Date: </strong>
                         {data.release_date}
                       </div>
@@ -339,7 +356,12 @@ const MovieDetail = ({ match }: any) => {
                       <div className="movie_detail_genres">
                         {genres.map((genre: Genre) => {
                           return (
-                            <Badge className="movie_detail_genre_badge" variant="secondary">{genre.name}</Badge>
+                            <Badge
+                              className="movie_detail_genre_badge"
+                              variant="secondary"
+                            >
+                              {genre.name}
+                            </Badge>
                           );
                         })}
                       </div>
