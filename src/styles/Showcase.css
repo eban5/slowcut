@@ -3,9 +3,8 @@
   color: var(--color-text);
 }
 
-.showcase_title {
-  font-size: 3rem;
-  font-weight: bold;
+.showcase_title > h1{
+  font-weight: 900;
 }
 
 .showcase_title,

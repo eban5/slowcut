@@ -56,14 +56,15 @@
 
 .movie_detail_title {
   font-size: 2.2rem;
-  box-shadow: #000 2px 0 5px;
   font-weight: bold;
 }
-.movie_detail_cast, .movie_detail_genres {
+.movie_detail_cast,
+.movie_detail_genres {
   margin-top: 16px;
 }
 
-.movie_detail_cast_badge, .movie_detail_genre_badge {
+.movie_detail_cast_badge,
+.movie_detail_genre_badge {
   font-size: 1rem;
   box-shadow: #000 2px 0 5px;
   font-weight: bold;
