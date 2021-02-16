@@ -7,6 +7,8 @@ A letterboxd clone. For practice and experimentation.
 > Slow cutting is a film editing technique which uses shots of long duration.
 > ~ [Wikipedia](https://en.wikipedia.org/wiki/Slow_cutting?wprov=sfti1)
 
+Demo: [https://slowcut-demo.netlify.app/](https://slowcut-demo.netlify.app/)
+
 [Film data](https://letterboxd.com/about/film-data/) from [TMDb](https://www.themoviedb.org/).
 
 Watch provider data from [JustWatch](https://www.justwatch.com/).
