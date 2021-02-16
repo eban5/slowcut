@@ -6,7 +6,9 @@ import {
   Col,
   Container,
   Media,
+  Modal,
   OverlayTrigger,
+  Pagination,
   Popover,
   Row,
   Tab,
@@ -57,13 +59,19 @@ const MovieDetail = ({ match }: any) => {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [recommendedMovies, setRecommendedMovies] = useState<any[]>([]);
   const [watchProviders, setWatchProviders] = useState<WatchProviders>({});
+  const [videos, setVideos] = useState<any>([]);
   const [crew, setCrew] = useState<any>([]);
   const [cast, setCast] = useState<any>([]);
+
+  const [show, setShow] = useState<boolean>(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const movieDetailURL: string = `https://api.themoviedb.org/3/movie/${imdbID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
   const recommendedMoviesURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
   const watchProvidersURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
   const movieCredits: string = `https://api.themoviedb.org/3/movie/${imdbID}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+  const videosURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
 
   useEffect(() => {
     axios
@@ -82,6 +90,16 @@ const MovieDetail = ({ match }: any) => {
       .then((movies: any) => {
         if (movies.data) {
           setRecommendedMovies(movies.data.results);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, [match]);
+  useEffect(() => {
+    axios
+      .get(videosURL)
+      .then((videoResult: any) => {
+        if (videoResult.data) {
+          setVideos(videoResult.data.results);
         }
       })
       .catch((err) => console.error(err));
@@ -144,6 +162,63 @@ const MovieDetail = ({ match }: any) => {
                 </p>
 
                 <p className="movie_detail_overview">{data.overview}</p>
+
+                <p className="movie_detail_trailers">
+                  {videos.map((video: any) => {
+                    if (
+                      ['Trailer', 'Teaser', 'trailer', 'teaser'].includes(
+                        video.type
+                      )
+                    ) {
+                      return (
+                        <div>
+                          {' '}
+                          <a
+                            className=""
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleShow}
+                          >
+                            {video.name}
+                          </a>
+                          <Modal
+                            size="lg"
+                            className="mpa_ratings_modal"
+                            aria-labelledby="contained-modal-title-vcenter"
+                            centered
+                            show={show}
+                            onHide={handleClose}
+                          >
+                            <Modal.Header
+                              className="mpa_modal_heading"
+                              closeButton
+                            >
+                              <Modal.Title
+                                as="h3"
+                                id="contained-modal-title-vcenter"
+                              >
+                                {video.name}
+                              </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                              <Container style={{ marginTop: '32px' }}>
+                                <Row style={{ alignItems: 'middle' }}>
+                                  <Col>
+                                    <iframe
+                                      width="720"
+                                      height="405"
+                                      src={`https://www.youtube.com/embed/${video.key}`}
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    ></iframe>
+                                  </Col>
+                                </Row>
+                              </Container>
+                            </Modal.Body>
+                          </Modal>
+                        </div>
+                      );
+                    }
+                  })}
+                </p>
 
                 <div className="tabs">
                   <Tabs defaultActiveKey="cast" id="uncontrolled-tab-example">
@@ -277,12 +352,24 @@ const MovieDetail = ({ match }: any) => {
                 <Carousel movies={recommendedMovies} />
               </Col>
             </Row>
+            <Row>
+              <Col sm={12}>
+                <Pagination>
+                  <Col>
+                    <Pagination.Prev disabled>Previous</Pagination.Prev>
+                  </Col>
+                  <Col sm={10}>{/* empty space */}</Col>
+                  <Col>
+                    <Pagination.Next>Next</Pagination.Next>
+                  </Col>
+                </Pagination>
+              </Col>
+            </Row>
           </Container>
         </>
       ) : (
         <div>No Movie</div>
       )}
-      <div className="meta">Watch provider data provided by JustWatch.</div>
     </div>
   );
 };
