@@ -1,5 +1,7 @@
 # slowcut
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c61b134b-0e92-4c2b-acb0-01ef7627ebfe/deploy-status)](https://app.netlify.com/sites/slowcut-demo/deploys)
+
 A letterboxd clone. For practice and experimentation.
 
 > Slow cutting is a film editing technique which uses shots of long duration.
