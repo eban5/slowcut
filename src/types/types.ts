@@ -37,3 +37,9 @@ export interface ContentProviders {
   amazon_video?: string[];
   youtube?: string[];
 }
+
+export interface Certifications {
+  certification: string;
+  meaning: string;
+  order: number;
+}

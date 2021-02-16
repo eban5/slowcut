@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Movie, Genre } from '../types/types';
+import { Movie, Genre, Certifications } from '../types/types';
 
+import '../styles/App.css';
 import { Showcase } from './Showcase';
 import { CustomCarousel as Carousel } from './Carousel';
 import PopularLists from './PopularLists';
 import About from './About';
 
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 
 import { buildPosterPath } from '../utils/api';
 import GenreBadge from './Genre';
+import { mpaCertifications } from '../data/lists';
 
 const LandingPage = () => {
   // TMDB Genres List
   const [genres, setGenres] = useState<Genre[]>([]);
   const [trending, setTrending] = useState<Movie[]>([]);
   const [backdropPoster, setBackdropPoster] = useState<string>('');
+  const [modalShow, setModalShow] = useState<boolean>(false);
+
+  const certifications: Certifications[] = mpaCertifications();
+
+  const handleClose = () => setModalShow(false);
+  const handleShow = () => setModalShow(true);
 
   useEffect(() => {
     //get genre list
@@ -122,6 +130,23 @@ const LandingPage = () => {
             </Col>
           </Row>
         </Container>
+        <Container style={{marginTop: "32px"}}>
+          <Row>
+            {certifications &&
+              certifications.map((cert: Certifications) => {
+                return (
+                  <>
+                    <Col sm={2}>
+                      <h2 style={{textAlign: "center"}}>{cert.certification}</h2>
+                    </Col>
+                    <Col sm={9}>
+                      <p style={{ textAlign: 'justify', }}>{cert.meaning}</p>
+                    </Col>
+                  </>
+                );
+              })}
+          </Row>
+        </Container>
 
         <footer className="slowcut_footer">
           Slowcut is just a{' '}
@@ -134,6 +159,29 @@ const LandingPage = () => {
           </a>
           .<br /> Watch Provider data provided by{' '}
           <a href="https://www.justwatch.com/us">Just Watch</a>.
+          <br />
+          <Button variant="primary" onClick={handleShow}>
+            Learn more about the Motion Picture Association film rating system.
+          </Button>
+          {/* <Modal
+            {...certifications}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            style={{ backgroundColor: '#789' }}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Motion Picture Association Film Rating System
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+          </Modal> */}
         </footer>
       </div>
     </>

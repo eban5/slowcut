@@ -176,6 +176,7 @@ const MovieDetail = ({ match }: any) => {
                               {watchProviders &&
                                 watchProviders.flatrate &&
                                 watchProviders.flatrate.map((provider: any) => {
+                                  console.log(provider);
                                   return <li>{provider.provider_name}</li>;
                                 })}
                             </ul>
