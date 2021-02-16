@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Carousel.css';
 import { Movie } from '../types/types';
 import Poster from './Poster';
+import '../styles/Carousel.css';
 
 interface CarouselProps {
   movies: Movie[];

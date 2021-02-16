@@ -59,7 +59,10 @@ const LandingPage = () => {
 
         if (votingAverages.length > 0) {
           setBackdropPoster(
-            buildPosterPath(result.data.results[maxRatedIndex].backdrop_path, `original`)
+            buildPosterPath(
+              result.data.results[maxRatedIndex].backdrop_path,
+              `original`
+            )
           );
         }
       });
@@ -68,7 +71,11 @@ const LandingPage = () => {
   return (
     <>
       <div className="background_wrapper">
-        <img style={{ width: '100%' }} src={backdropPoster} />
+        <img
+          style={{ width: '100%' }}
+          alt="Slowcut backdrop"
+          src={backdropPoster}
+        />
       </div>
       <div className="App">
         {/* Showcase / Hero */}
@@ -133,23 +140,44 @@ const LandingPage = () => {
 
         <footer className="slowcut_footer">
           Slowcut is just a{' '}
-          <a href="https://letterboxd.com/" target="_blank">
+          <a
+            href="https://letterboxd.com/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             Letterboxd clone
           </a>
           .<br /> All data is provided by{' '}
-          <a href="https://developers.themoviedb.org/3/" target="_blank">
+          <a
+            href="https://developers.themoviedb.org/3/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             The Movie Database (TMDb) API
           </a>
           .<br /> Watch Provider data provided by{' '}
-          <a href="https://www.justwatch.com/us">Just Watch</a>.
-          <br />
           <a
+            href="https://www.justwatch.com/us"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Just Watch
+          </a>
+          .
+          <br />
+          <Button
             className="mpa_learn_more"
-            style={{ cursor: 'pointer' }}
+            style={{
+              cursor: 'pointer',
+              backgroundColor: 'transparent',
+              textDecoration: 'underline',
+              padding: 0,
+              margin: 0,
+            }}
             onClick={handleShow}
           >
             Learn more about the Motion Picture Association film rating system.
-          </a>
+          </Button>
           <Modal
             size="lg"
             className="mpa_ratings_modal"
@@ -165,17 +193,29 @@ const LandingPage = () => {
             </Modal.Header>
             <Modal.Body>
               <Container style={{ marginTop: '32px' }}>
-                <Row style={{alignItems: "middle"}}>
+                <Row style={{ alignItems: 'middle' }}>
                   {certifications &&
                     certifications.map((cert: Certifications) => {
                       return (
                         <>
-                          <Col sm={3} style={{borderTop: '0.5px solid #789', marginTop: '16px'}}>
+                          <Col
+                            sm={3}
+                            style={{
+                              borderTop: '0.5px solid #789',
+                              marginTop: '16px',
+                            }}
+                          >
                             <h2 style={{ textAlign: 'center' }}>
                               {cert.certification}
                             </h2>
                           </Col>
-                          <Col sm={9} style={{borderTop: '0.5px solid #789', marginTop: '16px'}}>
+                          <Col
+                            sm={9}
+                            style={{
+                              borderTop: '0.5px solid #789',
+                              marginTop: '16px',
+                            }}
+                          >
                             <p style={{ textAlign: 'justify' }}>
                               {cert.meaning}
                             </p>

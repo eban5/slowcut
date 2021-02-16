@@ -1,14 +1,9 @@
 import { Certifications } from '../types/types';
 
-interface Movie {
-  poster: string;
-}
-
 export interface List {
   title: string;
   username: string; // TODO: create User type
   timestamp?: string;
-  // items: Movie[];
 }
 
 // TODO remove when we get more real data

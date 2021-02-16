@@ -13,7 +13,7 @@ import MovieDetail from './components/MovieDetail';
 import CastDetail from './components/CastDetail';
 import LandingPage from './components/LandingPage';
 import { SearchLanding } from './components/SearchLanding';
-import {Grid, PersonGrid} from './components/Grid';
+import { Grid } from './components/Grid';
 
 const NoMatchRoute = () => (
   <div className="not_found">
@@ -64,7 +64,7 @@ function App() {
                 onChange={handleChangeTerm}
               />
               <Link to={`/search/${searchTerm}`}>
-                <img src={searchIcon} width={35} height={35}></img>
+                <img src={searchIcon} alt="Search" width={35} height={35} />
               </Link>
             </Form>
           </Navbar.Collapse>

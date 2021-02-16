@@ -3,10 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { buildPosterPath } from '../utils/api';
 import { PersonGrid } from './Grid';
-import Poster from './Poster';
 
 import '../styles/App.css';
-import { TMDBImageResolution } from '../types/types';
 
 const CastDetail = ({ match }: any) => {
   const {
@@ -26,7 +24,7 @@ const CastDetail = ({ match }: any) => {
         setPersonDetails(item.data);
       })
       .catch((err) => console.error(err));
-  }, [match]);
+  }, [personDetailURL]);
   useEffect(() => {
     axios
       .get(castDetailURL)
@@ -39,7 +37,7 @@ const CastDetail = ({ match }: any) => {
         setCastDetails(movies);
       })
       .catch((err) => console.error(err));
-  }, [match]);
+  }, [castDetailURL]);
 
   return (
     <>
@@ -62,7 +60,7 @@ const CastDetail = ({ match }: any) => {
             <img
               style={{ width: '80%', display: 'block', margin: 'auto' }}
               className="cast_profile_pic"
-              alt={`${personDetails.name} profile picture`}
+              alt={`${personDetails.name} profile`}
               src={buildPosterPath(`${personDetails.profile_path}`, `w500`)}
             />
 

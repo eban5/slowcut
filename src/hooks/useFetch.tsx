@@ -41,7 +41,7 @@ export const useFetchPopularMovies = (props: any) => {
     };
 
     fetchData();
-  }, []);
+  }, [num]);
 
   return { status, data };
 };

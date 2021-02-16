@@ -3,7 +3,6 @@ import { Badge, Col, Container, Media, Row } from 'react-bootstrap';
 import { extractYear } from '../utils/api';
 import Poster from './Poster';
 import { search } from '../utils/api';
-import SearchResult from './SearchResult';
 
 export const SearchLanding = (props: any) => {
   const { keyword } = props;
@@ -13,23 +12,26 @@ export const SearchLanding = (props: any) => {
   // TODO - include more result types
   // TODO - swap fetch hooks
   //@ts-ignore
-  useEffect(async () => {
-    setLoading(true);
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
 
-    // Someone came to the search landing without entering a keyword
-    if (!keyword) {
-      setSearchResults([]);
-      return;
-    } else {
-      // Search for their keyword entered
-      const results = await search(
-        `https://api.themoviedb.org/3/search/movie?query=${keyword}&api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-      );
+      // Someone came to the search landing without entering a keyword
+      if (!keyword) {
+        setSearchResults([]);
+        return;
+      } else {
+        // Search for their keyword entered
+        const results = await search(
+          `https://api.themoviedb.org/3/search/movie?query=${keyword}&api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+        );
 
-      setSearchResults(results);
-      setLoading(false);
+        setSearchResults(results);
+        setLoading(false);
+      }
     }
-  }, []);
+    fetchData();
+  }, [keyword]);
 
   return (
     <div className="white" style={{ marginTop: '25px' }}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useFetchGenre, useFetchPopularMovies } from '../hooks/useFetch';
 import Poster from './Poster';

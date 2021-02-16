@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import {
   Badge,
+  Button,
   Col,
   Container,
   Media,
@@ -85,7 +86,7 @@ const MovieDetail = ({ match }: any) => {
   const movieDetailURL: string = `https://api.themoviedb.org/3/movie/${imdbID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
   const recommendedMoviesURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
   const watchProvidersURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
-  const movieCredits: string = `https://api.themoviedb.org/3/movie/${imdbID}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+  const movieCreditsURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
   const videosURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
 
   useEffect(() => {
@@ -98,7 +99,7 @@ const MovieDetail = ({ match }: any) => {
         }
       })
       .catch((err) => console.error(err));
-  }, [match]);
+  }, [movieDetailURL]);
   useEffect(() => {
     axios
       .get(recommendedMoviesURL)
@@ -108,7 +109,7 @@ const MovieDetail = ({ match }: any) => {
         }
       })
       .catch((err) => console.error(err));
-  }, [match]);
+  }, [recommendedMoviesURL]);
   useEffect(() => {
     axios
       .get(videosURL)
@@ -118,7 +119,7 @@ const MovieDetail = ({ match }: any) => {
         }
       })
       .catch((err) => console.error(err));
-  }, [match]);
+  }, [videosURL]);
   useEffect(() => {
     axios
       .get(watchProvidersURL)
@@ -132,10 +133,10 @@ const MovieDetail = ({ match }: any) => {
         }
       })
       .catch((err) => console.error(err));
-  }, [match]);
+  }, [watchProvidersURL]);
   useEffect(() => {
     axios
-      .get(movieCredits)
+      .get(movieCreditsURL)
       .then((results) => {
         if (results.data) {
           setCrew(results.data.crew.slice(0, 15));
@@ -143,7 +144,7 @@ const MovieDetail = ({ match }: any) => {
         }
       })
       .catch((err) => console.error(err));
-  }, [match]);
+  }, [movieCreditsURL]);
 
   // TODO - break into smaller components for each tab
 
@@ -155,6 +156,7 @@ const MovieDetail = ({ match }: any) => {
             <img
               style={{ width: '100%' }}
               src={buildPosterPath(data.backdrop_path, `original`)}
+              alt="Movie detail backdrop"
             />
           </div>
 
@@ -188,13 +190,18 @@ const MovieDetail = ({ match }: any) => {
                       return (
                         <div>
                           {' '}
-                          <a
+                          <Button
                             className=""
-                            style={{ cursor: 'pointer' }}
+                            style={{
+                              cursor: 'pointer',
+                              backgroundColor: 'transparent',
+                              border: 'none',
+                              textDecoration: 'underline',
+                            }}
                             onClick={handleShow}
                           >
                             {video.name}
-                          </a>
+                          </Button>
                           <Modal
                             size="lg"
                             className="mpa_ratings_modal"
@@ -219,6 +226,7 @@ const MovieDetail = ({ match }: any) => {
                                 <Row style={{ alignItems: 'middle' }}>
                                   <Col>
                                     <iframe
+                                      title={`${video.key}`}
                                       width="720"
                                       height="405"
                                       src={`https://www.youtube.com/embed/${video.key}`}
@@ -232,6 +240,7 @@ const MovieDetail = ({ match }: any) => {
                         </div>
                       );
                     }
+                    return <div></div>;
                   })}
                 </p>
 

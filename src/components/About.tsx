@@ -1,25 +1,15 @@
 import React from 'react';
 import { Card, CardGroup, Media } from 'react-bootstrap';
-import slowcutIcon from '../images/slowcut.png';
-import heartWhite from '../images/heart-white.png';
-import heartGray from '../images/heart-gray.png';
-
 import '../styles/About.css';
+
 const About = () => {
   return (
     <>
-      {/* // TODO: On Hover  */}
       <CardGroup>
         <Card bg="dark" text="white">
           <Card.Body className="about_card">
             <Media>
-              <div
-                // width={40}
-                // height={40}
-                className="mr-3 card_image card_image-keep"
-                // src={slowcutIcon}
-                // alt="About text"
-              />
+              <div className="mr-3 card_image card_image-keep" />
               <Media.Body>
                 <span className="about_text">
                   Keep track of every film you’ve ever watched (or just start

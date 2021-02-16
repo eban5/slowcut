@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { contentProviders } from '../utils/array';
-import { WatchProviders, JustWatchMethod, TMDBImageResolution } from '../types/types';
+import {
+  WatchProviders,
+  JustWatchMethod,
+  TMDBImageResolution,
+} from '../types/types';
 
 export const buildPosterPath = (
   poster_path: string,
@@ -34,6 +38,7 @@ export const filterWatchProviders = (
       if (contentProviders.includes(item.provider_name)) {
         return item;
       }
+      return {};
     });
   }
   if (providers.buy) {
@@ -41,6 +46,7 @@ export const filterWatchProviders = (
       if (contentProviders.includes(item.provider_name)) {
         return item;
       }
+      return {};
     });
   }
   if (providers.flatrate) {
@@ -48,6 +54,7 @@ export const filterWatchProviders = (
       if (contentProviders.includes(item.provider_name)) {
         return item;
       }
+      return {};
     });
   }
 
