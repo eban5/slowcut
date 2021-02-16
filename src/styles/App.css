@@ -35,11 +35,17 @@ li {
   border-radius: 15px !important;
 }
 
-.nav-tabs {
+.nav-tabs,
+.details_headers {
   font-family: 'Raleway', sans-serif;
   font-weight: 900;
   color: var(--color-text);
   text-transform: uppercase;
+}
+
+.details_headers {
+  font-size: 0.8rem;
+  text-align: left;
 }
 
 .nav-tabs > a {
@@ -55,6 +61,13 @@ li {
   border-bottom: 1px gray solid;
   padding-bottom: 5px;
   margin-bottom: 15px;
+}
+
+.center {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 50px;
 }
 
 .background_container {

@@ -17,6 +17,7 @@ import {
 } from 'react-bootstrap';
 import { CustomCarousel as Carousel } from './Carousel';
 import '../styles/MovieDetail.css';
+import '../styles/App.css';
 import { Genre, WatchProviders } from '../types/types';
 import { numberWithCommas } from '../utils/array';
 import { buildPosterPath, filterWatchProviders } from '../utils/api';
@@ -318,48 +319,87 @@ const MovieDetail = ({ match }: any) => {
                       </div>
                     </Tab>
 
-                    <Tab eventKey="crew" title="Crew">
+                    <Tab
+                      eventKey="crew"
+                      title="Crew"
+                      style={{ marginBottom: '16px' }}
+                    >
                       {crew &&
                         crew.map((item: any) => {
                           return (
-                            <div>
-                              {item.job}: {item.original_name}
-                            </div>
+                            <Row>
+                              <Col sm={4} className="center">
+                                <h5 className="details_headers">{item.job}</h5>
+                              </Col>
+
+                              <Col className="center">
+                                <Badge className="movie_detail_cast_badge">
+                                  {item.original_name}
+                                </Badge>
+                              </Col>
+                            </Row>
                           );
                         })}
                     </Tab>
                     <Tab eventKey="details" title="Details">
-                      <div>
-                        <strong>{data.runtime} mins</strong>. More details at{' '}
-                        <a
-                          href={`http://www.imdb.com/title/${data.imdb_id}/maindetails`}
-                        >
-                          <Badge className="movie_detail_cast_badge">
-                            IMDB
-                          </Badge>
-                        </a>{' '}
-                        <a
-                          href={`https://www.themoviedb.org/movie/${data.id}/`}
-                        >
-                          <Badge className="movie_detail_cast_badge">
-                            TMDB
-                          </Badge>
-                        </a>
-                      </div>
-                      <div>
-                        <strong>Release Date: </strong>
-                        {data.release_date}
-                      </div>
-                      <div>
-                        <strong>Produced by: </strong>
-                        {data.production_companies
-                          .map((company: any) => company.name)
-                          .join(', ')}
-                      </div>
-                      <div>
-                        IMDB Rating: {data.vote_average} / 10 (
-                        {numberWithCommas(data.vote_count)} votes)
-                      </div>
+                      <Row style={{ marginTop: '16px' }}>
+                        <Col sm={2} className="center">
+                          <h5 className="details_headers">Studios</h5>
+                        </Col>
+                        <Col sm={3}></Col>
+                        <Col className="center">
+                          {data.production_companies.map((company: any) => (
+                            <Badge className="movie_detail_cast_badge">
+                              {company.name}
+                            </Badge>
+                          ))}
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col sm={4} className="center">
+                          <h5 className="details_headers">Runtime</h5>
+                        </Col>
+
+                        <Col className="center">{data.runtime} mins</Col>
+                      </Row>
+
+                      <Row>
+                        <Col sm={4} className="center">
+                          <h5 className="details_headers">Release Date</h5>
+                        </Col>
+
+                        <Col className="center">{data.release_date}</Col>
+                      </Row>
+                      <Row>
+                        <Col sm={4} className="center">
+                          <h5 className="details_headers">IMDB Rating</h5>
+                        </Col>
+
+                        <Col className="center">
+                          {data.vote_average} / 10 (
+                          {numberWithCommas(data.vote_count)} votes)
+                        </Col>
+                      </Row>
+
+                      <Row>
+                        <Col>
+                          More details at{' '}
+                          <a
+                            href={`http://www.imdb.com/title/${data.imdb_id}/maindetails`}
+                          >
+                            <Badge className="movie_detail_cast_badge">
+                              IMDB
+                            </Badge>
+                          </a>{' '}
+                          <a
+                            href={`https://www.themoviedb.org/movie/${data.id}/`}
+                          >
+                            <Badge className="movie_detail_cast_badge">
+                              TMDB
+                            </Badge>
+                          </a>
+                        </Col>
+                      </Row>
                     </Tab>
                     <Tab eventKey="genres" title="Genres">
                       <div className="movie_detail_genres">
