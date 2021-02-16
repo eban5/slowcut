@@ -26,14 +26,16 @@
 }
 
 .nav_brand {
-  font-family: 'Noticia Text', serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.4rem;
   margin-right: 25px;
+  font-weight: 700;
 }
 
 .nav_link {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
+  font-weight: 900;
   color: var(--color-text);
 }

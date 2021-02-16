@@ -165,17 +165,17 @@ const LandingPage = () => {
             </Modal.Header>
             <Modal.Body>
               <Container style={{ marginTop: '32px' }}>
-                <Row>
+                <Row style={{alignItems: "middle"}}>
                   {certifications &&
                     certifications.map((cert: Certifications) => {
                       return (
                         <>
-                          <Col sm={3}>
+                          <Col sm={3} style={{borderTop: '0.5px solid #789', marginTop: '16px'}}>
                             <h2 style={{ textAlign: 'center' }}>
                               {cert.certification}
                             </h2>
                           </Col>
-                          <Col sm={9}>
+                          <Col sm={9} style={{borderTop: '0.5px solid #789', marginTop: '16px'}}>
                             <p style={{ textAlign: 'justify' }}>
                               {cert.meaning}
                             </p>

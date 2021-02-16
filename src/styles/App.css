@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Noticia+Text:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Noticia+Text:wght@400;700&family=Raleway:wght@700;900&display=swap');
 
 h1,
 h2,
@@ -15,7 +15,8 @@ h1 {
 }
 
 p,
-a, .mpa_learn_more {
+a,
+.mpa_learn_more {
   font-family: 'Lato', sans-serif;
   color: var(--color-secondary);
 }
@@ -32,6 +33,12 @@ li {
 
 .nav_search {
   border-radius: 15px !important;
+}
+
+.nav-tabs {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  color: var(--color-text);
 }
 
 .section_header {

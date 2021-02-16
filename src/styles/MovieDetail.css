@@ -25,7 +25,31 @@
 }
 
 .movie_detail_title {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  box-shadow: #000 2px 0 5px;
+  font-weight: bold;
+}
+
+.movie_detail_tagline {
+  margin-top: 16px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.movie_detail_overview {
+  font-size: 1rem;
+  font-family: 'Noticia Text', serif;
+}
+
+.just_watch {
+  margin-top: 32px;
+}
+
+.movie_detail_watch_provider {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
 }
 
 .movie_detail_backdrop_wrapper {

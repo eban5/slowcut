@@ -21,7 +21,7 @@ export const filterWatchProviders = (
   providers: WatchProviders
 ): WatchProviders => {
   let result: WatchProviders = {
-    link: undefined,
+    link: providers.link,
     rent: undefined,
     buy: undefined,
     flatrate: undefined,

@@ -105,12 +105,14 @@ const MovieDetail = ({ match }: any) => {
       .get(movieCredits)
       .then((results) => {
         if (results.data) {
-          setCrew(results.data.crew);
-          setCast(results.data.cast);
+          setCrew(results.data.crew.slice(0, 15));
+          setCast(results.data.cast.slice(0, 15));
         }
       })
       .catch((err) => console.error(err));
   }, [match]);
+
+  // TODO - break into smaller components for each tab
 
   return (
     <div className="white">
@@ -137,7 +139,11 @@ const MovieDetail = ({ match }: any) => {
                   {data.title} ({data.release_date.substr(0, 4)})
                 </h5>
 
-                <p style={{ paddingTop: '25px' }}>{data.overview}</p>
+                <p>
+                  <span className="movie_detail_tagline">{data.tagline}</span>
+                </p>
+
+                <p className="movie_detail_overview">{data.overview}</p>
 
                 <div className="tabs">
                   <Tabs defaultActiveKey="cast" id="uncontrolled-tab-example">
@@ -146,7 +152,9 @@ const MovieDetail = ({ match }: any) => {
                         <Row>
                           <Col>
                             {watchProviders && watchProviders.rent ? (
-                              <h6>Rent</h6>
+                              <h6 className="movie_detail_watch_provider">
+                                Rent
+                              </h6>
                             ) : (
                               ''
                             )}
@@ -154,7 +162,18 @@ const MovieDetail = ({ match }: any) => {
                               {watchProviders &&
                                 watchProviders.rent &&
                                 watchProviders.rent.map((provider: any) => {
-                                  return <li>{provider.provider_name}</li>;
+                                  return (
+                                    <li>
+                                      <img
+                                        width={40}
+                                        height={40}
+                                        src={buildPosterPath(
+                                          provider.logo_path
+                                        )}
+                                        alt={`${provider.provider_name}`}
+                                      />
+                                    </li>
+                                  );
                                 })}
                             </ul>
                           </Col>
@@ -183,10 +202,14 @@ const MovieDetail = ({ match }: any) => {
                           </Col>
                         </Row>
                       </div>
+                      <div className="movie_detail_just_watch_credit">
+                        Data provided by{' '}
+                        <a href={`${watchProviders.link}`}>JustWatch</a>.
+                      </div>
                     </Tab>
                     <Tab eventKey="cast" title="Cast">
                       {cast &&
-                        cast.slice(0, 10).map((item: any) => {
+                        cast.map((item: any) => {
                           return (
                             <OverlayTrigger
                               trigger="hover"
@@ -208,7 +231,7 @@ const MovieDetail = ({ match }: any) => {
 
                     <Tab eventKey="crew" title="Crew">
                       {crew &&
-                        crew.slice(0, 10).map((item: any) => {
+                        crew.map((item: any) => {
                           return (
                             <div>
                               {item.job}: {item.original_name}
