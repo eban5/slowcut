@@ -171,6 +171,8 @@ const LandingPage = () => {
               cursor: 'pointer',
               backgroundColor: 'transparent',
               textDecoration: 'underline',
+              outline: 'none',
+              border: 'none',
               padding: 0,
               margin: 0,
             }}

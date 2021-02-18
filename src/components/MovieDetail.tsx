@@ -20,7 +20,11 @@ import '../styles/MovieDetail.css';
 import '../styles/App.css';
 import { Genre, WatchProviders } from '../types/types';
 import { numberWithCommas } from '../utils/array';
-import { buildPosterPath, filterWatchProviders } from '../utils/api';
+import {
+  buildPosterPath,
+  buildRequest,
+  filterWatchProviders,
+} from '../utils/api';
 import { Link } from 'react-router-dom';
 
 interface CastPopupProps {
@@ -84,68 +88,82 @@ const MovieDetail = ({ match }: any) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const movieDetailURL: string = `https://api.themoviedb.org/3/movie/${imdbID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
-  const recommendedMoviesURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
-  const watchProvidersURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
-  const movieCreditsURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
-  const videosURL: string = `https://api.themoviedb.org/3/movie/${imdbID}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+  const movieDetailURL: string = buildRequest('movie-detail', imdbID);
+  const recommendedMoviesURL: string = buildRequest(
+    'recommended-movies',
+    imdbID
+  );
+  const watchProvidersURL: string = buildRequest('watch-providers', imdbID);
+  const movieCreditsURL: string = buildRequest('movie-credits', imdbID);
+  const videosURL: string = buildRequest('movie-videos', imdbID);
 
   useEffect(() => {
+    const movieDetailRequest = axios.get(movieDetailURL);
+    const recommendedMoviesRequest = axios.get(recommendedMoviesURL);
+    const watchProvidersRequest = axios.get(watchProvidersURL);
+    const movieCreditsRequest = axios.get(movieCreditsURL);
+    const videosRequest = axios.get(videosURL);
+
     axios
-      .get(movieDetailURL)
-      .then((movie: any) => {
-        if (movie.data) {
-          setData(movie.data);
-          setGenres(movie.data.genres);
-        }
-      })
-      .catch((err) => console.error(err));
-  }, [movieDetailURL]);
-  useEffect(() => {
-    axios
-      .get(recommendedMoviesURL)
-      .then((movies: any) => {
-        if (movies.data) {
-          setRecommendedMovies(movies.data.results);
-        }
-      })
-      .catch((err) => console.error(err));
-  }, [recommendedMoviesURL]);
-  useEffect(() => {
-    axios
-      .get(videosURL)
-      .then((videoResult: any) => {
-        if (videoResult.data) {
-          setVideos(videoResult.data.results);
-        }
-      })
-      .catch((err) => console.error(err));
-  }, [videosURL]);
-  useEffect(() => {
-    axios
-      .get(watchProvidersURL)
-      .then((results) => {
-        if (results.data.results) {
-          // We are only returning Apple, Google/YT, and Amazon results
-          const filteredWatchProviders = filterWatchProviders(
-            results.data.results.US
-          );
-          setWatchProviders(filteredWatchProviders);
-        }
-      })
-      .catch((err) => console.error(err));
-  }, [watchProvidersURL]);
-  useEffect(() => {
-    axios
-      .get(movieCreditsURL)
-      .then((results) => {
-        if (results.data) {
-          setCrew(results.data.crew.slice(0, 15));
-          setCast(results.data.cast.slice(0, 15));
-        }
-      })
-      .catch((err) => console.error(err));
-  }, [movieCreditsURL]);
+      .all([
+        movieDetailRequest,
+        recommendedMoviesRequest,
+        watchProvidersRequest,
+        movieCreditsRequest,
+        videosRequest,
+      ])
+      .then(
+        axios.spread((...responses) => {
+          const movieDetailResponse = responses[0];
+          const recommendedMoviesResponse = responses[1];
+          const watchProvidersResponse = responses[2];
+          const movieCreditsResponse = responses[3];
+          const videosResponse = responses[4];
+
+          // Set Movie Details
+          if (movieDetailResponse.data) {
+            setData(movieDetailResponse.data);
+            setGenres(movieDetailResponse.data.genres);
+          }
+          if (recommendedMoviesResponse.data) {
+            setRecommendedMovies(recommendedMoviesResponse.data.results);
+          }
+          if (watchProvidersResponse.data) {
+            // We only return a subset of the watch providers
+            const filteredWatchProviders = filterWatchProviders(
+              watchProvidersResponse.data.results.US
+            );
+            setWatchProviders(filteredWatchProviders);
+          }
+          if (movieCreditsResponse.data) {
+            setCrew(movieCreditsResponse.data.crew.slice(0, 15));
+            setCast(movieCreditsResponse.data.cast.slice(0, 15));
+          }
+          if (videosResponse.data) {
+            setVideos(videosResponse.data.results);
+          }
+        })
+      )
+      .catch((errors) => {
+        const movieDetailError = errors[0];
+        console.error(movieDetailError);
+        const recommendedMoviesError = errors[1];
+        console.error(recommendedMoviesError);
+        const watchProvidersError = errors[2];
+        console.error(watchProvidersError);
+        const movieCreditsError = errors[3];
+        console.error(movieCreditsError);
+        const videosError = errors[4];
+        console.error(videosError);
+      });
+  }, [
+    imdbID,
+    movieDetailURL,
+    recommendedMoviesURL,
+    watchProvidersURL,
+    movieCreditsURL,
+    videosURL,
+  ]);
 
   // TODO - break into smaller components for each tab
 
@@ -346,7 +364,7 @@ const MovieDetail = ({ match }: any) => {
                         <Col sm={2} className="center">
                           <h5 className="details_headers">Studios</h5>
                         </Col>
-                        <Col sm={3}></Col>
+
                         <Col className="center">
                           {data.production_companies.map((company: any) => (
                             <Badge className="movie_detail_cast_badge">
@@ -444,7 +462,7 @@ const MovieDetail = ({ match }: any) => {
           </Container>
         </>
       ) : (
-        <div>No Movie</div>
+        <div className="not_found">Loading...</div>
       )}
     </div>
   );

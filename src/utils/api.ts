@@ -6,11 +6,37 @@ import {
   TMDBImageResolution,
 } from '../types/types';
 
+const API_REQUEST_PREFIX: string = `https://api.themoviedb.org/3/`;
+const API_REQUEST_SUFFIX: string = `?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+
 export const buildPosterPath = (
   poster_path: string,
   resolution: TMDBImageResolution
 ): string => {
   return `https://image.tmdb.org/t/p/${resolution}/${poster_path}`;
+};
+
+export const buildRequest = (request: string, param: string): string => {
+  switch (request) {
+    case 'movie-detail':
+      return `${API_REQUEST_PREFIX}movie/${param}${API_REQUEST_SUFFIX}`;
+    case 'recommended-movies':
+      return `${API_REQUEST_PREFIX}movie/${param}/recommendations${API_REQUEST_SUFFIX}`;
+    case 'watch-providers':
+      return `${API_REQUEST_PREFIX}movie/${param}/watch/providers${API_REQUEST_SUFFIX}`;
+    case 'movie-credits':
+      return `${API_REQUEST_PREFIX}movie/${param}/credits${API_REQUEST_SUFFIX}`;
+    case 'movie-videos':
+      return `${API_REQUEST_PREFIX}movie/${param}/videos${API_REQUEST_SUFFIX}`;
+    case '':
+      console.error(
+        `The API request ${request} with param ${param} was not recognized.`
+      );
+      return '';
+
+    default:
+      return '';
+  }
 };
 
 // TODO write test
