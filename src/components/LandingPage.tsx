@@ -51,6 +51,10 @@ const LandingPage = () => {
           (item: any) => item.vote_average
         );
 
+        // get a random backdrop from the top trending movies this week
+        // const maxRatedIndex = Math.floor(Math.random() * votingAverages.length);
+
+        // get the top rated movie's backdrop
         const maxRatedIndex = votingAverages.indexOf(
           Math.max(...votingAverages)
         );
@@ -95,7 +99,7 @@ const LandingPage = () => {
           <Row>
             <Col>
               <div id="carousel">
-                <h4 className="section_header">Trending This Week</h4>
+                {/* <h4 className="section_header">Trending This Week</h4> */}
                 <Carousel movies={trending} />
               </div>
             </Col>
@@ -107,7 +111,7 @@ const LandingPage = () => {
           <Row>
             <Col>
               <div id="about">
-                <h4 className="section_header">About</h4>
+                {/* <h4 className="section_header">About</h4> */}
                 <About />
               </div>
             </Col>
