@@ -1,7 +1,6 @@
-/* TODO integrate SASS */
-
 .about_text {
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .about_text:hover {
