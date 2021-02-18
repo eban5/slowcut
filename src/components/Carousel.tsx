@@ -16,7 +16,7 @@ export const CustomCarousel = (props: CarouselProps) => {
           movies.map((item: any, index: number) => {
             return (
               // link to the movie details page for onClick
-              <li className="poster" key={index}>
+              <li key={index}>
                 <Poster key={index} item={item} />
               </li>
             );

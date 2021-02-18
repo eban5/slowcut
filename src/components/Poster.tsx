@@ -43,7 +43,7 @@ const Poster = (props: PosterProps) => {
     );
   }
   return (
-    <>
+    <div className="poster">
       <Link to={`/movie/${item.id}`}>
         <OverlayTrigger
           placement="auto"
@@ -51,13 +51,12 @@ const Poster = (props: PosterProps) => {
           overlay={renderTooltip(item)}
         >
           <img
-            className="poster search_poster"
             alt={`${item.title} (${item.release_date?.substr(0, 4)})`}
             src={buildPosterPath(`${item.poster_path}`, `w185`)}
           />
         </OverlayTrigger>
       </Link>
-    </>
+    </div>
   );
 };
 
