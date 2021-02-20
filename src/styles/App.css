@@ -239,3 +239,9 @@ section {
 .mpa_modal_heading {
   color: var(--color-text);
 }
+
+.mpa_cert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

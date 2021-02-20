@@ -8,7 +8,7 @@ import { CustomCarousel as Carousel } from './Carousel';
 import PopularLists from './PopularLists';
 import About from './About';
 
-import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
+import { Button, Col, Container, Media, Modal, Row } from 'react-bootstrap';
 
 import { buildPosterPath } from '../utils/api';
 import GenreBadge from './Genre';
@@ -192,37 +192,45 @@ const LandingPage = () => {
             </Modal.Header>
             <Modal.Body>
               <Container style={{ marginTop: '32px' }}>
-                <Row style={{ alignItems: 'middle' }}>
-                  {certifications &&
-                    certifications.map((cert: Certifications) => {
-                      return (
-                        <>
-                          <Col
-                            sm={3}
-                            style={{
-                              borderTop: '0.5px solid #789',
-                              marginTop: '16px',
-                            }}
-                          >
-                            <h2 style={{ textAlign: 'center' }}>
-                              {cert.certification}
-                            </h2>
-                          </Col>
-                          <Col
-                            sm={9}
-                            style={{
-                              borderTop: '0.5px solid #789',
-                              marginTop: '16px',
-                            }}
-                          >
-                            <p style={{ textAlign: 'justify' }}>
-                              {cert.meaning}
-                            </p>
-                          </Col>
-                        </>
-                      );
-                    })}
-                </Row>
+                {certifications &&
+                  certifications.map((cert: Certifications) => {
+                    let certMeaning: string =
+                      cert.certification === 'NR'
+                        ? "If a film has not been submitted for a rating or is an uncut version of a film that was submitted, the labels Not Rated (NR) or Unrated (UR) are often used. Uncut/extended versions of films that are labeled 'Unrated' also contain warnings saying that the uncut version of the film contains content that differs from the theatrical release and might not be suitable for minors."
+                        : cert.meaning;
+
+                    return (
+                      <>
+                        <Row style={{ alignItems: 'middle' }}>
+                          <Media>
+                            <Col
+                              sm={4}
+                              style={{
+                                alignSelf: 'center',
+                                // minWidth: '100px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                              }}
+                            >
+                              <h2 className="" style={{ textAlign: 'center' }}>
+                                {cert.certification}
+                              </h2>
+                            </Col>
+                            <Col sm={8}>
+                              <Media.Body>
+                                <p
+                                  className=""
+                                  style={{ textAlign: 'justify' }}
+                                >
+                                  {certMeaning}
+                                </p>
+                              </Media.Body>
+                            </Col>
+                          </Media>
+                        </Row>
+                      </>
+                    );
+                  })}
               </Container>
             </Modal.Body>
           </Modal>
