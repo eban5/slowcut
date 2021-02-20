@@ -25,7 +25,7 @@ export const Showcase = () => {
           <Button variant="primary" onClick={handleShow}>
             Get Started - It's Free
           </Button>
-          <Modal show={show} onHide={handleClose}>
+          <Modal className="details_headers" show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Sign In</Modal.Title>
             </Modal.Header>

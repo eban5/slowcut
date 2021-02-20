@@ -117,17 +117,9 @@ const LandingPage = () => {
             </Col>
           </Row>
         </Container>
-
         <Container>
           <Row>
             <Col>
-              {/* Popular Lists */}
-              <div id="popular-lists">
-                <h4 className="section_header">Popular Lists</h4>
-                <PopularLists />
-              </div>
-            </Col>
-            <Col sm={4}>
               {/* Find By Genre */}
               <div id="discover-genre">
                 <h4 className="section_header">Discover by Genre</h4>
@@ -137,6 +129,18 @@ const LandingPage = () => {
                       <GenreBadge genreID={item.id} genreName={item.name} />
                     ))}
                 </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+
+        <Container>
+          <Row>
+            <Col>
+              {/* Popular Lists */}
+              <div id="popular-lists">
+                <h4 className="section_header">Popular Lists</h4>
+                <PopularLists />
               </div>
             </Col>
           </Row>
@@ -170,7 +174,8 @@ const LandingPage = () => {
           .
           <br />
           <Button className="mpa_learn_more" onClick={handleShow}>
-            <span style={{color: "#789"}}>Learn more about the </span>Motion Picture Association film rating system.
+            <span style={{ color: '#789' }}>Learn more about the </span>Motion
+            Picture Association film rating system.
           </Button>
           <Modal
             size="lg"
