@@ -15,6 +15,7 @@ export const contentProviders: string[] = [
   'Google Play Movies',
   'Amazon Video',
   'YouTube',
+  'Disney Plus',
 ];
 
 export const parseCrewMembers = (crew: any) => {

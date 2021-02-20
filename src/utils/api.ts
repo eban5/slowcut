@@ -60,28 +60,19 @@ export const filterWatchProviders = (
   };
 
   if (providers.rent) {
-    result.rent = providers.rent.filter((item: JustWatchMethod) => {
-      if (contentProviders.includes(item.provider_name)) {
-        return item;
-      }
-      return {};
-    });
+    result.rent = providers.rent.filter((item: JustWatchMethod) =>
+      contentProviders.includes(item.provider_name)
+    );
   }
   if (providers.buy) {
-    result.buy = providers.buy.filter((item: JustWatchMethod) => {
-      if (contentProviders.includes(item.provider_name)) {
-        return item;
-      }
-      return {};
-    });
+    result.buy = providers.buy.filter((item: JustWatchMethod) =>
+      contentProviders.includes(item.provider_name)
+    );
   }
   if (providers.flatrate) {
-    result.flatrate = providers.flatrate.filter((item: JustWatchMethod) => {
-      if (contentProviders.includes(item.provider_name)) {
-        return item;
-      }
-      return {};
-    });
+    result.flatrate = providers.flatrate.filter((item: JustWatchMethod) =>
+      contentProviders.includes(item.provider_name)
+    );
   }
 
   return result;
