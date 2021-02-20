@@ -11,10 +11,10 @@
 
 .child {
   grid-area: 1 / 1 / 2 / 2;
-  box-shadow: 2px 0 7px #000;
+  box-shadow: 2px 4px 7px #000;
   border-radius: 4px;
   height: 150px;
-  background: $color3;
+  background: var(--color-light-gray);
   width: 100px;
 }
 
@@ -24,24 +24,24 @@
 }
 
 .child0 {
-  margin-left: 0;
+  margin-left: 200px;
 }
 
 .child1 {
-  margin-left: 50px;
+  margin-left: 160px;
 }
 
 .child2 {
-  margin-left: 100px;
+  margin-left: 120px;
 }
 .child3 {
-  margin-left: 150px;
+  margin-left: 80px;
 }
 .child4 {
-  margin-left: 200px;
+  margin-left: 40px;
 }
 .child5 {
-  margin-left: 250px;
+  margin-left: 0px;
 }
 
 .popular_list_user {

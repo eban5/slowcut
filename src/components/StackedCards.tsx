@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/StackedCards.css';
 import { useFetchPopularMovies } from '../hooks/useFetch';
 import { buildPosterPath } from '../utils/api';
@@ -9,6 +8,7 @@ import { buildPosterPath } from '../utils/api';
 
 const StackedCards = () => {
   const { status, data } = useFetchPopularMovies(6);
+  const stackedCards = data.slice(0, 6);
 
   return (
     <>
@@ -17,7 +17,7 @@ const StackedCards = () => {
       ) : (
         <>
           <div className="parent">
-            {data.map((item: any, idx: any) => {
+            {stackedCards.map((item: any, idx: any) => {
               // TODO convert to Poster component with Link
               return (
                 <div key={idx} className={`child child${idx}`}>
