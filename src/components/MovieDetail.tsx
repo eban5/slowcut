@@ -175,7 +175,7 @@ const MovieDetail = ({ match }: any) => {
             <img
               style={{ width: '100%' }}
               src={buildPosterPath(data.backdrop_path, `original`)}
-              alt="Movie detail backdrop"
+              alt=""
             />
           </div>
 
@@ -185,7 +185,7 @@ const MovieDetail = ({ match }: any) => {
                 <img
                   className="mr-3 movie_detail_poster"
                   src={buildPosterPath(data.poster_path, `w500`)}
-                  alt="Movie Poster"
+                  alt=""
                 />
               </Col>
               <Col sm={9}>
@@ -453,13 +453,13 @@ const MovieDetail = ({ match }: any) => {
                 <Pagination>
                   <Col>
                     <Button className="pagination-button">
-                      <img src={previousArrow} height={30} />
+                      <img src={previousArrow} height={30} alt="previous" />
                     </Button>
                   </Col>
                   <Col sm={10}>{/* empty space */}</Col>
                   <Col>
                     <Button className="pagination-button">
-                      <img src={nextArrow} height={30} />
+                      <img src={nextArrow} height={30} alt="next" />
                     </Button>
                   </Col>
                 </Pagination>

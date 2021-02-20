@@ -30,13 +30,14 @@ const CastDetail = ({ match }: any) => {
       .get(castDetailURL)
       .then((item: any) => {
         // sort by release date
-        const movies = item.data.cast.length > 0
-          ? item.data.cast.sort((a: any, b: any) =>
-              a.release_date < b.release_date ? 1 : -1
-            )
-          : item.data.crew.sort((a: any, b: any) =>
-              a.release_date < b.release_date ? 1 : -1
-            );
+        const movies =
+          item.data.cast.length > 0
+            ? item.data.cast.sort((a: any, b: any) =>
+                a.release_date < b.release_date ? 1 : -1
+              )
+            : item.data.crew.sort((a: any, b: any) =>
+                a.release_date < b.release_date ? 1 : -1
+              );
         setCastDetails(movies);
       })
       .catch((err) => console.error(err));
