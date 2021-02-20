@@ -17,6 +17,28 @@ export const contentProviders: string[] = [
   'YouTube',
 ];
 
+export const parseCrewMembers = (crew: any) => {
+  const director = crew.filter((item: any) => item.job === 'Director');
+  const producers = crew.filter((item: any) => item.job === 'Producer');
+  const executiveProducer = crew.filter(
+    (item: any) => item.job === 'Executive Producer'
+  );
+  const editors = crew.filter((item: any) => item.job === 'Editor');
+  const dp = crew.filter((item: any) => item.job === 'Director of Photography');
+  const composer = crew.filter(
+    (item: any) => item.job === 'Original Music Composer'
+  );
+
+  return [
+    ...director,
+    ...producers,
+    ...executiveProducer,
+    ...editors,
+    ...dp,
+    ...composer,
+  ];
+};
+
 // TODO finish parsing content providers
 // For building a prototype, I only care about a handful of content providers to show in my results back from JustWatch API.
 // Assuming watch provider data we are using is from US only.
