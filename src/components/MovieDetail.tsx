@@ -19,7 +19,7 @@ import { CustomCarousel as Carousel } from './Carousel';
 import '../styles/MovieDetail.css';
 import '../styles/App.css';
 import { Genre, WatchProviders } from '../types/types';
-import { numberWithCommas } from '../utils/array';
+import { numberWithCommas, parseCrewMembers } from '../utils/array';
 import {
   buildPosterPath,
   buildRequest,
@@ -136,7 +136,12 @@ const MovieDetail = ({ match }: any) => {
             setWatchProviders(filteredWatchProviders);
           }
           if (movieCreditsResponse.data) {
-            setCrew(movieCreditsResponse.data.crew.slice(0, 15));
+            // group and order the crew results
+            const crew = parseCrewMembers(
+              movieCreditsResponse.data.crew.slice(0, 15)
+            );
+
+            setCrew(crew);
             setCast(movieCreditsResponse.data.cast.slice(0, 15));
           }
           if (videosResponse.data) {
@@ -156,14 +161,7 @@ const MovieDetail = ({ match }: any) => {
         const videosError = errors[4];
         console.error(videosError);
       });
-  }, [
-    imdbID,
-    movieDetailURL,
-    recommendedMoviesURL,
-    watchProvidersURL,
-    movieCreditsURL,
-    videosURL,
-  ]);
+  }, [match]);
 
   // TODO - break into smaller components for each tab
 
@@ -351,9 +349,11 @@ const MovieDetail = ({ match }: any) => {
                               </Col>
 
                               <Col className="center">
-                                <Badge className="movie_detail_cast_badge">
-                                  {item.original_name}
-                                </Badge>
+                                <Link to={`/director/${item.id}`}>
+                                  <Badge className="movie_detail_cast_badge">
+                                    {item.original_name}
+                                  </Badge>
+                                </Link>
                               </Col>
                             </Row>
                           );

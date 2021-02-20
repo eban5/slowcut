@@ -8,9 +8,8 @@
 .poster,
 .fallback_poster {
   display: inline-flex;
-  margin: auto 0;
-  width: 150px;
-  height: 225px;
+  margin: 0 0 5px 10px;
+  width: 156px;
   list-style: none;
   background-color: gray;
   color: black;

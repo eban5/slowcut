@@ -151,7 +151,7 @@ const LandingPage = () => {
           >
             Letterboxd clone
           </a>
-          .<br /> All data is provided by{' '}
+          . All data is provided by{' '}
           <a
             href="https://developers.themoviedb.org/3/"
             target="_blank"
@@ -159,7 +159,7 @@ const LandingPage = () => {
           >
             The Movie Database (TMDb) API
           </a>
-          .<br /> Watch Provider data provided by{' '}
+          . Watch Provider data provided by{' '}
           <a
             href="https://www.justwatch.com/us"
             target="_blank"
@@ -169,20 +169,8 @@ const LandingPage = () => {
           </a>
           .
           <br />
-          <Button
-            className="mpa_learn_more"
-            style={{
-              cursor: 'pointer',
-              backgroundColor: 'transparent',
-              textDecoration: 'underline',
-              outline: 'none',
-              border: 'none',
-              padding: 0,
-              margin: 0,
-            }}
-            onClick={handleShow}
-          >
-            Learn more about the Motion Picture Association film rating system.
+          <Button className="mpa_learn_more" onClick={handleShow}>
+            <span style={{color: "#789"}}>Learn more about the </span>Motion Picture Association film rating system.
           </Button>
           <Modal
             size="lg"

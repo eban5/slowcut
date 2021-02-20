@@ -3,7 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 
 import './styles/App.css';
 import './styles/Navbar.css';
-import slowcut from './images/slowcut.png';
+import slowcut from './images/slowcut-logo.png';
 import searchIcon from './images/search.png';
 
 // react-bootstrap
@@ -84,6 +84,7 @@ function App() {
           />
           <Route exact path="/movie/:imdbID" component={MovieDetail} />
           <Route exact path="/actor/:personID" component={CastDetail} />
+          <Route exact path="/director/:personID" component={CastDetail} />
           <Route path="/grid" component={Grid} />
           <Route exact path="/genre/:genreID" component={Grid} />
           <Route render={() => <NoMatchRoute />} />

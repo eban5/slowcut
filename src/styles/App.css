@@ -5,7 +5,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Noticia Text', serif;
+  font-family: 'Raleway', sans-serif;
   color: var(--color-text);
 }
 
@@ -180,13 +180,37 @@ section {
 }
 
 .slowcut_footer {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
   background-color: var(--color-dark-gray);
-  color: var(--color-text);
+  color: var(--color-light-gray);
   height: 200px;
-  width: 100vw;
+  width: 80vw;
   text-align: center;
   font-size: 0.8rem;
   margin-top: 50px;
+  align-items: center;
+}
+
+.slowcut_footer > a {
+  color: aliceblue;
+}
+
+.slowcut_footer > button {
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.slowcut_footer > button:hover {
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .cast_profile_pic {
