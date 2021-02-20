@@ -163,6 +163,7 @@ const MovieDetail = ({ match }: any) => {
         const videosError = errors[4];
         console.error(videosError);
       });
+    //eslint-disable-next-line
   }, [match]);
 
   // TODO - break into smaller components for each tab
