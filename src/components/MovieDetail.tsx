@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
+import nextArrow from '../images/next-arrow.png';
+import previousArrow from '../images/previous-arrow.png';
 import {
   Badge,
   Button,
@@ -450,11 +452,15 @@ const MovieDetail = ({ match }: any) => {
               <Col sm={12}>
                 <Pagination>
                   <Col>
-                    <Pagination.Prev disabled>Previous</Pagination.Prev>
+                    <Button className="pagination-button">
+                      <img src={previousArrow} height={30} />
+                    </Button>
                   </Col>
                   <Col sm={10}>{/* empty space */}</Col>
                   <Col>
-                    <Pagination.Next>Next</Pagination.Next>
+                    <Button className="pagination-button">
+                      <img src={nextArrow} height={30} />
+                    </Button>
                   </Col>
                 </Pagination>
               </Col>
