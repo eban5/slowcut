@@ -128,7 +128,11 @@ const MovieDetail = ({ match }: any) => {
             setGenres(movieDetailResponse.data.genres);
           }
           if (recommendedMoviesResponse.data) {
-            setRecommendedMovies(recommendedMoviesResponse.data.results);
+            // sort by popularity rating
+            const sortedRecommendations = recommendedMoviesResponse.data.results.sort(
+              (a: any, b: any) => a.popularity < b.popularity
+            );
+            setRecommendedMovies(sortedRecommendations);
           }
           if (watchProvidersResponse.data) {
             // We only return a subset of the watch providers
