@@ -87,6 +87,16 @@
   font-family: 'Noticia Text', serif;
 }
 
+.movie_detail_trailer_button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
+}
+
 .just_watch {
   margin-top: 32px;
 }

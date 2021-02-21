@@ -211,13 +211,7 @@ const MovieDetail = ({ match }: any) => {
                         <div>
                           {' '}
                           <Button
-                            className=""
-                            style={{
-                              cursor: 'pointer',
-                              backgroundColor: 'transparent',
-                              border: 'none',
-                              textDecoration: 'underline',
-                            }}
+                            className="movie_detail_trailer_button"
                             onClick={handleShow}
                           >
                             {video.name}
@@ -368,7 +362,7 @@ const MovieDetail = ({ match }: any) => {
                           <h5 className="details_headers">Studios</h5>
                         </Col>
 
-                        <Col className="center">
+                        <Col sm={6} className="center">
                           {data.production_companies.map((company: any) => (
                             <Badge className="movie_detail_cast_badge">
                               {company.name}
