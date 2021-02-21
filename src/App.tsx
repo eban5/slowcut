@@ -86,7 +86,7 @@ function App() {
           <Route exact path="/actor/:personID" component={CastDetail} />
           <Route exact path="/director/:personID" component={CastDetail} />
           <Route path="/films" component={Grid} />
-          <Route exact path="/genre/:genreID" component={Grid} />
+          <Route exact path="/films/genre/:genreName" component={Grid} />
           <Route render={() => <NoMatchRoute />} />
         </Switch>
       </div>

@@ -81,12 +81,24 @@ export const useFetchGenre = (genreID: string) => {
       setStatus('fetching');
 
       axios
-        .get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&with_genres=${genreID}`
+        .all([
+          axios.get(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&with_genres=${genreID}`
+          ),
+          axios.get(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=2&with_genres=${genreID}`
+          ),
+        ])
+        .then(
+          axios.spread((...responses) => {
+            const page1: any = responses[0];
+            const page2: any = responses[1];
+
+            if (page1.data) setData(page1.data.results);
+            if (page2.data)
+              setData((data: any) => [...data, ...page2.data.results]);
+          })
         )
-        .then((response) => {
-          response.data && setData(response.data.results);
-        })
         .catch((error) => console.error(error));
 
       setStatus('fetched');

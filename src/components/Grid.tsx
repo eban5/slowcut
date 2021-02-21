@@ -12,6 +12,7 @@ import { useFetchGenre, useFetchPopularMovies } from '../hooks/useFetch';
 import Poster from './Poster';
 import { contentProviders } from '../utils/array';
 import '../styles/Grid.css';
+import { Genre } from '../types/types';
 
 export const PersonGrid = (props: { movies: any[] }) => {
   const { movies } = props;
@@ -32,7 +33,7 @@ export const PersonGrid = (props: { movies: any[] }) => {
 };
 
 export const Grid = (props: any) => {
-  const { genreID } = props.match.params;
+  const { genreID } = props.location.state || 0;
   const { genreName } = props.location.state || '';
   // if params is empty, show grid of popular
   // else show genre-specific grid
@@ -95,9 +96,11 @@ export const Grid = (props: any) => {
                 variant={'info'}
                 title={'Genre'}
               >
-                {genres.map((genre: string, idx: number) => {
+                {genres.map((genre: Genre, idx: number) => {
                   return (
-                    <Dropdown.Item eventKey={`${idx}`}>{genre}</Dropdown.Item>
+                    <Dropdown.Item eventKey={`${idx}`}>
+                      {genre.name}
+                    </Dropdown.Item>
                   );
                 })}
               </DropdownButton>
@@ -136,7 +139,7 @@ export const Grid = (props: any) => {
 
 const PopularGrid = () => {
   const { status, data } = useFetchPopularMovies({ num: 50 });
-  console.log(data);
+
   return (
     <>
       {status !== 'fetching' &&
@@ -154,7 +157,7 @@ const GenreGrid = (props: any) => {
     <>
       {status !== 'fetching' &&
         data.map((item: any, idx: number) => {
-          return <Poster type="default" key={idx} item={item} />;
+          return <Poster type="grid" key={idx} item={item} />;
         })}
     </>
   );

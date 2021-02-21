@@ -32,10 +32,9 @@ const LandingPage = () => {
       .get(
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       )
-      .then(
-        (result) =>
-          result.data && result.data.genres && setGenres(result.data.genres)
-      );
+      .then((result) => {
+        result.data && result.data.genres && setGenres(result.data.genres);
+      });
   }, []);
 
   useEffect(() => {
@@ -125,7 +124,7 @@ const LandingPage = () => {
                 <h4 className="section_header">Discover by Genre</h4>
                 <div>
                   {genres &&
-                    genres.map((item) => (
+                    genres.map((item: Genre) => (
                       <GenreBadge genreID={item.id} genreName={item.name} />
                     ))}
                 </div>
