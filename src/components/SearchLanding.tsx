@@ -57,7 +57,7 @@ export const SearchLanding = (props: any) => {
                         key={idx}
                       >
                         <Media>
-                          <Poster item={item} />
+                          <Poster type="default" item={item} />
 
                           <Media.Body style={{ marginLeft: '8px' }}>
                             <h5>

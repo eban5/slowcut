@@ -1,5 +1,5 @@
 import React from 'react';
-import { yearFilterOptions, genres } from '../data/lists';
+import { yearFilterOptions, genres, popularFilterOptions } from '../data/lists';
 import {
   ButtonGroup,
   Col,
@@ -22,7 +22,7 @@ export const PersonGrid = (props: { movies: any[] }) => {
           <div className="grid">
             {movies &&
               movies.map((item: any, idx: number) => {
-                return <Poster key={idx} item={item} />;
+                return <Poster type="default" key={idx} item={item} />;
               })}
           </div>
         </Col>
@@ -41,92 +41,81 @@ export const Grid = (props: any) => {
     <>
       <Container>
         <Row>
-          <Col sm={12}>
-            <h5>Browse By</h5>
-            <DropdownButton
-              className="grid_filter_dropdown"
-              as={ButtonGroup}
-              key={0}
-              id={`dropdown-grid-0`}
-              variant={'info'}
-              title={'Year'}
-            >
-              {yearFilterOptions.map((year: string, idx: number) => {
-                return (
-                  <Dropdown.Item eventKey={`${idx}`}>{year}</Dropdown.Item>
-                );
-              })}
-            </DropdownButton>
-            <DropdownButton
-              className="grid_filter_dropdown"
-              as={ButtonGroup}
-              key={1}
-              id={`dropdown-grid-1`}
-              variant={'info'}
-              title={'Rating'}
-            >
-              Rating
-            </DropdownButton>
-            <DropdownButton
-              className="grid_filter_dropdown"
-              as={ButtonGroup}
-              key={2}
-              id={`dropdown-grid-2`}
-              variant={'info'}
-              title={'Popular'}
-            >
-              Popular
-            </DropdownButton>
-            <DropdownButton
-              className="grid_filter_dropdown"
-              as={ButtonGroup}
-              key={3}
-              id={`dropdown-grid-3`}
-              variant={'info'}
-              title={'Genre'}
-            >
-              {genres.map((genre: string, idx: number) => {
-                return (
-                  <Dropdown.Item eventKey={`${idx}`}>{genre}</Dropdown.Item>
-                );
-              })}
-            </DropdownButton>
-            <DropdownButton
-              className="grid_filter_dropdown"
-              as={ButtonGroup}
-              key={4}
-              id={`dropdown-grid-4`}
-              variant={'info'}
-              title={'Service'}
-            >
-              {contentProviders.map((service: string, idx: number) => {
-                return (
-                  <Dropdown.Item eventKey={`${idx}`}>{service}</Dropdown.Item>
-                );
-              })}
-            </DropdownButton>
-            {/* <DropdownButton
-            className="grid_filter_dropdown"
-              as={ButtonGroup}
-              key={5}
-              id={`dropdown-grid-5`}
-              variant={'info'}
-              title={'Other'}
-            >
-              Other
-            </DropdownButton> */}
-            {/* <form>
-              <input placeholder="Find a film"></input>
-            </form> */}
-          </Col>
-        </Row>
-      </Container>
-      <Container>
-        <Row>
-          <Col sm={12}>
+          <Col sm={4}>
             <h4 className="section_header">
               {genreName ? `Browse: ${genreName}` : 'Popular Movies'}
             </h4>
+          </Col>
+          <Col sm={8} style={{ display: 'flex', justifyContent: 'end' }}>
+            <div className="grid_filter_group">
+              <DropdownButton
+                className="grid_filter_dropdown"
+                as={ButtonGroup}
+                key={0}
+                id={`dropdown-grid-0`}
+                variant={'info'}
+                title={'Year'}
+              >
+                {yearFilterOptions.map((year: string, idx: number) => {
+                  return (
+                    <Dropdown.Item eventKey={`${idx}`}>{year}</Dropdown.Item>
+                  );
+                })}
+              </DropdownButton>
+              <DropdownButton
+                className="grid_filter_dropdown"
+                as={ButtonGroup}
+                key={1}
+                id={`dropdown-grid-1`}
+                variant={'info'}
+                title={'Rating'}
+              >
+                <Dropdown.Item eventKey={`0`}>Highest First</Dropdown.Item>
+                <Dropdown.Item eventKey={`1`}>Lowest First</Dropdown.Item>
+              </DropdownButton>
+              <DropdownButton
+                className="grid_filter_dropdown"
+                as={ButtonGroup}
+                key={2}
+                id={`dropdown-grid-2`}
+                variant={'info'}
+                title={'Popular'}
+              >
+                {popularFilterOptions.map((popular: string, idx: number) => {
+                  return (
+                    <Dropdown.Item eventKey={`${idx}`}>{popular}</Dropdown.Item>
+                  );
+                })}
+              </DropdownButton>
+              <DropdownButton
+                className="grid_filter_dropdown"
+                as={ButtonGroup}
+                key={3}
+                id={`dropdown-grid-3`}
+                variant={'info'}
+                title={'Genre'}
+              >
+                {genres.map((genre: string, idx: number) => {
+                  return (
+                    <Dropdown.Item eventKey={`${idx}`}>{genre}</Dropdown.Item>
+                  );
+                })}
+              </DropdownButton>
+              <DropdownButton
+                className="grid_filter_dropdown"
+                as={ButtonGroup}
+                key={4}
+                id={`dropdown-grid-4`}
+                variant={'info'}
+                title={'Service'}
+              >
+                {contentProviders.map((service: string, idx: number) => {
+                  return (
+                    <Dropdown.Item eventKey={`${idx}`}>{service}</Dropdown.Item>
+                  );
+                })}
+              </DropdownButton>
+            </div>
           </Col>
         </Row>
         <Row>
@@ -146,12 +135,13 @@ export const Grid = (props: any) => {
 };
 
 const PopularGrid = () => {
-  const { status, data } = useFetchPopularMovies(0);
+  const { status, data } = useFetchPopularMovies({ num: 50 });
+  console.log(data);
   return (
     <>
       {status !== 'fetching' &&
         data.map((item: any, idx: number) => {
-          return <Poster key={idx} item={item} />;
+          return <Poster type="grid" key={idx} item={item} />;
         })}
     </>
   );
@@ -164,7 +154,7 @@ const GenreGrid = (props: any) => {
     <>
       {status !== 'fetching' &&
         data.map((item: any, idx: number) => {
-          return <Poster key={idx} item={item} />;
+          return <Poster type="default" key={idx} item={item} />;
         })}
     </>
   );

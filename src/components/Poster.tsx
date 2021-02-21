@@ -14,6 +14,7 @@ interface MoviePoster {
 }
 interface PosterProps {
   item: MoviePoster;
+  type: 'default' | 'grid';
 }
 
 const renderTooltip = (props: MoviePoster) => {
@@ -32,6 +33,9 @@ const renderTooltip = (props: MoviePoster) => {
 
 const Poster = (props: PosterProps) => {
   const item: MoviePoster = props.item;
+  const type: string = props.type || 'default';
+
+  const posterClass = type === 'grid' ? 'poster poster-grid' : 'poster';
 
   // Fallback poster when path is null
   if (!item.poster_path) {
@@ -43,7 +47,7 @@ const Poster = (props: PosterProps) => {
     );
   }
   return (
-    <div className="poster">
+    <div className={posterClass}>
       <Link to={`/movie/${item.id}`}>
         <OverlayTrigger
           placement="auto"

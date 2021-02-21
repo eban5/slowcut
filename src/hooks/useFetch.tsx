@@ -13,28 +13,24 @@ export const useFetchPopularMovies = (props: any) => {
       setStatus('fetching');
 
       axios
-        .get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+        .all([
+          axios.get(
+            `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+          ),
+          axios.get(
+            `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=2`
+          ),
+        ])
+        .then(
+          axios.spread((...responses) => {
+            const page1: any = responses[0];
+            const page2: any = responses[1];
+
+            if (page1.data) setData(page1.data.results);
+            if (page2.data)
+              setData((data: any) => [...data, ...page2.data.results]);
+          })
         )
-        .then((response) => {
-          if (response.data) {
-            if (num > 0) {
-              // TODO temp random movies for lists until we have a DB
-              let subset: any[] = [];
-              for (let x = 0; x < num; x++) {
-                subset.push(
-                  response.data.results[
-                    Math.floor(Math.random() * response.data.results.length)
-                  ]
-                );
-              }
-              setData(subset);
-            } else {
-              // no number of results specified, just return all of them
-              setData(response.data.results);
-            }
-          }
-        })
         .catch((error) => console.error(error));
 
       setStatus('fetched');

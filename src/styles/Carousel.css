@@ -18,6 +18,10 @@
   border-radius: 4px;
 }
 
+.poster-grid {
+  width: 100px;
+}
+
 .poster:focus,
 .poster:hover {
   box-shadow: 0 0 0 2pt#007bff;

@@ -1,12 +1,18 @@
 .grid_filter_dropdown > button {
   background-color: transparent;
   border-color: var(--color-light-gray);
-  margin-right: 8px;
   text-transform: uppercase;
   font-family: Raleway, sans-serif;
   font-weight: 400;
+  margin-right: -2px;
   font-size: 0.9rem;
 }
 .grid_filter_dropdown > button:hover {
   background-color: var(--color-medium-gray);
+}
+
+.grid_filter_group {
+  padding-top: 50px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
 }

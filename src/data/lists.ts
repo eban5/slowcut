@@ -29,6 +29,7 @@ export const genres: string[] = [
   'War',
   'Western',
 ];
+
 export const yearFilterOptions: string[] = [
   'All',
   'Upcoming',
@@ -44,15 +45,11 @@ export const yearFilterOptions: string[] = [
   '1930s',
 ];
 
-// TODO remove when we get more real data
-export const randomSearchTerms: string[] = [
-  'batman',
-  'war',
-  'superman',
-  'spiderman',
-  'space',
-  'volcano',
-  'music',
+export const popularFilterOptions: string[] = [
+  'All Time',
+  'This Year',
+  'This Month',
+  'This Week',
 ];
 
 export const lists = (): List[] => {

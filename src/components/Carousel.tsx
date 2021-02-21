@@ -17,7 +17,7 @@ export const CustomCarousel = (props: CarouselProps) => {
             return (
               // link to the movie details page for onClick
               <li key={index}>
-                <Poster key={index} item={item} />
+                <Poster type="default" key={index} item={item} />
               </li>
             );
           })}
