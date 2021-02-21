@@ -11,7 +11,7 @@ import {
 import { useFetchGenre, useFetchPopularMovies } from '../hooks/useFetch';
 import Poster from './Poster';
 import { contentProviders } from '../utils/array';
-import "../styles/Grid.css"
+import '../styles/Grid.css';
 
 export const PersonGrid = (props: { movies: any[] }) => {
   const { movies } = props;
