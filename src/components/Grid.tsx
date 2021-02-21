@@ -1,7 +1,17 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { yearFilterOptions, genres } from '../data/lists';
+import {
+  ButtonGroup,
+  Col,
+  Container,
+  Dropdown,
+  DropdownButton,
+  Row,
+} from 'react-bootstrap';
 import { useFetchGenre, useFetchPopularMovies } from '../hooks/useFetch';
 import Poster from './Poster';
+import { contentProviders } from '../utils/array';
+import "../styles/Grid.css"
 
 export const PersonGrid = (props: { movies: any[] }) => {
   const { movies } = props;
@@ -29,6 +39,88 @@ export const Grid = (props: any) => {
 
   return (
     <>
+      <Container>
+        <Row>
+          <Col sm={12}>
+            <h5>Browse By</h5>
+            <DropdownButton
+              className="grid_filter_dropdown"
+              as={ButtonGroup}
+              key={0}
+              id={`dropdown-grid-0`}
+              variant={'info'}
+              title={'Year'}
+            >
+              {yearFilterOptions.map((year: string, idx: number) => {
+                return (
+                  <Dropdown.Item eventKey={`${idx}`}>{year}</Dropdown.Item>
+                );
+              })}
+            </DropdownButton>
+            <DropdownButton
+              className="grid_filter_dropdown"
+              as={ButtonGroup}
+              key={1}
+              id={`dropdown-grid-1`}
+              variant={'info'}
+              title={'Rating'}
+            >
+              Rating
+            </DropdownButton>
+            <DropdownButton
+              className="grid_filter_dropdown"
+              as={ButtonGroup}
+              key={2}
+              id={`dropdown-grid-2`}
+              variant={'info'}
+              title={'Popular'}
+            >
+              Popular
+            </DropdownButton>
+            <DropdownButton
+              className="grid_filter_dropdown"
+              as={ButtonGroup}
+              key={3}
+              id={`dropdown-grid-3`}
+              variant={'info'}
+              title={'Genre'}
+            >
+              {genres.map((genre: string, idx: number) => {
+                return (
+                  <Dropdown.Item eventKey={`${idx}`}>{genre}</Dropdown.Item>
+                );
+              })}
+            </DropdownButton>
+            <DropdownButton
+              className="grid_filter_dropdown"
+              as={ButtonGroup}
+              key={4}
+              id={`dropdown-grid-4`}
+              variant={'info'}
+              title={'Service'}
+            >
+              {contentProviders.map((service: string, idx: number) => {
+                return (
+                  <Dropdown.Item eventKey={`${idx}`}>{service}</Dropdown.Item>
+                );
+              })}
+            </DropdownButton>
+            {/* <DropdownButton
+            className="grid_filter_dropdown"
+              as={ButtonGroup}
+              key={5}
+              id={`dropdown-grid-5`}
+              variant={'info'}
+              title={'Other'}
+            >
+              Other
+            </DropdownButton> */}
+            {/* <form>
+              <input placeholder="Find a film"></input>
+            </form> */}
+          </Col>
+        </Row>
+      </Container>
       <Container>
         <Row>
           <Col sm={12}>

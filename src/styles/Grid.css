@@ -1,7 +1,12 @@
-.grid {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  grid-template-rows: 150px 1fr;
-  margin: 1rem 0;
-  height: 150px;
+.grid_filter_dropdown > button {
+  background-color: transparent;
+  border-color: var(--color-light-gray);
+  margin-right: 8px;
+  text-transform: uppercase;
+  font-family: Raleway, sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+.grid_filter_dropdown > button:hover {
+  background-color: var(--color-medium-gray);
 }

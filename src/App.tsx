@@ -50,7 +50,7 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Link to="/grid">
+              <Link to="/films">
                 <Nav.Link className="nav_link" href="#home">
                   Films
                 </Nav.Link>
@@ -85,7 +85,7 @@ function App() {
           <Route exact path="/movie/:imdbID" component={MovieDetail} />
           <Route exact path="/actor/:personID" component={CastDetail} />
           <Route exact path="/director/:personID" component={CastDetail} />
-          <Route path="/grid" component={Grid} />
+          <Route path="/films" component={Grid} />
           <Route exact path="/genre/:genreID" component={Grid} />
           <Route render={() => <NoMatchRoute />} />
         </Switch>

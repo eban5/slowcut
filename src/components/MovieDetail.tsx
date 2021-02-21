@@ -182,14 +182,14 @@ const MovieDetail = ({ match }: any) => {
 
           <Container style={{ paddingTop: '400px' }}>
             <Row>
-              <Col sm={3}>
+              <Col xs={{ span: 6 }} sm={true}>
                 <img
                   className="mr-3 movie_detail_poster"
                   src={buildPosterPath(data.poster_path, `w500`)}
                   alt=""
                 />
               </Col>
-              <Col sm={9}>
+              <Col xs={true} sm={true}>
                 <h5 className="movie_detail_title">
                   {data.title} ({data.release_date.substr(0, 4)})
                 </h5>

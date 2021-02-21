@@ -7,6 +7,43 @@ export interface List {
   description?: string;
 }
 
+export const genres: string[] = [
+  'All',
+  'Action',
+  'Adventure',
+  'Animation',
+  'Comedy',
+  'Crime',
+  'Documentary',
+  'Drama',
+  'Family',
+  'Fantasy',
+  'History',
+  'Horror',
+  'Music',
+  'Mystery',
+  'Romance',
+  'Science Fiction',
+  'Thriller',
+  'TV Movie',
+  'War',
+  'Western',
+];
+export const yearFilterOptions: string[] = [
+  'All',
+  'Upcoming',
+  '2020s',
+  '2010s',
+  '2000s',
+  '1990s',
+  '1980s',
+  '1970s',
+  '1960s',
+  '1950s',
+  '1940s',
+  '1930s',
+];
+
 // TODO remove when we get more real data
 export const randomSearchTerms: string[] = [
   'batman',

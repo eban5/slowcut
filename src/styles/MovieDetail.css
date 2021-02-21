@@ -48,11 +48,14 @@
 
 .movie_detail_poster {
   width: 100%;
+  display: block;
+  max-width: 350px;
   background-color: var(--color-medium-gray);
   color: black;
   cursor: pointer;
-  text-align: center;
 }
+
+
 
 .movie_detail_title {
   font-size: 2.2rem;
