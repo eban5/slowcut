@@ -33,6 +33,18 @@ li {
 
 .nav_search {
   border-radius: 15px !important;
+  color: var(--color-light-gray) !important;
+}
+
+.nav_search,
+.nav_search:focus,
+.nav_search:active {
+  background-color: var(--color-medium-gray) !important;
+}
+
+.nav_search:focus,
+.nav_search:active {
+  color: var(--color-text) !important;
 }
 
 .nav-tabs,
