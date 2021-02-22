@@ -14,7 +14,7 @@ interface MoviePoster {
 }
 interface PosterProps {
   item: MoviePoster;
-  type: 'default' | 'grid';
+  type: 'default' | 'carousel' | 'grid';
 }
 
 const renderTooltip = (props: MoviePoster) => {
@@ -35,7 +35,12 @@ const Poster = (props: PosterProps) => {
   const item: MoviePoster = props.item;
   const type: string = props.type || 'default';
 
-  const posterClass = type === 'grid' ? 'poster poster-grid' : 'poster';
+  const posterClass =
+    type === 'grid'
+      ? 'poster poster-grid'
+      : type === 'carousel'
+      ? 'poster poster-carousel'
+      : 'poster';
 
   // Fallback poster when path is null
   if (!item.poster_path) {

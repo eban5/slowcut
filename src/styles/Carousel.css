@@ -22,6 +22,31 @@
   width: 100px;
 }
 
+.poster-carousel {
+  width: 170px;
+}
+
+@media (min-width: 950px) {
+  .poster-carousel {
+    width: 170px;
+  }
+}
+@media (min-width: 993px) {
+  .poster-carousel {
+    width: 144px;
+  }
+}
+@media (min-width: 1100px) {
+  .poster-carousel {
+    width: 142px;
+  }
+}
+@media (min-width: 1200px) {
+  .poster-carousel {
+    width: 156px;
+  }
+}
+
 .poster:focus,
 .poster:hover {
   box-shadow: 0 0 0 2pt#007bff;
