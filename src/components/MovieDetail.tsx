@@ -184,7 +184,7 @@ const MovieDetail = ({ match }: any) => {
             />
           </div>
 
-          <Container style={{ paddingTop: '400px' }}>
+          <Container className="movie_detail_content_wrapper">
             <Row>
               <Col xs={{ span: 6 }} sm={true}>
                 <img
