@@ -11,24 +11,21 @@ const StackedCards = () => {
   const stackedCards = data.slice(0, 6);
 
   if (status === 'fetched') {
-    console.log(stackedCards)
+    console.log(stackedCards);
     return (
       <>
         <div className="parent">
           {stackedCards.map((item: any, idx: any) => {
-            
-            if (item) {
-              // TODO convert to Poster component with Link
-              return (
-                <div key={idx} className={`child child${idx}`}>
-                  <img
-                    className=""
-                    alt={`${item.title} (${item.release_date})`}
-                    src={buildPosterPath(item.poster_path, `w154`)}
-                  />
-                </div>
-              );
-            }
+            // TODO convert to Poster component with Link
+            return (
+              <div key={idx} className={`child child${idx}`}>
+                <img
+                  className=""
+                  alt={`${item.title} (${item.release_date})`}
+                  src={buildPosterPath(item.poster_path, `w154`)}
+                />
+              </div>
+            );
           })}
         </div>
       </>
