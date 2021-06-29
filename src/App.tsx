@@ -50,11 +50,11 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Link to="/films">
-                <Nav.Link className="nav_link" href="#home">
+              
+                <Nav.Link className="nav_link" href="/films">
                   Films
                 </Nav.Link>
-              </Link>
+              
             </Nav>
             <Form inline onSubmit={handleSubmit}>
               <FormControl

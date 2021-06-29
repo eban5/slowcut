@@ -125,7 +125,6 @@ export const useFetchCast = (personID: string) => {
           `https://api.themoviedb.org/3/person/${personID}/movie_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
         )
         .then((response) => {
-          console.log(response);
           response.data && setData(response.data.results);
         })
         .catch((error) => console.error(error));
@@ -169,10 +168,10 @@ const makeRequestCreator = () => {
     } catch (error) {
       if (axios.isCancel(error)) {
         //handle if request was cancelled
-        console.log('Request cancelled', error.message);
+        console.error('Request cancelled', error.message);
       } else {
         // handle typical errors
-        console.log('Something went wrong: ', error.message);
+        console.error('Something went wrong: ', error.message);
       }
     }
   };
