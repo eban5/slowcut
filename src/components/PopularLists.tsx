@@ -7,9 +7,9 @@ const PopularLists = () => {
   const popularLists: List[] = lists();
   return (
     <>
-      {popularLists.map((list: List) => {
+      {popularLists.map((list: List, idx: number) => {
         return (
-          <Row>
+          <Row key={idx}>
             <Col lg={4}>
               <StackedCards />
             </Col>

@@ -18,16 +18,21 @@ const StackedCards = () => {
         <>
           <div className="parent">
             {stackedCards.map((item: any, idx: any) => {
-              // TODO convert to Poster component with Link
-              return (
-                <div key={idx} className={`child child${idx}`}>
-                  <img
-                    className=""
-                    alt={`${item.title} (${item.release_date.substr(0, 4)})`}
-                    src={buildPosterPath(item.poster_path, `w154`)}
-                  />
-                </div>
-              );
+              if (!item) {
+                return;
+              }
+              if (item) {
+                // TODO convert to Poster component with Link
+                return (
+                  <div key={idx} className={`child child${idx}`}>
+                    <img
+                      className=""
+                      alt={`${item.title} (${item.release_date.substr(0, 4)})`}
+                      src={buildPosterPath(item.poster_path, `w154`)}
+                    />
+                  </div>
+                );
+              }
             })}
           </div>
         </>

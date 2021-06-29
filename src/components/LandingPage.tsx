@@ -124,8 +124,12 @@ const LandingPage = () => {
                 <h4 className="section_header">Discover by Genre</h4>
                 <div>
                   {genres &&
-                    genres.map((item: Genre) => (
-                      <GenreBadge genreID={item.id} genreName={item.name} />
+                    genres.map((item: Genre, idx: number) => (
+                      <GenreBadge
+                        key={idx}
+                        genreID={item.id}
+                        genreName={item.name}
+                      />
                     ))}
                 </div>
               </div>
@@ -192,42 +196,37 @@ const LandingPage = () => {
             <Modal.Body>
               <Container style={{ marginTop: '32px' }}>
                 {certifications &&
-                  certifications.map((cert: Certifications) => {
+                  certifications.map((cert: Certifications, idx: number) => {
                     let certMeaning: string =
                       cert.certification === 'NR'
                         ? "If a film has not been submitted for a rating or is an uncut version of a film that was submitted, the labels Not Rated (NR) or Unrated (UR) are often used. Uncut/extended versions of films that are labeled 'Unrated' also contain warnings saying that the uncut version of the film contains content that differs from the theatrical release and might not be suitable for minors."
                         : cert.meaning;
 
                     return (
-                      <>
-                        <Row style={{ alignItems: 'middle' }}>
-                          <Media>
-                            <Col
-                              sm={4}
-                              style={{
-                                alignSelf: 'center',
-                                // minWidth: '100px',
-                                display: 'flex',
-                                justifyContent: 'center',
-                              }}
-                            >
-                              <h2 className="" style={{ textAlign: 'center' }}>
-                                {cert.certification}
-                              </h2>
-                            </Col>
-                            <Col sm={8}>
-                              <Media.Body>
-                                <p
-                                  className=""
-                                  style={{ textAlign: 'justify' }}
-                                >
-                                  {certMeaning}
-                                </p>
-                              </Media.Body>
-                            </Col>
-                          </Media>
-                        </Row>
-                      </>
+                      <Row key={idx} style={{ alignItems: 'middle' }}>
+                        <Media>
+                          <Col
+                            sm={4}
+                            style={{
+                              alignSelf: 'center',
+                              // minWidth: '100px',
+                              display: 'flex',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <h2 className="" style={{ textAlign: 'center' }}>
+                              {cert.certification}
+                            </h2>
+                          </Col>
+                          <Col sm={8}>
+                            <Media.Body>
+                              <p className="" style={{ textAlign: 'justify' }}>
+                                {certMeaning}
+                              </p>
+                            </Media.Body>
+                          </Col>
+                        </Media>
+                      </Row>
                     );
                   })}
               </Container>
