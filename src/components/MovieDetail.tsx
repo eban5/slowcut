@@ -131,7 +131,7 @@ const MovieDetail = ({ match }: any) => {
             // sort by popularity rating
             const sortedRecommendations = recommendedMoviesResponse.data.results.sort(
               (a: any, b: any) => a.popularity < b.popularity
-            );
+            ).slice(0,12);
             setRecommendedMovies(sortedRecommendations);
           }
           if (watchProvidersResponse.data) {
