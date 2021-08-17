@@ -10,6 +10,14 @@ export const numberWithCommas = (x: string) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
+// group elements of an array by keyword
+export const groupBy = (xs: any[], key: string) => {
+  return xs.reduce(function (rv, x) {
+    (rv[x[key]] = rv[x[key]] || []).push(x);
+    return rv;
+  }, {});
+};
+
 export const contentProviders: string[] = [
   'Apple iTunes',
   'Google Play Movies',
