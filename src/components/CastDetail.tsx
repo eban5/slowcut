@@ -33,7 +33,7 @@ const CastDetail = ({ match }: any) => {
         const movies =
           item.data.cast.length > 0
             ? item.data.cast.sort((a: any, b: any) =>
-                a.release_date < b.release_date ? 1 : -1
+                a.popularity < b.popularity ? 1 : -1
               )
             : item.data.crew.sort((a: any, b: any) =>
                 a.release_date < b.release_date ? 1 : -1
