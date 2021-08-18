@@ -129,9 +129,9 @@ const MovieDetail = ({ match }: any) => {
           }
           if (recommendedMoviesResponse.data) {
             // sort by popularity rating
-            const sortedRecommendations = recommendedMoviesResponse.data.results.sort(
-              (a: any, b: any) => a.popularity < b.popularity
-            ).slice(0,12);
+            const sortedRecommendations = recommendedMoviesResponse.data.results
+              .sort((a: any, b: any) => a.popularity < b.popularity)
+              .slice(0, 12);
             setRecommendedMovies(sortedRecommendations);
           }
           if (watchProvidersResponse.data) {
@@ -176,6 +176,7 @@ const MovieDetail = ({ match }: any) => {
     <div className="white">
       {data !== null ? (
         <>
+          {/* Backdrop */}
           <div className="movie_detail_backdrop_wrapper">
             <img
               style={{ width: '100%' }}
@@ -183,20 +184,11 @@ const MovieDetail = ({ match }: any) => {
               alt=""
             />
           </div>
-
+          {/* Movie Details */}
           <Container className="movie_detail_content_wrapper">
             <Row>
-              <Col xs={{ span: 6 }} sm={true}>
-                <img
-                  className="mr-3 movie_detail_poster"
-                  src={buildPosterPath(data.poster_path, `w500`)}
-                  alt=""
-                />
-              </Col>
-              <Col xs={true} sm={true}>
-                <h5 className="movie_detail_title">
-                  {data.title} ({data.release_date.substr(0, 4)})
-                </h5>
+              <Col lg>
+                <h1 className="movie_detail_title">{data.title}</h1>
 
                 <p>
                   <span className="movie_detail_tagline">{data.tagline}</span>
@@ -312,29 +304,6 @@ const MovieDetail = ({ match }: any) => {
                         <a href={`${watchProviders.link}`}>JustWatch</a>.
                       </div>
                     </Tab>
-                    <Tab eventKey="cast" title="Cast">
-                      <div className="movie_detail_cast">
-                        {cast &&
-                          cast.map((item: any) => {
-                            return (
-                              <OverlayTrigger
-                                trigger="hover"
-                                placement="auto"
-                                overlay={castPopover(item)}
-                              >
-                                <Link to={`/actor/${item.id}`}>
-                                  <Badge
-                                    variant="secondary"
-                                    className="movie_detail_cast_badge"
-                                  >
-                                    {item.original_name}
-                                  </Badge>
-                                </Link>
-                              </OverlayTrigger>
-                            );
-                          })}
-                      </div>
-                    </Tab>
 
                     <Tab
                       eventKey="crew"
@@ -435,6 +404,29 @@ const MovieDetail = ({ match }: any) => {
                       </div>
                     </Tab>
                   </Tabs>
+                </div>
+              </Col>
+              <Col xs>
+                <div className="movie_detail_cast">
+                  {cast &&
+                    cast.slice(0, 6).map((item: any) => {
+                      return (
+                        <OverlayTrigger
+                          trigger="hover"
+                          placement="auto"
+                          overlay={castPopover(item)}
+                        >
+                          <Link to={`/actor/${item.id}`}>
+                            <Badge
+                              variant="secondary"
+                              className="movie_detail_cast_badge"
+                            >
+                              {item.original_name}
+                            </Badge>
+                          </Link>
+                        </OverlayTrigger>
+                      );
+                    })}
                 </div>
               </Col>
             </Row>
